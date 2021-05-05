@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS yup_db;
+
+CREATE DATABASE yup_db;
