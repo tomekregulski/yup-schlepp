@@ -1,3 +1,20 @@
+#login-logo {
+  text-align: center;
+}
+
+#login-logo img {
+  height: 150px;
+  margin-top: 150px;
+}
+
+#password {
+  margin-top: 15px;
+}
+
+#login {
+  margin-top: 15px;
+}
+
 .property-form-title {
   text-align: center;
   margin-top: 30px;
