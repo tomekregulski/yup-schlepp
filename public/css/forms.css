@@ -1,0 +1,24 @@
+.property-form-title {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.property-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.address-field {
+  margin-left: 5px;
+}
+
+.property-description {
+  margin-top: 30px;
+}
+
+.submit-property {
+  margin-top: 30px;
+}

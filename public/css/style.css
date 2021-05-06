@@ -1,0 +1,113 @@
+a {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  text-shadow: 0 5px 5px rgba(0, 0, 0, 0.29);
+}
+
+h1 {
+  text-align: center;
+  margin-top: 35px;
+}
+
+#nav-logo {
+  height: 90px;
+}
+
+.navbar {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#search-listings {
+  width: 150px;
+  margin-top: 15px;
+  padding: 2px;
+}
+
+.nav-right {
+  margin-top: 10px;
+}
+
+#property-search {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 500px) {
+  h1 {
+    text-align: left;
+  }
+
+  #nav-logo {
+    margin-left: 10%;
+    margin-top: 30px;
+  }
+
+  .navbar {
+    margin-top: 10px;
+    margin-right: 10%;
+    margin-left: 10%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-left {
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  #search-listings {
+    margin-left: 20px;
+  }
+
+  #property-search {
+    margin-top: 10px;
+    margin-right: 10%;
+    margin-left: 10%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.result-container {
+  margin-top: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 10px;
+  border: solid 1px black;
+}
+
+@media screen and (min-width: 900px) {
+  #nav-logo {
+    margin-left: 90px;
+  }
+
+  .navbar {
+    margin-right: 90px;
+    margin-left: 90px;
+  }
+
+  #property-search {
+    margin-right: 90px;
+    margin-left: 90px;
+  }
+}
