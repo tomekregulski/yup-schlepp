@@ -1,5 +1,6 @@
 a {
   color: black;
+  text-decoration: none;
 }
 
 a:visited {
@@ -13,6 +14,15 @@ a:hover {
 h1 {
   text-align: center;
   margin-top: 35px;
+}
+
+.input-field {
+  padding: 5px;
+}
+
+.btn {
+  padding: 5px;
+  background-color: rgb(207, 123, 179);
 }
 
 #nav-logo {
@@ -37,22 +47,53 @@ h1 {
 #search-listings {
   width: 150px;
   margin-top: 15px;
-  padding: 2px;
+  padding: 5px;
 }
 
 .nav-right {
   margin-top: 10px;
 }
 
+#property-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #property-search {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-@media screen and (min-width: 500px) {
+#min-price {
+  margin-top: 10px;
+}
+
+#max-price {
+  margin-top: 10px;
+}
+
+#bedrooms {
+  margin-top: 15px;
+}
+
+#bedrooms-group {
+  margin-top: 5px;
+}
+
+#advanced-search {
+  margin-top: 15px;
+}
+
+#advanced-search2 {
+  display: none;
+}
+
+@media screen and (min-width: 650px) {
   h1 {
     text-align: left;
   }
@@ -79,12 +120,35 @@ h1 {
     margin-left: 20px;
   }
 
+  #advanced-search {
+    align-self: flex-start;
+  }
+
   #property-search {
-    margin-top: 10px;
-    margin-right: 10%;
-    margin-left: 10%;
+    align-items: flex-start;
+  }
+
+  #property-input-group {
+    display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  #min-price {
+    margin-left: 10px;
+  }
+
+  #max-price {
+    margin-left: 10px;
+  }
+
+  #bedrooms-group {
+    display: flex;
+    align-items: baseline;
+  }
+
+  #prop-search-btn {
+    margin-top: 10px;
   }
 }
 
@@ -96,7 +160,7 @@ h1 {
   border: solid 1px black;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1000px) {
   #nav-logo {
     margin-left: 90px;
   }
@@ -106,8 +170,36 @@ h1 {
     margin-left: 90px;
   }
 
-  #property-search {
-    margin-right: 90px;
+  #property-section {
+    /* display: flex; */
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
     margin-left: 90px;
+  }
+
+  #property-search {
+    margin-top: 10px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+  }
+
+  #bedrooms {
+    align-self: flex-end;
+    margin-left: 30px;
+  }
+
+  #bedrooms-group {
+    display: flex;
+    align-items: baseline;
+  }
+
+  #prop-search-btn {
+    margin-left: 10px;
+  }
+
+  #advanced-search {
+    margin-left: 10px;
   }
 }
