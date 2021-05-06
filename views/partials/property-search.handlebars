@@ -1,9 +1,42 @@
-<section id="property-search">
-        {{!-- pull-down or something --}}
-        <span>Neightborhood</span>
-        <span>Min Price</span>
-        <span>Max Price</span>
-        <span>Bedrooms</span>
-        <button>Search</button>
-        <p>Advanced Search</p>
+
+<section id="property-section">
+    <form id="property-search">
+        <div id="property-input-group">
+            <div>
+                <input type="text" id="property-info" name="property-info" placeholder="Neighborhood, Address, Keyword"/>
+            </div>
+            <div>
+                <input type="text" id="min-price" name="min-price" placeholder="Minimum Price"/>
+            </div>
+            <div>
+                <input type="text" id="max-price" name="max-price" placeholder="Maximum Price"/>
+            </div>
+        </div>
+        <div id="bedrooms">
+            <p>Bedrooms</p>
+            <div id="bedrooms-group">
+                <div>
+                    <input type="checkbox" id="studio" name="studio">
+                    <label for="studio">Studio</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="br1" name="br1">
+                    <label for="br1">1</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="br2" name="br2">
+                    <label for="br2">2</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="br3" name="br3">
+                    <label for="br3">3</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="br4" name="br4">
+                    <label for="br4">4+</label>
+                </div>
+            </div>
+        </div>
+        <a href="" id="advanced-search">Advanced Search</a>
+    </form>
 </section>
