@@ -2,6 +2,7 @@
 const seedManagement = require('./managementSeeds');
 const seedBuilding = require('./buildingSeeds');
 const seedBuildingAmenities = require('./buildingAmenitiesSeeds');
+const seedUnit = require('./unitSeeds');
 
 const sequelize = require('../config/connection');
 
@@ -17,6 +18,9 @@ const seedAll = async () => {
 
   await seedBuildingAmenities();
   console.log('\n----- BUILDING AMENITIES SEEDED -----\n');
+
+  await seedUnit();
+  console.log('\n----- UNIT SEEDED -----\n');
 
   process.exit(0);
 };
