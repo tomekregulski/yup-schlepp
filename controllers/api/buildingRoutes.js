@@ -1,14 +1,24 @@
-const router = require('express').Router();
-const { Building, Management, Unit, BuildingAmenities, UnitAmenities } = require('../../models');
+const router = require("express").Router();
+const {
+  Building,
+  Management,
+  Unit,
+  BuildingAmenities,
+  UnitAmenities,
+} = require("../../models");
 
 // get all building
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const buildingData = await Building.findAll({
       include: [
-        { model: BuildingAmenities, as: 'building_amenities' },
-        { model: Management, as: 'management' },
-        { model: Unit, as: 'units', include: [{ model: UnitAmenities, as: 'unit_amenities' }] },
+        { model: BuildingAmenities, as: "building_amenities" },
+        { model: Management, as: "management" },
+        {
+          model: Unit,
+          as: "units",
+          include: [{ model: UnitAmenities, as: "unit_amenities" }],
+        },
       ],
     });
     res.status(200).json(buildingData);
@@ -19,18 +29,24 @@ router.get('/', async (req, res) => {
 });
 
 // get one building
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const buildingData = await Building.findByPk(req.params.id, {
       include: [
-        { model: BuildingAmenities, as: 'building_amenities' },
-        { model: Management, as: 'management' },
-        { model: Unit, as: 'units', include: [{ model: UnitAmenities, as: 'unit_amenities' }] },
+        { model: BuildingAmenities, as: "building_amenities" },
+        { model: Management, as: "management" },
+        {
+          model: Unit,
+          as: "units",
+          include: [{ model: UnitAmenities, as: "unit_amenities" }],
+        },
       ],
     });
 
     if (!buildingData) {
-      res.status(404).json({ message: `No building found with id: ${req.params.id}!` });
+      res
+        .status(404)
+        .json({ message: `No building found with id: ${req.params.id}!` });
       return;
     }
 
@@ -42,7 +58,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create a building
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const buildingData = await Building.create(req.body);
     res.status(200).json(buildingData);
@@ -53,7 +69,7 @@ router.post('/', async (req, res) => {
 });
 
 // update one building
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const buildingData = await Building.update(req.body, {
       where: {
@@ -62,7 +78,9 @@ router.put('/:id', async (req, res) => {
     });
 
     if (!buildingData) {
-      res.status(404).json({ message: `No building found with id: ${req.params.id}!` });
+      res
+        .status(404)
+        .json({ message: `No building found with id: ${req.params.id}!` });
       return;
     } else {
       res.json(buildingData);
@@ -73,7 +91,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // delete one building
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const buildingData = await Building.destroy({
       where: {
@@ -82,7 +100,9 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!buildingData) {
-      res.status(404).json({ message: `No building found with id: ${req.params.id}!` });
+      res
+        .status(404)
+        .json({ message: `No building found with id: ${req.params.id}!` });
       return;
     }
 
@@ -93,7 +113,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 // create building amenities
-router.post('/amenities', async (req, res) => {
+router.post("/amenities", async (req, res) => {
   try {
     const buildingAmenitiesData = await BuildingAmenities.create(req.body);
     res.status(200).json(buildingAmenitiesData);
@@ -104,7 +124,7 @@ router.post('/amenities', async (req, res) => {
 });
 
 // update one building amenities
-router.put('/amenities/:id', async (req, res) => {
+router.put("/amenities/:id", async (req, res) => {
   try {
     const buildingAmenitiesData = await BuildingAmenities.update(req.body, {
       where: {
@@ -113,7 +133,9 @@ router.put('/amenities/:id', async (req, res) => {
     });
 
     if (!buildingAmenitiesData) {
-      res.status(404).json({ message: `No building amenities with id: ${req.params.id}!` });
+      res
+        .status(404)
+        .json({ message: `No building amenities with id: ${req.params.id}!` });
       return;
     } else {
       res.json(buildingAmenitiesData);
@@ -124,7 +146,7 @@ router.put('/amenities/:id', async (req, res) => {
 });
 
 // delete building amenities by id
-router.delete('/amenities/:id', async (req, res) => {
+router.delete("/amenities/:id", async (req, res) => {
   try {
     const buildingAmenitiesData = await BuildingAmenities.destroy({
       where: {
@@ -133,7 +155,9 @@ router.delete('/amenities/:id', async (req, res) => {
     });
 
     if (!buildingAmenitiesData) {
-      res.status(404).json({ message: `No building amenities found with id: ${req.params.id}!` });
+      res.status(404).json({
+        message: `No building amenities found with id: ${req.params.id}!`,
+      });
       return;
     }
 
