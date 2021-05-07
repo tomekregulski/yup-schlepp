@@ -15,12 +15,6 @@ Management.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    contact: {
-      type: DataTypes.JSON,
-    },
-    address: {
-      type: DataTypes.JSON,
-    },
   },
   {
     sequelize,
