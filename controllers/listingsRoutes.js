@@ -1,8 +1,30 @@
 const router = require("express").Router();
+const {
+  Building,
+  Management,
+  Unit,
+  BuildingAmenities,
+  UnitAmenities,
+} = require("../models");
 
-router.get("/", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    res.render("sample-listing");
+    const buildingData = await Building.findByPk(req.params.id, {
+      include: [
+        { model: BuildingAmenities, as: "building_amenities" },
+        { model: Management, as: "management" },
+        {
+          model: Unit,
+          as: "units",
+          include: [{ model: UnitAmenities, as: "unit_amenities" }],
+        },
+      ],
+    });
+
+    const singleBuildingData = buildingData.get({ plain: true });
+    res.render("sample-listing", {
+      singleBuildingData,
+    });
   } catch (err) {
     res.status(500).json(err);
   }

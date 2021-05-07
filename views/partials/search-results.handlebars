@@ -1,5 +1,13 @@
 {{!-- {{#each searchResults as |result|}} --}}
-<section class="result-container">
+{{!-- <section class="result-container">
     <a href="/sample-listing">Sample Listing</a> 
-</section>
+</section> --}}
 {{!-- {{/each}} --}}
+{{#each buildings as |building| }}
+<div class="result-container">
+    <a href="/listings/{{building.id}}">{{building.street_address}}</a>
+    <p>{{building.city}}, {{building.state}}, {{building.zip_code}}</p>
+    <p>Neighborhood: {{building.neighbothood}}</p>
+    <p>Available Units: {{building.units.length}}</p>
+</div>
+{{/each}}
