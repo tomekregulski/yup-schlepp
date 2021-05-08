@@ -29,11 +29,8 @@ Unit.init(
       allowNull: false,
     },
     move_in: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
-      validate: {
-        isDate: true,
-      },
     },
     market_as: {
       type: DataTypes.STRING,
@@ -91,6 +88,9 @@ Unit.init(
     desc: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    image: {
+      type: DataTypes.STRING,
     },
     building_id: {
       type: DataTypes.INTEGER,

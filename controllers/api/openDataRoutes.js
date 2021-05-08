@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const useOpenData = require('../../services/google');
+const useOpenData = require('../../services/openData');
 
 router.all('*', async (req, res) => {
   const { body: data, method, path, query: params } = req;
@@ -11,7 +11,8 @@ router.all('*', async (req, res) => {
       path,
       params,
     });
-    res.json(response.data);
+
+    res.json(response);
   } catch (err) {
     res.status(500).json(err);
   }

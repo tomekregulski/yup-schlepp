@@ -41,7 +41,7 @@ User.init(
       allowNull: false,
     },
     headshot: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
     },
   },
   {
