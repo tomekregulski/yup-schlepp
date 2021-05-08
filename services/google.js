@@ -17,5 +17,3 @@ const useGoogleApi = async ({ path = '/', headers = {}, params = {}, method = 'G
 };
 
 module.exports = useGoogleApi;
-
-// `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.G_KEY}`

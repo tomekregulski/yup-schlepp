@@ -3,6 +3,7 @@ const Building = require('./Building');
 const BuildingAmenities = require('./BuildingAmenities');
 const Unit = require('./Unit');
 const UnitAmenities = require('./UnitAmenities');
+const User = require('./User');
 
 Unit.hasOne(UnitAmenities, {
   foreignKey: 'unit_id',
@@ -36,4 +37,4 @@ Building.belongsTo(Management, {
   foreignKey: 'management_id',
 });
 
-module.exports = { Management, Building, BuildingAmenities, Unit, UnitAmenities };
+module.exports = { Management, Building, BuildingAmenities, Unit, UnitAmenities, User };
