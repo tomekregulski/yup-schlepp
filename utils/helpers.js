@@ -7,4 +7,7 @@ module.exports = {
       date
     ).getDate()}/${new Date(date).getFullYear()}`;
   },
+  array_length: (array) => {
+    return array.length;
+  },
 };

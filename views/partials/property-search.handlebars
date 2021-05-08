@@ -1,7 +1,7 @@
 
 <section id="property-section">
     <form id="property-search">
-        <div id="property-input-group">
+        {{!-- <div id="property-input-group">
             <div>
                 <input type="text" id="property-info" class="input-field" name="property-info" placeholder="Neighborhood, Address, Keyword"/>
             </div>
@@ -11,8 +11,8 @@
             <div>
                 <input type="text" id="max-price"  class="input-field" name="max-price" placeholder="Maximum Price"/>
             </div>
-        </div>
-        <div id="bedrooms">
+        </div> --}}
+        {{!-- <div id="bedrooms">
             <p>Bedrooms</p>
             <div id="bedrooms-group">
                 <div>
@@ -36,12 +36,34 @@
                     <label for="br4">4+</label>
                 </div>
             </div>
-            
+        </div> --}}
+        <div id="search-by">
+            {{!-- <p>Search by:</p> --}}
+            <div id="search-group">
+                {{!-- <div>
+                    <input type="checkbox" id="management" name="management">
+                    <label for="management">Management</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="building" name="building">
+                    <label for="building">Building</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="unit" name="unit">
+                    <label for="unit">Unit</label>
+                </div> --}}
+                <select name="category" id="search-category">
+                    <option value="">--Please choose a category--</option>
+                    <option value="Management">Management</option>
+                    <option value="Building">Building</option>
+                    <option value="Unit">Unit</option>
+                </select>
+            </div>
         </div>
         <div>
-            <button type="submit" id="prop-search-btn" class="btn"><a href="/">Search</a></button>
+            <button type="submit" id="search-btn" class="btn"><a href="/">Search</a></button>
         </div>
-        <a href="" id="advanced-search">Advanced Search</a>
+        {{!-- <a href="" id="advanced-search">Advanced Search</a> --}}
     </form>
 </section>
 <script src="/js/property-search.js"></script>

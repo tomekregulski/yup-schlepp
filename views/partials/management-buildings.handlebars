@@ -1,0 +1,6 @@
+{{#each buildings as |building| }}
+<div class="result-container">
+    <a href="/buildings/{{building.id}}">{{building.street_address}}</a>
+    <p>Units Available: {{array_length building.units}}</p>
+</div>
+{{/each}}
