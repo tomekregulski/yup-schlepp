@@ -90,7 +90,7 @@ Unit.init(
       allowNull: true,
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
     },
     building_id: {
       type: DataTypes.INTEGER,

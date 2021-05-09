@@ -148,7 +148,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_SECRET,
 });
 
-router.patch('/:id/uploadImage', fileUpload.array('image', 20), async (req, res) => {
+router.patch('/:id/uploadImage', fileUpload.single('image'), async (req, res) => {
   try {
     const upload = (req) => {
       return new Promise((resolve, reject) => {
