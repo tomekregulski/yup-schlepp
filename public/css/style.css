@@ -1,3 +1,50 @@
+/******* 
+
+YONI ADDITIONS   
+
+*******/
+
+@import url('https://use.typekit.net/ihv0ezr.css');
+@import url('https://use.typekit.net/ihv0ezr.css');
+
+:root {
+  --yup-pink: #d07bb3;
+  --muli: muli, sans-serif;
+  --futura: futura-pt-condensed, sans-serif;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  margin-top: 0 !important;
+  background-color: var(--yup-pink);
+  box-shadow: rgba(51, 51, 51, 0.45) 0.95px 0.95px 7.6px;
+}
+
+nav img {
+  width: 5rem;
+}
+
+button:active,
+button:focus {
+  outline: none !important;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100vw;
+  margin: 0;
+  font-family: var(--muli) !important;
+  background-color: #faf9f9;
+}
+
+/*****************/
+
 a {
   color: black;
   text-decoration: none;
