@@ -20,7 +20,7 @@ UnitImages.init(
       },
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
       allowNull: false,
     },
   },
