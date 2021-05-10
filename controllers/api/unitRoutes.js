@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Unit, UnitAmenities, Building } = require('../../models');
+const { Unit, UnitAmenities, Building, UnitImages } = require('../../models');
 const multer = require('multer');
 const streamifier = require('streamifier');
 const cloudinary = require('cloudinary').v2;
@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
       include: [
         { model: Building, as: 'building' },
         { model: UnitAmenities, as: 'unit_amenities' },
+        { model: UnitImages, as: 'images' },
       ],
     });
     res.status(200).json(unitData);
@@ -28,6 +29,7 @@ router.get('/:id', async (req, res) => {
       include: [
         { model: Building, as: 'building' },
         { model: UnitAmenities, as: 'unit_amenities' },
+        { model: UnitImages },
       ],
     });
 
@@ -148,7 +150,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_SECRET,
 });
 
-router.patch('/:id/uploadImage', fileUpload.single('image'), async (req, res) => {
+router.post('/:id/uploadImage', fileUpload.single('image'), async (req, res) => {
   try {
     const upload = (req) => {
       return new Promise((resolve, reject) => {
@@ -164,8 +166,9 @@ router.patch('/:id/uploadImage', fileUpload.single('image'), async (req, res) =>
 
     let result = await upload(req);
 
-    const updatedUnit = await Unit.update(
+    const updatedUnit = await UnitImages.create(
       {
+        unit_id: req.params.id,
         image: result.secure_url,
       },
       {
