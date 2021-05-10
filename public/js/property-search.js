@@ -40,6 +40,7 @@ const searchPivot = (event) => {
 //     });
 // };
 
+// Retrieve Management Companies based on search query
 const fetchMgmt = async () => {
   let management = [];
 
