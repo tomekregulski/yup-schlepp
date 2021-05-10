@@ -1,69 +1,120 @@
-
-<section id="property-section">
-    <form id="property-search">
-        {{!-- <div id="property-input-group">
-            <div>
-                <input type="text" id="property-info" class="input-field" name="property-info" placeholder="Neighborhood, Address, Keyword"/>
-            </div>
-            <div>
-                <input type="text" id="min-price"  class="input-field" name="min-price" placeholder="Minimum Price"/>
-            </div>
-            <div>
-                <input type="text" id="max-price"  class="input-field" name="max-price" placeholder="Maximum Price"/>
-            </div>
-        </div> --}}
-        {{!-- <div id="bedrooms">
-            <p>Bedrooms</p>
-            <div id="bedrooms-group">
-                <div>
-                    <input type="checkbox" id="studio" name="studio">
-                    <label for="studio">Studio</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="br1" name="br1">
-                    <label for="br1">1</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="br2" name="br2">
-                    <label for="br2">2</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="br3" name="br3">
-                    <label for="br3">3</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="br4" name="br4">
-                    <label for="br4">4+</label>
-                </div>
-            </div>
-        </div> --}}
-        <div id="search-by">
-            {{!-- <p>Search by:</p> --}}
-            <div id="search-group">
-                {{!-- <div>
-                    <input type="checkbox" id="management" name="management">
-                    <label for="management">Management</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="building" name="building">
-                    <label for="building">Building</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="unit" name="unit">
-                    <label for="unit">Unit</label>
-                </div> --}}
-                <select name="category" id="search-category">
-                    <option value="">--Please choose a category--</option>
-                    <option value="Management">Management</option>
-                    <option value="Building">Building</option>
-                    <option value="Unit">Unit</option>
-                </select>
-            </div>
+<section class="container" id="property-section">
+  <form
+    class="d-flex flex-column justify-content-center align-items-center"
+    id="property-search"
+  >
+    <div class="form-group" id="search-category">
+      <label for="">Search Management, Buildings, or Units</label>
+      <select name="category" class="form-control" id="search-category">
+        <option value="">--Please choose a category--</option>
+        <option value="Management">Management</option>
+        <option value="Building">Building</option>
+        <option value="Unit">Unit</option>
+      </select>
+    </div>
+    <div
+      class="collapse d-flex flex-column justify-content-center align-items-center"
+      id="unit_rooms"
+    >
+      <label for="">Bedrooms</label>
+      <div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" value="1" id="BR1" />
+          <label class="form-check-label" for="BR1">1</label>
         </div>
-        <div>
-            <button type="submit" id="search-btn" class="btn"><a href="/">Search</a></button>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" value="2" id="BR2" />
+          <label class="form-check-label" for="BR2">2</label>
         </div>
-        {{!-- <a href="" id="advanced-search">Advanced Search</a> --}}
-    </form>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" value="3" id="BR3" />
+          <label class="form-check-label" for="BR3">3</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" value="4" id="BR4" />
+          <label class="form-check-label" for="BR4">4+</label>
+        </div>
+      </div>
+      <label for="">Other Rooms</label>
+      <div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="4"
+            id="full_bath"
+          />
+          <label class="form-check-label" for="full_bath">Full Bath</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="4"
+            id="half_bath"
+          />
+          <label class="form-check-label" for="half_bath">Half Bath</label>
+        </div>
+      </div>
+    </div>
+    <div class="collapse">
+      <div id="building_options">
+        <label for="">Neighborhood</label>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="Bushwick"
+            id="bushwick"
+          />
+          <label class="form-check-label" for="bushwick">Bushwick</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="Ocean Hill"
+            id="ocean_hill"
+          />
+          <label class="form-check-label" for="ocean_hill">Ocean Hill</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="Bedstuy"
+            id="bedstuy"
+          />
+          <label class="form-check-label" for="bedstuy">Bedstuy</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="Ridgewood"
+            id="ridgewood"
+          />
+          <label class="form-check-label" for="ridgewood">Ridgewood</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="Prospect Heights"
+            id="prospect_heights"
+          />
+          <label class="form-check-label" for="prospect_heights">Prospect
+            Heights</label>
+        </div>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="btn btn-primary"
+      id="search-btn"
+    >Search</button>
+    {{! <button type="submit" id="show_units" class="btn"><a href="/">Show</a></button> }}
+    {{! <a href="" id="advanced-search">Advanced Search</a> }}
+  </form>
 </section>
 <script src="/js/property-search.js"></script>

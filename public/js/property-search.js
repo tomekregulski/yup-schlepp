@@ -1,26 +1,27 @@
-console.log('hello properties');
+console.log("hello properties");
 
 const searchPivot = (event) => {
   event.preventDefault();
-  console.log('hello');
-  let target = document.getElementById('render-test');
-  while (target.firstChild) {
-    target.removeChild(target.firstChild);
-  }
-  const category = document.getElementById('search-category').value;
+  console.log("hello");
+  // let target = document.getElementById("render-test");
+  // while (target.firstChild) {
+  //   target.removeChild(target.firstChild);
+  // }
+  const category = document.getElementById("search-category").value;
   console.log(category);
   switch (category) {
-    case 'Management':
-      console.log('mgmt');
+    case "Management":
+      console.log("mgmt");
       fetchMgmt();
       break;
-    case 'Building':
-      console.log('Building');
+    case "Building":
+      console.log("Building");
       fetchBuildings();
       break;
-    case 'Unit':
-      console.log('Unit');
+    case "Unit":
+      console.log("Unit");
       fetchUnits();
+      // showUnits();
       break;
   }
 };
@@ -44,7 +45,7 @@ const searchPivot = (event) => {
 const fetchMgmt = async () => {
   let management = [];
 
-  let url = 'http://127.0.0.1:8080/api/managements/?id=1';
+  let url = "http://127.0.0.1:8080/api/managements/?id=1";
 
   let response = await fetch(url);
 
@@ -77,7 +78,7 @@ const fetchMgmt = async () => {
 
 const fetchBuildings = async () => {
   let buildings = [];
-  let url = 'http://127.0.0.1:8080/api/buildings/?id=1';
+  let url = "http://127.0.0.1:8080/api/buildings/?id=1";
 
   let response = await fetch(url);
 
@@ -111,7 +112,8 @@ const fetchBuildings = async () => {
 const fetchUnits = async () => {
   let units = [];
 
-  let url = 'http://127.0.0.1:8080/api/units/?legal_beds=4&status=active&full_bath=2';
+  let url =
+    "http://127.0.0.1:8080/api/units/?legal_beds=4&status=active&full_bath=2";
 
   let response = await fetch(url);
 
@@ -127,16 +129,16 @@ const fetchUnits = async () => {
 };
 
 const renderMgmtResults = (management) => {
-  console.log('rendering management...');
+  console.log("rendering management...");
   console.log(management);
-  let target = document.getElementById('render-test');
+  let target = document.getElementById("render-test");
   for (var i = 0; i < management.length; i++) {
-    container = document.createElement('div');
-    container.setAttribute('class', 'result-container');
-    mgmtName = document.createElement('a');
-    mgmtName.setAttribute('href', `/managements/${management[i].id}`);
+    container = document.createElement("div");
+    container.setAttribute("class", "result-container");
+    mgmtName = document.createElement("a");
+    mgmtName.setAttribute("href", `/managements/${management[i].id}`);
     mgmtName.textContent = management[i].management_name;
-    mgmtBuildings = document.createElement('p');
+    mgmtBuildings = document.createElement("p");
     mgmtBuildings.textContent = `Buildings: ${management[i].buildings.length}`;
     container.appendChild(mgmtName);
     container.appendChild(mgmtBuildings);
@@ -145,18 +147,18 @@ const renderMgmtResults = (management) => {
 };
 
 const renderBuildingResults = (buildings) => {
-  console.log('rendering buildings...');
+  console.log("rendering buildings...");
   console.log(buildings);
-  let target = document.getElementById('render-test');
+  let target = document.getElementById("render-test");
   for (var i = 0; i < buildings.length; i++) {
-    container = document.createElement('div');
-    container.setAttribute('class', 'result-container');
-    address = document.createElement('a');
-    address.setAttribute('href', `/buildings/${buildings[i].id}`);
+    container = document.createElement("div");
+    container.setAttribute("class", "result-container");
+    address = document.createElement("a");
+    address.setAttribute("href", `/buildings/${buildings[i].id}`);
     address.textContent = buildings[i].street_address;
-    city = document.createElement('p');
+    city = document.createElement("p");
     city.textContent = `${buildings[i].city}, NY - ${buildings[i].neighborhood}`;
-    units = document.createElement('p');
+    units = document.createElement("p");
     units.textContent = `Available Units: ${buildings[i].units.length}`;
     container.appendChild(address);
     container.appendChild(city);
@@ -167,16 +169,16 @@ const renderBuildingResults = (buildings) => {
 
 const renderUnitResults = (units) => {
   console.log(units);
-  let target = document.getElementById('render-test');
+  let target = document.getElementById("render-test");
   for (var i = 0; i < units.length; i++) {
-    container = document.createElement('div');
-    container.setAttribute('class', 'result-container');
-    address = document.createElement('a');
-    address.setAttribute('href', `/units/${units[i].id}`);
+    container = document.createElement("div");
+    container.setAttribute("class", "result-container");
+    address = document.createElement("a");
+    address.setAttribute("href", `/units/${units[i].id}`);
     address.textContent = `#${units[i].unit_num} - ${units[i].building.street_address}`;
-    city = document.createElement('p');
+    city = document.createElement("p");
     city.textContent = `${units[i].building.city}, NY - ${units[i].building.neighborhood}`;
-    bed = document.createElement('p');
+    bed = document.createElement("p");
     bed.textContent = `BR: ${units[i].legal_beds}`;
     container.appendChild(address);
     container.appendChild(city);
@@ -185,4 +187,17 @@ const renderUnitResults = (units) => {
   }
 };
 
-document.getElementById('search-btn').addEventListener('click', searchPivot);
+const showUnit = (event) => {
+  event.preventDefault();
+  console.log("unit info");
+  let rooms = document.getElementById("unit_rooms");
+  // rooms.setAttribute("display", "block");
+  if (rooms.style.display === "none") {
+    rooms.style.display = "block";
+  } else {
+    rooms.style.display = "none";
+  }
+};
+
+document.getElementById("search-btn").addEventListener("click", searchPivot);
+// document.getElementById("search-btn").addEventListener("click", showUnit);
