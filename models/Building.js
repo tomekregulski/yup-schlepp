@@ -31,9 +31,9 @@ Building.init(
       },
     },
     // going to rely on third party apis for trains, perhaps we need a separate model for this
-    trains: {
-      type: DataTypes.JSON,
-    },
+    // trains: {
+    //   type: DataTypes.JSON,
+    // },
     management_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
