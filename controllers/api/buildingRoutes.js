@@ -9,6 +9,8 @@ const {
 
 // get all building
 router.get("/", async (req, res) => {
+  let query = req.query;
+
   try {
     const buildingData = await Building.findAll({
       include: [
@@ -20,6 +22,7 @@ router.get("/", async (req, res) => {
           include: [{ model: UnitAmenities, as: "unit_amenities" }],
         },
       ],
+      where: query,
     });
     res.status(200).json(buildingData);
   } catch (err) {

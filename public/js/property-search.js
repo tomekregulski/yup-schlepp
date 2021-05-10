@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 console.log('hello properties');
 let buildings = [];
 let management = [];
@@ -7,6 +8,18 @@ const searchPivot = (event) => {
   event.preventDefault();
   console.log('hello');
   const category = document.getElementById('search-category').value;
+=======
+console.log("hello properties");
+
+const searchPivot = (event) => {
+  event.preventDefault();
+  console.log("hello");
+  let target = document.getElementById("render-test");
+  while (target.firstChild) {
+    target.removeChild(target.firstChild);
+  }
+  const category = document.getElementById("search-category").value;
+>>>>>>> 645ea164ae6d9a794bec38d05ce4376c65ae8ef4
   console.log(category);
   switch (category) {
     case 'Management':
@@ -24,7 +37,24 @@ const searchPivot = (event) => {
   }
 };
 
+// const fetchMgmt = async () => {
+//   const url = "http://127.0.0.1:8080/api/managements";
+
+//   fetch(url)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       for (var i = 0; i < data.length; i++) {
+//         management.push(data[i]);
+//       }
+//       renderMgmtResults();
+//     });
+// };
+
+// Retrieve Management Companies based on search query
 const fetchMgmt = async () => {
+<<<<<<< HEAD
   const url = 'http://127.0.0.1:8080/api/managements';
 
   fetch(url)
@@ -37,9 +67,43 @@ const fetchMgmt = async () => {
       }
       renderMgmtResults();
     });
+=======
+  let management = [];
+
+  let url = "http://127.0.0.1:8080/api/managements/?id=1";
+
+  let response = await fetch(url);
+
+  if (response.ok) {
+    let json = await response.json();
+    for (var i = 0; i < json.length; i++) {
+      management.push(json[i]);
+    }
+    renderMgmtResults(management);
+  } else {
+    alert(response.statusText);
+  }
+>>>>>>> 645ea164ae6d9a794bec38d05ce4376c65ae8ef4
 };
 
+// const fetchBuildings = async () => {
+//   const url = "http://127.0.0.1:8080/api/buildings/";
+
+//   fetch(url)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       for (var i = 0; i < data.length; i++) {
+//         buildings.push(data[i]);
+//       }
+//       renderBuildingResults();
+//     });
+// };
+
 const fetchBuildings = async () => {
+<<<<<<< HEAD
   const url = 'http://127.0.0.1:8080/api/buildings/';
 
   fetch(url)
@@ -53,9 +117,42 @@ const fetchBuildings = async () => {
       }
       renderBuildingResults();
     });
+=======
+  let buildings = [];
+  let url = "http://127.0.0.1:8080/api/buildings/?id=1";
+
+  let response = await fetch(url);
+
+  if (response.ok) {
+    let json = await response.json();
+    for (var i = 0; i < json.length; i++) {
+      buildings.push(json[i]);
+    }
+    renderBuildingResults(buildings);
+  } else {
+    alert(response.statusText);
+  }
+>>>>>>> 645ea164ae6d9a794bec38d05ce4376c65ae8ef4
 };
 
+// const fetchUnits = async () => {
+//   const url =
+//     "http://127.0.0.1:8080/api/units/?legal_beds=4&status=active&full_bath=2";
+
+//   fetch(url)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       for (var i = 0; i < data.length; i++) {
+//         units.push(data[i]);
+//       }
+//       renderUnitResults();
+//     });
+// };
+
 const fetchUnits = async () => {
+<<<<<<< HEAD
   const url = 'http://127.0.0.1:8080/api/units';
 
   fetch(url)
@@ -74,6 +171,30 @@ const renderMgmtResults = () => {
   console.log('rendering management...');
   console.log(management);
   target = document.getElementById('render-test');
+=======
+  let units = [];
+
+  let url =
+    "http://127.0.0.1:8080/api/units/?legal_beds=4&status=active&full_bath=2";
+
+  let response = await fetch(url);
+
+  if (response.ok) {
+    let json = await response.json();
+    for (var i = 0; i < json.length; i++) {
+      units.push(json[i]);
+    }
+    renderUnitResults(units);
+  } else {
+    alert(response.statusText);
+  }
+};
+
+const renderMgmtResults = (management) => {
+  console.log("rendering management...");
+  console.log(management);
+  let target = document.getElementById("render-test");
+>>>>>>> 645ea164ae6d9a794bec38d05ce4376c65ae8ef4
   for (var i = 0; i < management.length; i++) {
     container = document.createElement('div');
     container.setAttribute('class', 'result-container');
@@ -88,10 +209,17 @@ const renderMgmtResults = () => {
   }
 };
 
+<<<<<<< HEAD
 const renderBuildingResults = () => {
   console.log('rendering buildings...');
   console.log(buildings);
   target = document.getElementById('render-test');
+=======
+const renderBuildingResults = (buildings) => {
+  console.log("rendering buildings...");
+  console.log(buildings);
+  let target = document.getElementById("render-test");
+>>>>>>> 645ea164ae6d9a794bec38d05ce4376c65ae8ef4
   for (var i = 0; i < buildings.length; i++) {
     container = document.createElement('div');
     container.setAttribute('class', 'result-container');
@@ -109,9 +237,13 @@ const renderBuildingResults = () => {
   }
 };
 
-const renderUnitResults = () => {
+const renderUnitResults = (units) => {
   console.log(units);
+<<<<<<< HEAD
   target = document.getElementById('render-test');
+=======
+  let target = document.getElementById("render-test");
+>>>>>>> 645ea164ae6d9a794bec38d05ce4376c65ae8ef4
   for (var i = 0; i < units.length; i++) {
     container = document.createElement('div');
     container.setAttribute('class', 'result-container');
