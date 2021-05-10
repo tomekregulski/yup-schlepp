@@ -1,7 +1,7 @@
 const axios = require('axios');
-const googleApi = axios.create({ baseUrl: 'https://maps.googleapis.com' });
+const googleApi = axios.create({ baseURL: 'https://maps.googleapis.com' });
 
-googleApi.defaults.params.key = process.env.GKEY;
+googleApi.defaults.params = { key: process.env.GKEY };
 googleApi.defaults.headers['Content-Type'] = 'application/json';
 
 const useGoogleApi = async ({ path = '/', headers = {}, params = {}, method = 'GET', data = {} }) => {
