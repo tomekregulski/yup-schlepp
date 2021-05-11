@@ -1,8 +1,8 @@
-const router = require("express").Router();
-const { Management, Building, Unit } = require("../../models");
+const router = require('express').Router();
+const { Management, Building, Unit } = require('../../models');
 
 // get all management companies
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   let query = req.query;
 
   try {
@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
       include: [
         {
           model: Building,
-          as: "buildings",
-          include: [{ model: Unit, as: "units" }],
+          as: 'buildings',
+          include: [{ model: Unit, as: 'units' }],
         },
       ],
       where: query,
@@ -24,10 +24,10 @@ router.get("/", async (req, res) => {
 });
 
 // get one management company
-router.get("/:id", async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const managementData = await Management.findByPk(req.params.id, {
-      include: [{ model: Building, as: "buildings" }],
+      include: [{ model: Building, as: 'buildings' }],
     });
 
     if (!managementData) {
@@ -45,7 +45,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // create a management company
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const managementData = await Management.create(req.body);
     res.status(200).json(managementData);
@@ -56,7 +56,7 @@ router.post("/", async (req, res) => {
 });
 
 // update one management company
-router.put("/:id", async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const managementData = await Management.update(req.body, {
       where: {
@@ -78,7 +78,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // delete one category
-router.delete("/:id", async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const managementData = await Management.destroy({
       where: {

@@ -112,10 +112,26 @@ router.get('/units/:id', async (req, res) => {
   }
 });
 
-router.get('/new-listing', async (req, res) => {
+router.get('/new-listing/management', async (req, res) => {
   try {
-    res.render('new-listing');
+    const mgmtCompanies = await Management.findAll({ order: [['management_name', 'ASC']] });
+    const mgmt = mgmtCompanies.map((m) => m.get({ plain: true }));
+    res.render('new-listing', { mgmt });
   } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// get management by user inputted management company name for building list
+router.get('/new-listing/management/buildings/:name', async (req, res) => {
+  try {
+    const mgmtData = await Management.findAll({ where: { management_name: req.params.name } });
+    const mgmt = mgmtData.map((m) => m.get({ plain: true }));
+    console.log(mgmtData);
+    res.render('new-listing-new-mgmt-building', { mgmt });
+  } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
