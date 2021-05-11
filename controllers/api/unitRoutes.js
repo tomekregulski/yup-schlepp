@@ -21,10 +21,13 @@ router.get("/", async (req, res) => {
   try {
     const unitData = await Unit.findAll({
       include: [
-        { model: Building, as: "building" },
-        { model: BuildingAmenities, as: "building_amenities" },
+        {
+          model: Building,
+          as: "building",
+          include: { model: BuildingAmenities, as: "building_amenities" },
+        },
         { model: UnitAmenities, as: "unit_amenities" },
-        // { model: UnitImages, as: "images" },
+        // { model: UnitImages },
       ],
     });
     res.status(200).json(unitData);
@@ -66,7 +69,11 @@ router.get("/:id", async (req, res) => {
   try {
     const unitData = await Unit.findByPk(req.params.id, {
       include: [
-        { model: Building, as: "building" },
+        {
+          model: Building,
+          as: "building",
+          include: { model: BuildingAmenities, as: "building_amenities" },
+        },
         { model: UnitAmenities, as: "unit_amenities" },
         // { model: UnitImages },
       ],
@@ -78,7 +85,6 @@ router.get("/:id", async (req, res) => {
         .json({ message: `No unit found with id: ${req.params.id}!` });
       return;
     }
-
     res.status(200).json(unitData);
   } catch (err) {
     res.status(500).json(err);
