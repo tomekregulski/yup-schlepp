@@ -1,5 +1,5 @@
 const axios = require('axios');
-const googleApi = axios.create({ baseURL: 'https://maps.googleapis.com' });
+const googleApi = axios.create({ baseURL: 'https://maps.googleapis.com/maps/api/geocode' });
 
 googleApi.defaults.params = { key: process.env.GKEY };
 googleApi.defaults.headers['Content-Type'] = 'application/json';

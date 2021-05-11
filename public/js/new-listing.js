@@ -41,11 +41,13 @@ const mgmtFormHandler = () => {
           body: JSON.stringify({ management_name: mgmtVal }),
           headers: { 'Content-Type': 'application/json' },
         });
-        createMgmt.ok ? document.location.replace(`/new-listing/management/buildings/${mgmtVal}`) : alert('No good');
+        createMgmt.ok
+          ? document.location.replace(`/new-listing/management/buildings/${drop.length}`)
+          : alert('No good');
       }
     } else {
       const mgmtID = await drop.value;
-      // document.location.replace(`/new-listing/management/buildings/${mgmtID}`);
+      document.location.replace(`/new-listing/management/buildings/${mgmtID}`);
     }
   });
 };
@@ -63,17 +65,66 @@ const buildingFormHandler = () => {
         alert('Please enter valid address before submitting');
       } else {
         confirm(`Select OK to confirm address: ${buildingVal}`);
-        const data = await fetch(`/api/googleApi/api/google/?address=${buildingVal}`);
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/geocode/json?address=${buildingVal}&key=${gKey}`
+        );
+        const data = await response.json();
+        console.log(data);
+
         const { lat, lng: lon } = data.results[0].geometry.location;
         const [
           { long_name: streetName },
           { long_name: buildingNum },
           { long_name: neighborhood },
           { long_name: city },
+          { long_name: county },
+          { long_name: state },
+          { long_name: country },
           { long_name: zip_code },
         ] = data.results[0].address_components;
         const street_address = `${streetName} ${buildingNum}`;
-        console.log(street_address);
+
+        const trainResponse = await fetch(`/api/opendata/resource/kk4q-3rt2.json`);
+        const trainData = await trainResponse.json();
+
+        const trains = await trainData
+          .map(({ name: name, line, the_geom }) => {
+            const stationLat = the_geom.coordinates[1];
+            const stationLon = the_geom.coordinates[0];
+
+            let radlat1 = (Math.PI * lat) / 180;
+            let radlat2 = (Math.PI * stationLat) / 180;
+            let theta = lon - stationLon;
+            let radtheta = (Math.PI * theta) / 180;
+
+            let distance =
+              Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+            distance = Math.acos(distance);
+            distance = (distance * 180) / Math.PI;
+            distance = distance * 60 * 1.1515;
+            distance = distance * 1.609344 * 0.62137;
+
+            return {
+              name,
+              station_lines: line.split('-'),
+              distance,
+            };
+          })
+          .sort((a, b) => (a.distance > b.distance ? 1 : -1))
+          .slice(0, 5);
+
+        const createBuilding = await fetch('/api/buildings', {
+          method: 'POST',
+          body: JSON.stringify({
+            street_address,
+            neighborhood,
+            city,
+            zip_code,
+            trains,
+            management_id: mgmtID.value.trim(),
+          }),
+          headers: { 'Content-Type': 'application/json' },
+        });
       }
     }
   });
