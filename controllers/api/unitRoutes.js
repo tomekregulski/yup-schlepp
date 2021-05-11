@@ -1,5 +1,11 @@
 const router = require("express").Router();
-const { Unit, UnitAmenities, Building, UnitImages } = require("../../models");
+const {
+  Unit,
+  UnitAmenities,
+  Building,
+  UnitImages,
+  BuildingAmenities,
+} = require("../../models");
 const multer = require("multer");
 const streamifier = require("streamifier");
 const cloudinary = require("cloudinary").v2;
@@ -9,17 +15,17 @@ const { query } = require("express");
 
 // get all units
 router.get("/", async (req, res) => {
-  let query = req.query;
+  // let query = req.query;
   console.log(query);
 
   try {
     const unitData = await Unit.findAll({
       include: [
         { model: Building, as: "building" },
+        { model: BuildingAmenities, as: "building_amenities" },
         { model: UnitAmenities, as: "unit_amenities" },
         // { model: UnitImages, as: "images" },
       ],
-      where: query,
     });
     res.status(200).json(unitData);
   } catch (err) {

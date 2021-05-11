@@ -72,6 +72,10 @@ h1 {
   background-color: rgb(207, 123, 179);
 }
 
+.amenity-icon {
+  height: 20px;
+}
+
 #nav-logo {
   height: 90px;
 }
