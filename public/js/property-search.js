@@ -1,12 +1,10 @@
-console.log("hello properties");
-
 const searchPivot = (event) => {
   event.preventDefault();
   console.log("hello");
-  // let target = document.getElementById("render-test");
-  // while (target.firstChild) {
-  //   target.removeChild(target.firstChild);
-  // }
+  let target = document.getElementById("render-test");
+  while (target.firstChild) {
+    target.removeChild(target.firstChild);
+  }
   const category = document.getElementById("search-category").value;
   console.log(category);
   switch (category) {
@@ -21,7 +19,7 @@ const searchPivot = (event) => {
     case "Unit":
       console.log("Unit");
       // fetchUnits();
-      showUnits();
+      toggleUnits();
       break;
   }
 };
@@ -184,11 +182,15 @@ const renderUnitResults = (units) => {
     container.appendChild(bed);
     target.appendChild(container);
   }
+  toggleUnits();
 };
 
-const showUnits = () => {
+const toggleUnits = () => {
   // event.preventDefault();
   console.log("unit info");
+
+  toggleCatBtn();
+
   let rooms = document.getElementById("unit_hide");
   // rooms.setAttribute("display", "block");
   if (rooms.style.display === "none") {
@@ -224,6 +226,15 @@ const unitQuery = () => {
   }
   console.log(url);
   fetchUnits(url);
+};
+
+const toggleCatBtn = () => {
+  const categoryBtn = document.getElementById("category-btn");
+  if (categoryBtn.style.display === "none") {
+    categoryBtn.style.display = "block";
+  } else {
+    categoryBtn.style.display = "none";
+  }
 };
 
 document.getElementById("category-btn").addEventListener("click", searchPivot);
