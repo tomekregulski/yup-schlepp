@@ -1,5 +1,11 @@
 const router = require("express").Router();
-const { Unit, UnitAmenities, Building, UnitImages } = require("../../models");
+const {
+  Unit,
+  UnitAmenities,
+  Building,
+  UnitImages,
+  BuildingAmenities,
+} = require("../../models");
 const multer = require("multer");
 const streamifier = require("streamifier");
 const cloudinary = require("cloudinary").v2;
@@ -9,17 +15,20 @@ const { query } = require("express");
 
 // get all units
 router.get("/", async (req, res) => {
-  let query = req.query;
+  // let query = req.query;
   console.log(query);
 
   try {
     const unitData = await Unit.findAll({
       include: [
-        { model: Building, as: "building" },
+        {
+          model: Building,
+          as: "building",
+          include: { model: BuildingAmenities, as: "building_amenities" },
+        },
         { model: UnitAmenities, as: "unit_amenities" },
-        // { model: UnitImages, as: "images" },
+        // { model: UnitImages },
       ],
-      where: query,
     });
     res.status(200).json(unitData);
   } catch (err) {
@@ -60,7 +69,11 @@ router.get("/:id", async (req, res) => {
   try {
     const unitData = await Unit.findByPk(req.params.id, {
       include: [
-        { model: Building, as: "building" },
+        {
+          model: Building,
+          as: "building",
+          include: { model: BuildingAmenities, as: "building_amenities" },
+        },
         { model: UnitAmenities, as: "unit_amenities" },
         // { model: UnitImages },
       ],
@@ -72,7 +85,6 @@ router.get("/:id", async (req, res) => {
         .json({ message: `No unit found with id: ${req.params.id}!` });
       return;
     }
-
     res.status(200).json(unitData);
   } catch (err) {
     res.status(500).json(err);
