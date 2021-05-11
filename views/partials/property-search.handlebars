@@ -28,7 +28,7 @@
             <input
               class="form-check-input"
               type="checkbox"
-              value="1"
+              value="legal_beds=1"
               id="BR1"
             />
             <label class="form-check-label" for="BR1">1</label>
@@ -37,7 +37,7 @@
             <input
               class="form-check-input"
               type="checkbox"
-              value="2"
+              value="legal_beds=2"
               id="BR2"
             />
             <label class="form-check-label" for="BR2">2</label>
@@ -82,8 +82,12 @@
             <label class="form-check-label" for="half_bath">Half Bath</label>
           </div>
         </div>
-        <button type="button" class="btn btn-primary" id="search-units">Search
-          Units</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          onClick="buildQuery('Unit')"
+          id="search-units"
+        >Search Units</button>
       </div>
     </div>
     <div class="collapse" id="building_hide">
@@ -142,4 +146,5 @@
     {{! <a href="" id="advanced-search">Advanced Search</a> }}
   </form>
 </section>
+<script src="/js/searchFormArrays.js"></script>
 <script src="/js/property-search.js"></script>
