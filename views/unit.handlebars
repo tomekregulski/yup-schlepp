@@ -17,6 +17,7 @@
 </section>
 
 <section id="primary-info">
+    <p>General Info</p>
     <p>Status: {{unit.status}}</p>
     <p>{{unit.building.street_address}}, Unit {{unit.unit_num}}</p>
     <p>Gross Rent: {{unit.gross_rent}}</p>
@@ -30,6 +31,7 @@
 </section>
 
 <section id="unit-info">
+    <p>Unit Info</p>
     <p>Size: {{unit.size}} sq ft</p>
     <p>Bedrooms: {{unit.legal_beds}}</p>
     <p>Total Rooms: {{unit.total_rooms}}</p>
@@ -38,6 +40,7 @@
     <p>Half: {{unit.half_bath}}</p>
 </section>
 <section id="unit-amenities">
+    <p>Unit Amenities</p>
     {{#if unit.unit_amenities.balcony}}
         <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Balcony</p>
     {{/if}}
@@ -85,8 +88,68 @@
     {{/if}}
 </section>
 <section id='building-amenities'>
-    <p>{{unit.building.building_amenities.gym}}</p>
+    <p>Building Amenities</p>
+    {{#if unit.building.building_amenities.pets_allowed}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Pets Allowed</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.roof}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Roof</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.courtyard}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Courtyard</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.concierge}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Concierge</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.doorman}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Doorman</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.elevator}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Elevator</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.laundry}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Laundry</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.children_playroom}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Children's Playroom</p>
+    {{/if}}
     {{#if unit.building.building_amenities.gym}}
         <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Gym</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.media_room}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Media Room</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.recreation_room}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Recreation Room</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.swimming_pool}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Swimming Pool</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.live_in_super}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Live-in Super</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.smoke_free}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Smoke-free</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.wheelchair_access}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Wheelchair Access</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.garage_parking}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Garage Parking</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.valet_parking}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Valet Parking</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.bike_room}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Bike Room</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.cold_storage}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Cold Storage</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.locker_cage}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Locker Cage</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.package_room}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Package Room</p>
     {{/if}}
 </section>
