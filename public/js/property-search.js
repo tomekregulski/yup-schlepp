@@ -1,5 +1,3 @@
-console.log("hello properties");
-
 const searchPivot = (event) => {
   event.preventDefault();
   console.log("hello");
@@ -12,7 +10,7 @@ const searchPivot = (event) => {
   switch (category) {
     case "Management":
       console.log("mgmt");
-      fetchMgmt();
+      buildQuery(category);
       break;
     case "Building":
       console.log("Building");
@@ -21,7 +19,7 @@ const searchPivot = (event) => {
     case "Unit":
       console.log("Unit");
       // fetchUnits();
-      showUnits();
+      toggleUnits();
       break;
   }
 };
@@ -42,10 +40,10 @@ const searchPivot = (event) => {
 // };
 
 // Retrieve Management Companies based on search query
-const fetchMgmt = async () => {
+const fetchMgmt = async (url) => {
   let management = [];
 
-  let url = "http://127.0.0.1:8080/api/managements/?id=1";
+  // let url = "http://127.0.0.1:8080/api/managements/?id=1";
 
   let response = await fetch(url);
 
@@ -112,8 +110,6 @@ const fetchBuildings = async () => {
 const fetchUnits = async (url) => {
   let units = [];
 
-  // let url = "/api/units/?legal_beds=4&status=active&full_bath=2";
-
   let response = await fetch(url);
 
   if (response.ok) {
@@ -130,6 +126,7 @@ const fetchUnits = async (url) => {
 const renderMgmtResults = (management) => {
   console.log("rendering management...");
   console.log(management);
+  clearSearchResults();
   let target = document.getElementById("render-test");
   for (var i = 0; i < management.length; i++) {
     container = document.createElement("div");
@@ -148,6 +145,7 @@ const renderMgmtResults = (management) => {
 const renderBuildingResults = (buildings) => {
   console.log("rendering buildings...");
   console.log(buildings);
+  clearSearchResults();
   let target = document.getElementById("render-test");
   for (var i = 0; i < buildings.length; i++) {
     container = document.createElement("div");
@@ -168,6 +166,7 @@ const renderBuildingResults = (buildings) => {
 
 const renderUnitResults = (units) => {
   console.log(units);
+  clearSearchResults();
   let target = document.getElementById("render-test");
   for (var i = 0; i < units.length; i++) {
     container = document.createElement("div");
@@ -184,11 +183,15 @@ const renderUnitResults = (units) => {
     container.appendChild(bed);
     target.appendChild(container);
   }
+  toggleUnits();
 };
 
-const showUnits = () => {
+const toggleUnits = () => {
   // event.preventDefault();
   console.log("unit info");
+
+  toggleCatBtn();
+
   let rooms = document.getElementById("unit_hide");
   // rooms.setAttribute("display", "block");
   if (rooms.style.display === "none") {
@@ -198,33 +201,79 @@ const showUnits = () => {
   }
 };
 
-const unitQuery = () => {
+const buildQuery = (category) => {
+  console.log(category);
   let query = [];
-  let url = "/api/units/?";
-  let br1 = document.getElementById("BR1");
-  console.log(br1.checked);
-  let br2 = document.getElementById("BR2");
-  console.log(br2.checked);
-  let br3 = document.getElementById("BR3");
-  console.log(br3.checked);
-  let br4 = document.getElementById("BR4");
-  console.log(br4.checked);
-  if (br1.checked) {
-    query.push("legal_beds=1");
+  let url = "";
+  let formArray = "";
+  switch (category) {
+    case "Management":
+      console.log("mgmt");
+      url = "api/managements";
+      break;
+    case "Building":
+      console.log("Building");
+
+      break;
+    case "Unit":
+      console.log("Unit");
+      url = "/api/units";
+      formArray = unitFormArray;
+      break;
   }
-  if (br2.checked) {
-    query.push("legal_beds=2");
-  }
-  console.log(query);
-  for (var i = 0; i < query.length; i++) {
-    if (i > 0) {
-      url = url + "&";
+  if (category !== "Management") {
+    for (var i = 0; i < formArray.length; i++) {
+      if (formArray[i].checked) {
+        query.push(formArray[i].value);
+      }
     }
-    url = url + query[i];
+  }
+
+  console.log(query);
+  if (query.length > 0) {
+    for (var i = 0; i < query.length; i++) {
+      if (i === 0) {
+        url = url + "/?";
+      }
+      if (i > 0) {
+        url = url + "&";
+      }
+      url = url + query[i];
+    }
   }
   console.log(url);
-  fetchUnits(url);
+  switch (category) {
+    case "Management":
+      console.log("mgmt");
+      fetchMgmt(url);
+      break;
+    case "Building":
+      console.log("Building");
+      break;
+    case "Unit":
+      console.log("Unit");
+      fetchUnits(url);
+      break;
+  }
+};
+
+const toggleCatBtn = () => {
+  const categoryBtn = document.getElementById("category-btn");
+  if (categoryBtn.style.display === "none") {
+    categoryBtn.style.display = "block";
+  } else {
+    categoryBtn.style.display = "none";
+  }
+};
+
+const clearSearchResults = () => {
+  let target = document.getElementById("render-test");
+  while (target.firstChild) {
+    target.removeChild(target.firstChild);
+  }
 };
 
 document.getElementById("category-btn").addEventListener("click", searchPivot);
-document.getElementById("search-units").addEventListener("click", unitQuery);
+// document
+//   .getElementById("search-units")
+//   .addEventListener("click", buildQuery(this.value));

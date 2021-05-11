@@ -1,11 +1,11 @@
-<section class="container" id="property-section">
+<section class="container mt-5" id="property-section">
   <form
     class="d-flex flex-column justify-content-center align-items-center"
     id="property-search"
   >
     <div class="form-group" id="categories">
       <label for="">Search Management, Buildings, or Units</label>
-      <select name="category" class="form-control" id="search-category">
+      <select name="category" class="form-control mt-2" id="search-category">
         <option value="">--Please choose a category--</option>
         <option value="Management">Management</option>
         <option value="Building">Building</option>
@@ -28,7 +28,7 @@
             <input
               class="form-check-input"
               type="checkbox"
-              value="1"
+              value="legal_beds=1"
               id="BR1"
             />
             <label class="form-check-label" for="BR1">1</label>
@@ -37,7 +37,7 @@
             <input
               class="form-check-input"
               type="checkbox"
-              value="2"
+              value="legal_beds=2"
               id="BR2"
             />
             <label class="form-check-label" for="BR2">2</label>
@@ -46,7 +46,7 @@
             <input
               class="form-check-input"
               type="checkbox"
-              value="3"
+              value="legal_beds=3"
               id="BR3"
             />
             <label class="form-check-label" for="BR3">3</label>
@@ -55,19 +55,19 @@
             <input
               class="form-check-input"
               type="checkbox"
-              value="4"
+              value="legal_beds=4"
               id="BR4"
             />
             <label class="form-check-label" for="BR4">4+</label>
           </div>
         </div>
-        <label for="">Other Rooms</label>
+        <label class="mt-3" for="">Other Rooms</label>
         <div>
           <div class="form-check form-check-inline">
             <input
               class="form-check-input"
               type="checkbox"
-              value="4"
+              value="full_bath=1"
               id="full_bath"
             />
             <label class="form-check-label" for="full_bath">Full Bath</label>
@@ -76,14 +76,18 @@
             <input
               class="form-check-input"
               type="checkbox"
-              value="4"
+              value="half_bath=1"
               id="half_bath"
             />
             <label class="form-check-label" for="half_bath">Half Bath</label>
           </div>
         </div>
-        <button type="button" class="btn btn-primary" id="search-units">Search
-          Units</button>
+        <button
+          type="button"
+          class="btn btn-primary mt-3"
+          onClick="buildQuery('Unit')"
+          id="search-units"
+        >Search Units</button>
       </div>
     </div>
     <div class="collapse" id="building_hide">
@@ -142,4 +146,5 @@
     {{! <a href="" id="advanced-search">Advanced Search</a> }}
   </form>
 </section>
+<script src="/js/searchFormArrays.js"></script>
 <script src="/js/property-search.js"></script>
