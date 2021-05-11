@@ -20,8 +20,8 @@ const searchPivot = (event) => {
       break;
     case "Unit":
       console.log("Unit");
-      fetchUnits();
-      // showUnits();
+      // fetchUnits();
+      showUnits();
       break;
   }
 };
@@ -109,11 +109,10 @@ const fetchBuildings = async () => {
 //     });
 // };
 
-const fetchUnits = async () => {
+const fetchUnits = async (url) => {
   let units = [];
 
-  let url =
-    "http://127.0.0.1:8080/api/units/?legal_beds=4&status=active&full_bath=2";
+  // let url = "/api/units/?legal_beds=4&status=active&full_bath=2";
 
   let response = await fetch(url);
 
@@ -187,10 +186,10 @@ const renderUnitResults = (units) => {
   }
 };
 
-const showUnit = (event) => {
-  event.preventDefault();
+const showUnits = () => {
+  // event.preventDefault();
   console.log("unit info");
-  let rooms = document.getElementById("unit_rooms");
+  let rooms = document.getElementById("unit_hide");
   // rooms.setAttribute("display", "block");
   if (rooms.style.display === "none") {
     rooms.style.display = "block";
@@ -199,5 +198,33 @@ const showUnit = (event) => {
   }
 };
 
-document.getElementById("search-btn").addEventListener("click", searchPivot);
-// document.getElementById("search-btn").addEventListener("click", showUnit);
+const unitQuery = () => {
+  let query = [];
+  let url = "/api/units/?";
+  let br1 = document.getElementById("BR1");
+  console.log(br1.checked);
+  let br2 = document.getElementById("BR2");
+  console.log(br2.checked);
+  let br3 = document.getElementById("BR3");
+  console.log(br3.checked);
+  let br4 = document.getElementById("BR4");
+  console.log(br4.checked);
+  if (br1.checked) {
+    query.push("legal_beds=1");
+  }
+  if (br2.checked) {
+    query.push("legal_beds=2");
+  }
+  console.log(query);
+  for (var i = 0; i < query.length; i++) {
+    if (i > 0) {
+      url = url + "&";
+    }
+    url = url + query[i];
+  }
+  console.log(url);
+  fetchUnits(url);
+};
+
+document.getElementById("category-btn").addEventListener("click", searchPivot);
+document.getElementById("search-units").addEventListener("click", unitQuery);

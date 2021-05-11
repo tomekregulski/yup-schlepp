@@ -3,7 +3,7 @@
     class="d-flex flex-column justify-content-center align-items-center"
     id="property-search"
   >
-    <div class="form-group" id="search-category">
+    <div class="form-group" id="categories">
       <label for="">Search Management, Buildings, or Units</label>
       <select name="category" class="form-control" id="search-category">
         <option value="">--Please choose a category--</option>
@@ -12,52 +12,81 @@
         <option value="Unit">Unit</option>
       </select>
     </div>
-    <div
-      class="collapse d-flex flex-column justify-content-center align-items-center"
-      id="unit_rooms"
-    >
-      <label for="">Bedrooms</label>
-      <div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" value="1" id="BR1" />
-          <label class="form-check-label" for="BR1">1</label>
+    <button
+      type="button"
+      class="btn btn-primary"
+      id="category-btn"
+    >Choose</button>
+    <div style="display: none" id="unit_hide">
+      <div
+        class="d-flex flex-column justify-content-center align-items-center"
+        id="unit_rooms"
+      >
+        <label for="">Bedrooms</label>
+        <div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="1"
+              id="BR1"
+            />
+            <label class="form-check-label" for="BR1">1</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="2"
+              id="BR2"
+            />
+            <label class="form-check-label" for="BR2">2</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="3"
+              id="BR3"
+            />
+            <label class="form-check-label" for="BR3">3</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="4"
+              id="BR4"
+            />
+            <label class="form-check-label" for="BR4">4+</label>
+          </div>
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" value="2" id="BR2" />
-          <label class="form-check-label" for="BR2">2</label>
+        <label for="">Other Rooms</label>
+        <div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="4"
+              id="full_bath"
+            />
+            <label class="form-check-label" for="full_bath">Full Bath</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="4"
+              id="half_bath"
+            />
+            <label class="form-check-label" for="half_bath">Half Bath</label>
+          </div>
         </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" value="3" id="BR3" />
-          <label class="form-check-label" for="BR3">3</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" value="4" id="BR4" />
-          <label class="form-check-label" for="BR4">4+</label>
-        </div>
-      </div>
-      <label for="">Other Rooms</label>
-      <div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value="4"
-            id="full_bath"
-          />
-          <label class="form-check-label" for="full_bath">Full Bath</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value="4"
-            id="half_bath"
-          />
-          <label class="form-check-label" for="half_bath">Half Bath</label>
-        </div>
+        <button type="button" class="btn btn-primary" id="search-units">Search
+          Units</button>
       </div>
     </div>
-    <div class="collapse">
+    <div class="collapse" id="building_hide">
       <div id="building_options">
         <label for="">Neighborhood</label>
         <div class="form-check form-check-inline">
@@ -108,11 +137,7 @@
         </div>
       </div>
     </div>
-    <button
-      type="button"
-      class="btn btn-primary"
-      id="search-btn"
-    >Search</button>
+
     {{! <button type="submit" id="show_units" class="btn"><a href="/">Show</a></button> }}
     {{! <a href="" id="advanced-search">Advanced Search</a> }}
   </form>
