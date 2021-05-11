@@ -14,36 +14,19 @@ const searchPivot = (event) => {
       break;
     case "Building":
       console.log("Building");
-      fetchBuildings();
+      // fetchBuildings();
+      toggleBuildings();
       break;
     case "Unit":
       console.log("Unit");
-      // fetchUnits();
       toggleUnits();
       break;
   }
 };
 
-// const fetchMgmt = async () => {
-//   const url = "http://127.0.0.1:8080/api/managements";
-
-//   fetch(url)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       for (var i = 0; i < data.length; i++) {
-//         management.push(data[i]);
-//       }
-//       renderMgmtResults();
-//     });
-// };
-
 // Retrieve Management Companies based on search query
 const fetchMgmt = async (url) => {
   let management = [];
-
-  // let url = "http://127.0.0.1:8080/api/managements/?id=1";
 
   let response = await fetch(url);
 
@@ -58,25 +41,8 @@ const fetchMgmt = async (url) => {
   }
 };
 
-// const fetchBuildings = async () => {
-//   const url = "http://127.0.0.1:8080/api/buildings/";
-
-//   fetch(url)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       console.log(data);
-//       for (var i = 0; i < data.length; i++) {
-//         buildings.push(data[i]);
-//       }
-//       renderBuildingResults();
-//     });
-// };
-
-const fetchBuildings = async () => {
+const fetchBuildings = async (url) => {
   let buildings = [];
-  let url = "http://127.0.0.1:8080/api/buildings/?id=1";
 
   let response = await fetch(url);
 
@@ -90,22 +56,6 @@ const fetchBuildings = async () => {
     alert(response.statusText);
   }
 };
-
-// const fetchUnits = async () => {
-//   const url =
-//     "http://127.0.0.1:8080/api/units/?legal_beds=4&status=active&full_bath=2";
-
-//   fetch(url)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       for (var i = 0; i < data.length; i++) {
-//         units.push(data[i]);
-//       }
-//       renderUnitResults();
-//     });
-// };
 
 const fetchUnits = async (url) => {
   let units = [];
@@ -187,17 +137,27 @@ const renderUnitResults = (units) => {
 };
 
 const toggleUnits = () => {
-  // event.preventDefault();
   console.log("unit info");
 
   toggleCatBtn();
 
-  let rooms = document.getElementById("unit_hide");
-  // rooms.setAttribute("display", "block");
-  if (rooms.style.display === "none") {
-    rooms.style.display = "block";
+  let units = document.getElementById("unit_hide");
+  if (units.style.display === "none") {
+    units.style.display = "block";
   } else {
-    rooms.style.display = "none";
+    units.style.display = "none";
+  }
+};
+
+const toggleBuildings = () => {
+  console.log("building info");
+  toggleCatBtn();
+
+  let buildings = document.getElementById("building_hide");
+  if (buildings.style.display === "none") {
+    buildings.style.display = "block";
+  } else {
+    buildings.style.display = "none";
   }
 };
 
@@ -213,7 +173,8 @@ const buildQuery = (category) => {
       break;
     case "Building":
       console.log("Building");
-
+      url = "/api/buildings";
+      formArray = buildingFormArray;
       break;
     case "Unit":
       console.log("Unit");
@@ -249,6 +210,7 @@ const buildQuery = (category) => {
       break;
     case "Building":
       console.log("Building");
+      fetchBuildings(url);
       break;
     case "Unit":
       console.log("Unit");
@@ -274,6 +236,3 @@ const clearSearchResults = () => {
 };
 
 document.getElementById("category-btn").addEventListener("click", searchPivot);
-// document
-//   .getElementById("search-units")
-//   .addEventListener("click", buildQuery(this.value));
