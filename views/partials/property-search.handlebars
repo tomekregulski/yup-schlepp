@@ -90,14 +90,14 @@
         >Search Units</button>
       </div>
     </div>
-    <div class="collapse" id="building_hide">
-      <div id="building_options">
+    <div style="display: none" id="building_hide">
+      <div class="d-flex flex-column justify-content-center align-items-flex-start" id="building_options">
         <label for="">Neighborhood</label>
         <div class="form-check form-check-inline">
           <input
             class="form-check-input"
             type="checkbox"
-            value="Bushwick"
+            value="neighborhood=Bushwick"
             id="bushwick"
           />
           <label class="form-check-label" for="bushwick">Bushwick</label>
@@ -106,7 +106,7 @@
           <input
             class="form-check-input"
             type="checkbox"
-            value="Ocean Hill"
+            value="neighborhood=Ocean Hill"
             id="ocean_hill"
           />
           <label class="form-check-label" for="ocean_hill">Ocean Hill</label>
@@ -115,7 +115,7 @@
           <input
             class="form-check-input"
             type="checkbox"
-            value="Bedstuy"
+            value="neighborhood=Bedstuy"
             id="bedstuy"
           />
           <label class="form-check-label" for="bedstuy">Bedstuy</label>
@@ -124,7 +124,7 @@
           <input
             class="form-check-input"
             type="checkbox"
-            value="Ridgewood"
+            value="neighborhood=Ridgewood"
             id="ridgewood"
           />
           <label class="form-check-label" for="ridgewood">Ridgewood</label>
@@ -133,12 +133,19 @@
           <input
             class="form-check-input"
             type="checkbox"
-            value="Prospect Heights"
+            value="neighborhood=Prospect Heights"
             id="prospect_heights"
           />
           <label class="form-check-label" for="prospect_heights">Prospect
             Heights</label>
         </div>
+      </div>
+      <button
+          type="button"
+          class="btn btn-primary mt-3"
+          onClick="buildQuery('Building')"
+          id="search-buildings"
+        >Search Buildings</button>
       </div>
     </div>
   </form>
