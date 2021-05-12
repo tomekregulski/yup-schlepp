@@ -1,25 +1,24 @@
 const searchPivot = (event) => {
   event.preventDefault();
   console.log("hello");
-  // let target = document.getElementById("render-test");
-  // while (target.firstChild) {
-  //   target.removeChild(target.firstChild);
-  // }
   const category = document.getElementById("search-category").value;
   console.log(category);
   switch (category) {
     case "Management":
       console.log("mgmt");
+      hideUnitForm();
+      hideBuildingForm();
       buildQuery(category);
       break;
     case "Building":
       console.log("Building");
-      // fetchBuildings();
-      toggleBuildings();
+      hideUnitForm();
+      showBuildingForm();
       break;
     case "Unit":
       console.log("Unit");
-      toggleUnits();
+      showUnitForm();
+      showBuildingForm();
       break;
   }
 };
@@ -139,7 +138,7 @@ const renderUnitResults = (units) => {
 const toggleUnits = () => {
   console.log("unit info");
 
-  toggleCatBtn();
+  toggleBuildings();
 
   let units = document.getElementById("unit_hide");
   if (units.style.display === "none") {
@@ -151,7 +150,6 @@ const toggleUnits = () => {
 
 const toggleBuildings = () => {
   console.log("building info");
-  toggleCatBtn();
 
   let buildings = document.getElementById("building_hide");
   if (buildings.style.display === "none") {
@@ -161,11 +159,49 @@ const toggleBuildings = () => {
   }
 };
 
-const buildQuery = (category) => {
-  console.log(category);
-  let query = [];
+const showBuildingForm = () => {
+  let buildings = document.getElementById("building_hide");
+
+  if (buildings.style.display === "none") {
+    buildings.style.display = "block";
+  }
+};
+
+const showUnitForm = () => {
+  let units = document.getElementById("unit_hide");
+
+  if (units.style.display === "none") {
+    units.style.display = "block";
+  }
+};
+
+const hideBuildingForm = () => {
+  let buildings = document.getElementById("building_hide");
+
+  if (buildings.style.display === "block") {
+    buildings.style.display = "none";
+  }
+};
+
+const hideUnitForm = () => {
+  let units = document.getElementById("unit_hide");
+
+  if (units.style.display === "block") {
+    units.style.display = "none";
+  }
+};
+
+const buildQuery = () => {
+  let category = document.getElementById("search-category").value;
+  let queryArray = [];
   let url = "";
-  let formArray = "";
+  var checkboxes = document.getElementsByName("seachElement");
+  for (var checkbox of checkboxes) {
+    if (checkbox.checked) {
+      queryArray.push(checkbox.value);
+    }
+  }
+  console.log(queryArray);
   switch (category) {
     case "Management":
       console.log("mgmt");
@@ -174,34 +210,25 @@ const buildQuery = (category) => {
     case "Building":
       console.log("Building");
       url = "/api/buildings";
-      formArray = buildingFormArray;
       break;
     case "Unit":
       console.log("Unit");
       url = "/api/units";
-      formArray = unitFormArray;
       break;
   }
-  if (category !== "Management") {
-    for (var i = 0; i < formArray.length; i++) {
-      if (formArray[i].checked) {
-        query.push(formArray[i].value);
-      }
-    }
-  }
 
-  console.log(query);
-  if (query.length > 0) {
-    for (var i = 0; i < query.length; i++) {
+  if (queryArray.length > 0) {
+    for (var i = 0; i < queryArray.length; i++) {
       if (i === 0) {
         url = url + "/?";
       }
       if (i > 0) {
         url = url + "&";
       }
-      url = url + query[i];
+      url = url + queryArray[i];
     }
   }
+
   console.log(url);
   switch (category) {
     case "Management":
@@ -219,7 +246,7 @@ const buildQuery = (category) => {
   }
 };
 
-const toggleCatBtn = () => {
+const toggleSearchBtn = () => {
   const categoryBtn = document.getElementById("category-btn");
   if (categoryBtn.style.display === "none") {
     categoryBtn.style.display = "block";

@@ -19,13 +19,14 @@
     >Choose</button>
     <div style="display: none" id="unit_hide">
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        class="d-flex flex-column justify-content-center align-items-center mt-4"
         id="unit_rooms"
       >
         <p>Bedrooms</p>
         <div>
           <div class="form-check form-check-inline">
             <input
+              name='seachElement'
               class="form-check-input"
               type="checkbox"
               value="legal_beds=1"
@@ -35,6 +36,7 @@
           </div>
           <div class="form-check form-check-inline">
             <input
+              name='seachElement'
               class="form-check-input"
               type="checkbox"
               value="legal_beds=2"
@@ -44,6 +46,7 @@
           </div>
           <div class="form-check form-check-inline">
             <input
+              name='seachElement'
               class="form-check-input"
               type="checkbox"
               value="legal_beds=3"
@@ -53,18 +56,20 @@
           </div>
           <div class="form-check form-check-inline">
             <input
+              name='seachElement'
               class="form-check-input"
               type="checkbox"
               value="legal_beds=4"
               id="BR4"
             />
-            <label class="form-check-label" for="BR4">4+</label>
+            <label class="form-check-label" for="BR4">4</label>
           </div>
         </div>
         <p class="my-3" for="">Other Rooms</p>
         <div>
           <div class="form-check form-check-inline">
             <input
+              name='seachElement'
               class="form-check-input"
               type="checkbox"
               value="full_bath=1"
@@ -74,6 +79,7 @@
           </div>
           <div class="form-check form-check-inline">
             <input
+              name='seachElement'
               class="form-check-input"
               type="checkbox"
               value="half_bath=1"
@@ -81,74 +87,68 @@
             />
             <label class="form-check-label" for="half_bath">Half Bath</label>
           </div>
-          <p class="mt-4">Amenities</p>
+          <p class="mt-4">Unit Amenities</p>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="balcony" id="balcony" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[balcony]=true" id="balcony">
             <label class="form-check-label" for="balcony">Balcony</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="garden" id="garden" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[garden]=true" id="garden">
             <label class="form-check-label" for="garden">Garden</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="private_roof" id="private_roof" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[private_roof]=true" id="private_roof">
             <label class="form-check-label" for="private_roof">Private Roof</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="roof_rights" id="roof_rights" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[roof_rights]=true" id="roof_rights">
             <label class="form-check-label" for="roof_rights">Roof Rights</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="terrace" id="terrace" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[terrace]=true" id="terrace">
             <label class="form-check-label" for="terrace">Terrace</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="central_air" id="central_air" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[central_air]=true" id="central_air">
             <label class="form-check-label" for="central_air">Central Air</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="dishwasher" id="dishwasher" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[dishwasher]=true" id="dishwasher">
             <label class="form-check-label" for="dishwasher">Dishwasher</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="fireplace" id="fireplace" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[fireplace]=true" id="fireplace">
             <label class="form-check-label" for="fireplace">Fireplace</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="hardwood_floor" id="hardwood_floor" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[hardwood_floor]=true" id="hardwood_floor">
             <label class="form-check-label" for="hardwood_floor">Hardwood Floor</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="washer_dryer" id="washer_dryer" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[washer_dryer]=true" id="washer_dryer">
             <label class="form-check-label" for="washer_dryer">Washer/Dryer</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="city_view" id="city_view" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[city_view]=true" id="city_view">
             <label class="form-check-label" for="city_view">City View</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="garden_view" id="garden_view" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[garden_view]=true" id="garden_view">
             <label class="form-check-label" for="garden_view">Garden View</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="park_view" id="park_view" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[park_view]=true" id="park_view">
             <label class="form-check-label" for="park_view">Park View</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="skyline_view" id="skyline_view" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[skyline_view]=true" id="skyline_view">
             <label class="form-check-label" for="skyline_view">Skyline View</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="water_view" id="water_view" disabled>
+            <input class="form-check-input" type="checkbox" name='seachElement' value="unitAmenities[water_view]=true" id="water_view">
             <label class="form-check-label" for="water_view">Water View</label>
           </div>
         </div>
-        <button
-          type="button"
-          class="btn btn-primary mt-3"
-          onClick="buildQuery('Unit')"
-          id="search-units"
-        >Search Units</button>
       </div>
     </div>
     <div style="display: none" id="building_hide">
@@ -156,146 +156,151 @@
         <p class="mt-3">Neighborhood</p>
         <div class="form-check form-check-inline">
           <input
+            name='seachElement'
             class="form-check-input"
             type="checkbox"
-            value="neighborhood=Bushwick"
+            value="building[neighborhood]=Bushwick"
             id="bushwick"
           />
           <label class="form-check-label" for="bushwick">Bushwick</label>
         </div>
         <div class="form-check form-check-inline">
           <input
+            name='seachElement'
             class="form-check-input"
             type="checkbox"
-            value="neighborhood=Ocean Hill"
+            value="building[neighborhood]=Ocean Hill"
             id="ocean_hill"
           />
           <label class="form-check-label" for="ocean_hill">Ocean Hill</label>
         </div>
         <div class="form-check form-check-inline">
           <input
+            name='seachElement'
             class="form-check-input"
             type="checkbox"
-            value="neighborhood=Bedstuy"
+            value="building[neighborhood]=Bedstuy"
             id="bedstuy"
           />
           <label class="form-check-label" for="bedstuy">Bedstuy</label>
         </div>
         <div class="form-check form-check-inline">
           <input
+            name='seachElement'
             class="form-check-input"
             type="checkbox"
-            value="neighborhood=Ridgewood"
+            value="building[neighborhood]=Ridgewood"
             id="ridgewood"
           />
           <label class="form-check-label" for="ridgewood">Ridgewood</label>
         </div>
         <div class="form-check form-check-inline">
           <input
+            name='seachElement'
             class="form-check-input"
             type="checkbox"
-            value="neighborhood=Prospect Heights"
+            value="building[neighborhood]=Prospect Heights"
             id="prospect_heights"
           />
           <label class="form-check-label" for="prospect_heights">Prospect
             Heights</label>
         </div>
-        <p class="mt-4">Amenities</p>
+        <p class="mt-4">Building Amenities</p>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="pets_allowed" id="pets_allowed" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[pets_allowed]=true" id="pets_allowed">
           <label class="form-check-label" for="pets_allowed">Pets Allowed</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="roof" id="roof" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[roof]=true" id="roof">
           <label class="form-check-label" for="roof">Roof</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="courtyard" id="courtyard" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[courtyard]=true" id="courtyard">
           <label class="form-check-label" for="courtyard">Courtyard</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="concierge" id="concierge" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[concierge]=true" id="concierge">
           <label class="form-check-label" for="concierge">Concierge</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="doorman" id="doorman" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[doorman]=true" id="doorman">
           <label class="form-check-label" for="doorman">Doorman</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="elevator" id="elevator" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[elevator]=true" id="elevator">
           <label class="form-check-label" for="elevator">Elevator</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="laundry" id="laundry" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[laundry]=true" id="laundry">
           <label class="form-check-label" for="laundry">Laundry</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="children_playroom" id="children_playroom" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[children_playroom]=true" id="children_playroom">
           <label class="form-check-label" for="children_playroom">Children's Playroom</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="gym" id="gym" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[gym]=true" id="gym">
           <label class="form-check-label" for="gym">Gym</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="media_room" id="media_room" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[media_room]=true" id="media_room">
           <label class="form-check-label" for="media_room">Media Room</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="recreation_room" id="recreation_roo" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[recreation_room]=true" id="recreation_roo">
           <label class="form-check-label" for="recreation_room">Media Room</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="recreation_room" id="recreation_room" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[recreation_room]=true" id="recreation_room">
           <label class="form-check-label" for="recreation_room">Recreation Room</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="swimming_pool" id="swimming_pool" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[swimming_pool=true" id="swimming_pool">
           <label class="form-check-label" for="swimming_pool">Swimming Pool</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="live_in_super" id="live_in_super" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[live_in_super]=true" id="live_in_super">
           <label class="form-check-label" for="live_in_super">Live-in Super</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="smoke-free" id="smoke-free" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[smoke-free]=true" id="smoke-free">
           <label class="form-check-label" for="smoke-free">Smoke-free</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="wheelchair_access" id="wheelchair_access" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[wheelchair_access]=true" id="wheelchair_access">
           <label class="form-check-label" for="wheelchair_access">Wheelchair Access</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="garage_parking" id="garage_parking" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[garage_parking]=true" id="garage_parking">
           <label class="form-check-label" for="garage_parking">Garage Parking</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="valet_parking" id="valet_parking" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[valet_parking]=true" id="valet_parking">
           <label class="form-check-label" for="valet_parking">Valet Parking</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="bike_room" id="bike_roo" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[bike_room]=true" id="bike_roo">
           <label class="form-check-label" for="bike_room">Bike Room</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="cold_storage" id="cold_storage" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[cold_storage]=true" id="cold_storage">
           <label class="form-check-label" for="cold_storage">Cold Storage</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="locker_cage" id="locker_cage" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[locker_cage]=true" id="locker_cage">
           <label class="form-check-label" for="locker_cage">Locker Cage</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="package_room" id="package_room" disabled>
+          <input class="form-check-input" type="checkbox" name='seachElement' value="buildingAmenities[package_room]=true" id="package_room">
           <label class="form-check-label" for="package_room">Package Room</label>
         </div>
       </div>
       <button
-          type="button"
-          class="btn btn-primary mt-5"
-          onClick="buildQuery('Building')"
-          id="search-buildings"
-        >Search Buildings</button>
+        type="button"
+        class="btn btn-primary mt-4"
+        onClick="buildQuery()"
+        id="search-main"
+      >Search</button>
       </div>
     </div>
   </form>
