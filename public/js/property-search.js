@@ -1,6 +1,8 @@
 const searchPivot = (event) => {
-  event.preventDefault();
+  // event.preventDefault();
   console.log("hello");
+  clearSearchResults();
+  uncheckAll();
   const category = document.getElementById("search-category").value;
   console.log(category);
   switch (category) {
@@ -96,6 +98,17 @@ const renderBuildingResults = (buildings) => {
   console.log(buildings);
   clearSearchResults();
   let target = document.getElementById("render-test");
+  if (buildings.length == 0) {
+    console.log("no match");
+    container = document.createElement("div");
+    container.setAttribute("class", "result-container");
+    noResults = document.createElement("p");
+    noResults.setAttribute("class", "text-center");
+    noResults.textContent =
+      "Sorry! There are currently no entries in the database that match all of those parameters - please try something else";
+    container.appendChild(noResults);
+    target.appendChild(container);
+  }
   for (var i = 0; i < buildings.length; i++) {
     container = document.createElement("div");
     container.setAttribute("class", "result-container");
@@ -111,12 +124,24 @@ const renderBuildingResults = (buildings) => {
     container.appendChild(units);
     target.appendChild(container);
   }
+  toggleBuildings();
 };
 
 const renderUnitResults = (units) => {
-  console.log(units);
+  console.log(units, "units");
   clearSearchResults();
   let target = document.getElementById("render-test");
+  if (units.length == 0) {
+    console.log("no match");
+    container = document.createElement("div");
+    container.setAttribute("class", "result-container");
+    noResults = document.createElement("p");
+    noResults.setAttribute("class", "text-center");
+    noResults.textContent =
+      "Sorry! There are currently no entries in the database that match all of those parameters - please try something else";
+    container.appendChild(noResults);
+    target.appendChild(container);
+  }
   for (var i = 0; i < units.length; i++) {
     container = document.createElement("div");
     container.setAttribute("class", "result-container");
@@ -195,7 +220,7 @@ const buildQuery = () => {
   let category = document.getElementById("search-category").value;
   let queryArray = [];
   let url = "";
-  var checkboxes = document.getElementsByName("seachElement");
+  var checkboxes = document.getElementsByName("searchElement");
   for (var checkbox of checkboxes) {
     if (checkbox.checked) {
       queryArray.push(checkbox.value);
@@ -262,4 +287,11 @@ const clearSearchResults = () => {
   }
 };
 
+const uncheckAll = () => {
+  document
+    .getElementsByName("searchElement")
+    .forEach((el) => (el.checked = false));
+};
+
 document.getElementById("category-btn").addEventListener("click", searchPivot);
+document.getElementById("search-main").addEventListener("click", buildQuery);
