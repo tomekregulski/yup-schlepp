@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/management/:id', async (req, res) => {
+router.get('/managements/:id', async (req, res) => {
   try {
     const managementData = await Management.findByPk(req.params.id, {
       include: [{ model: Building, as: 'buildings' }],
@@ -98,7 +98,11 @@ router.get('/units/:id', async (req, res) => {
   try {
     const unitData = await Unit.findByPk(req.params.id, {
       include: [
-        { model: Building, as: 'building' },
+        {
+          model: Building,
+          as: 'building',
+          include: { model: BuildingAmenities, as: 'building_amenities' },
+        },
         { model: UnitAmenities, as: 'unit_amenities' },
       ],
     });

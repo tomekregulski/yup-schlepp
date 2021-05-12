@@ -4,19 +4,39 @@ const multer = require('multer');
 const streamifier = require('streamifier');
 const cloudinary = require('cloudinary').v2;
 const fileUpload = multer();
+const unitSorter = require('../../utils/unitSorter');
 
 // get all units
-router.get('/', async (req, res) => {
-  let query = req.query;
+router.get('/', unitSorter, async (req, res) => {
+  // ("api/units/?unit[__gte_legal_beds]=2&building[neighborhoods]=Bushwick&building[neighborhoods]=Bed%20Stuy");
+  const { sortedQueries } = req;
 
   try {
     const unitData = await Unit.findAll({
       include: [
-        { model: Building, as: 'building' },
-        { model: UnitAmenities, as: 'unit_amenities' },
-        // { model: UnitImages, as: 'images' },
+        {
+          model: Building,
+          as: 'building',
+          where: sortedQueries.building,
+          include: {
+            model: BuildingAmenities,
+            as: 'building_amenities',
+            where: sortedQueries.buildingAmenities,
+          },
+        },
+        {
+          model: UnitAmenities,
+          as: 'unit_amenities',
+          where: sortedQueries.unitAmenities,
+        },
+        // { model: UnitImages },
       ],
-      where: query,
+      where: sortedQueries.unit,
+      // where: {
+      //   legal_beds: {
+      //     [Op.gte]: 2,
+      //   },
+      // },
     });
     res.status(200).json(unitData);
   } catch (err) {
@@ -30,7 +50,11 @@ router.get('/:id', async (req, res) => {
   try {
     const unitData = await Unit.findByPk(req.params.id, {
       include: [
-        { model: Building, as: 'building', include: { model: BuildingAmenities, as: 'building_amenities' } },
+        {
+          model: Building,
+          as: 'building',
+          include: { model: BuildingAmenities, as: 'building_amenities' },
+        },
         { model: UnitAmenities, as: 'unit_amenities' },
         // { model: UnitImages },
       ],
@@ -40,7 +64,6 @@ router.get('/:id', async (req, res) => {
       res.status(404).json({ message: `No unit found with id: ${req.params.id}!` });
       return;
     }
-
     res.status(200).json(unitData);
   } catch (err) {
     res.status(500).json(err);

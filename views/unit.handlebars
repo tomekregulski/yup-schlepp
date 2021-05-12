@@ -1,7 +1,10 @@
 {{> nav}}
-<h2 style="text-align: center">{{unit.building.street_address}}, Unit {{unit.unit_num}}</h2>
+<h2 class="mt-4" style="text-align: center">{{unit.building.street_address}}, Unit {{unit.unit_num}}</h2>
 <div id="edit-link">
-    <a href="/edit-listing">Edit This Listing</a>
+    <button
+      type="button"
+      class="btn btn-primary"
+      id="edit-listing"><a href="/edit-listing">Edit This Listing</a></button>
 </div>
 
 <section id="listing-images">
@@ -14,25 +17,139 @@
 </section>
 
 <section id="primary-info">
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quisquam reiciendis quia repellendus non repudiandae iste. Repudiandae optio nam aperiam doloribus, aliquam consequuntur sit deleniti vitae quasi nesciunt soluta quibusdam!
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quisquam reiciendis quia repellendus non repudiandae iste. Repudiandae optio nam aperiam doloribus, aliquam consequuntur sit deleniti vitae quasi nesciunt soluta quibusdam!
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quisquam reiciendis quia repellendus non repudiandae iste. Repudiandae optio nam aperiam doloribus, aliquam consequuntur sit deleniti vitae quasi nesciunt soluta quibusdam!
-    </p>
+    <p>General Info</p>
+    <p>Status: {{unit.status}}</p>
+    <p>{{unit.building.street_address}}, Unit {{unit.unit_num}}</p>
+    <p>Gross Rent: {{unit.gross_rent}}</p>
+    <p>Months Free: {{unit.months_free}}</p>
+    <p>Net Rent: {{unit.net_rent}}</p>
+    <p>Lease Term: {{unit.lease_term}}</p>
+    <p>OP: {{unit.op}}</p>
+    <p>Market As: {{unit.market_as}}</p>
+    <p>Move-in: {{format_date unit.move_in}}</p>
+    <p>Access: {{unit.access}}</p>
 </section>
 
-<section id="more-info">
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quisquam reiciendis quia repellendus non repudiandae iste. Repudiandae optio nam aperiam doloribus, aliquam consequuntur sit deleniti vitae quasi nesciunt soluta quibusdam!
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quisquam reiciendis quia repellendus non repudiandae iste. Repudiandae optio nam aperiam doloribus, aliquam consequuntur sit deleniti vitae quasi nesciunt soluta quibusdam!
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quisquam reiciendis quia repellendus non repudiandae iste. Repudiandae optio nam aperiam doloribus, aliquam consequuntur sit deleniti vitae quasi nesciunt soluta quibusdam!
-    </p>
+<section id="unit-info">
+    <p>Unit Info</p>
+    <p>Size: {{unit.size}} sq ft</p>
+    <p>Bedrooms: {{unit.legal_beds}}</p>
+    <p>Total Rooms: {{unit.total_rooms}}</p>
+    <p>Bathrooms:</p> 
+    <p>Full: {{unit.full_bath}}</p>
+    <p>Half: {{unit.half_bath}}</p>
+</section>
+<section id="unit-amenities">
+    <p>Unit Amenities</p>
+    {{#if unit.unit_amenities.balcony}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Balcony</p>
+    {{/if}}
+    {{#if unit.unit_amenities.garden}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Garden</p>
+    {{/if}}
+    {{#if unit.unit_amenities.private_roof}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Private Roof</p>
+    {{/if}}
+    {{#if unit.unit_amenities.roof_rights}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Roof Rights</p>
+    {{/if}}
+    {{#if unit.unit_amenities.terrace}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Terrace</p>
+    {{/if}}
+    {{#if unit.unit_amenities.central_air}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Central Air</p>
+    {{/if}}
+    {{#if unit.unit_amenities.dishwasher}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Dishwasher</p>
+    {{/if}}
+    {{#if unit.unit_amenities.fireplace}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Fireplace</p>
+    {{/if}}
+    {{#if unit.unit_amenities.hardwood_floors}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Hardwood Floors</p>
+    {{/if}}
+    {{#if unit.unit_amenities.washer_dryer}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Washer/Dryer</p>
+    {{/if}}
+    {{#if unit.unit_amenities.city_view}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>City View</p>
+    {{/if}}
+    {{#if unit.unit_amenities.garden_view}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Gaden View</p>
+    {{/if}}
+    {{#if unit.unit_amenities.park_view}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Park View</p>
+    {{/if}}
+    {{#if unit.unit_amenities.garden_view}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Gaden View</p>
+    {{/if}}
+    {{#if unit.unit_amenities.water_view}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Water View</p>
+    {{/if}}
+</section>
+<section id='building-amenities'>
+    <p>Building Amenities</p>
+    {{#if unit.building.building_amenities.pets_allowed}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Pets Allowed</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.roof}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Roof</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.courtyard}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Courtyard</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.concierge}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Concierge</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.doorman}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Doorman</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.elevator}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Elevator</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.laundry}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Laundry</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.children_playroom}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Children's Playroom</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.gym}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Gym</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.media_room}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Media Room</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.recreation_room}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Recreation Room</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.swimming_pool}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Swimming Pool</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.live_in_super}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Live-in Super</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.smoke_free}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Smoke-free</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.wheelchair_access}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Wheelchair Access</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.garage_parking}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Garage Parking</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.valet_parking}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Valet Parking</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.bike_room}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Bike Room</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.cold_storage}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Cold Storage</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.locker_cage}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Locker Cage</p>
+    {{/if}}
+    {{#if unit.building.building_amenities.package_room}}
+        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Package Room</p>
+    {{/if}}
 </section>
