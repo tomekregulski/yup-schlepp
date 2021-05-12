@@ -143,16 +143,19 @@ const unitSorter = (req, res, next) => {
 
   const qSort = (arr) =>
     arr.reduce((acc, [k, v]) => {
-      if (k.startsWith("__gte_")) {
-        const key = k.replace("__gte_", "");
-        const val = parseInt(v);
-        const value = { [key]: { [Op.gte]: val } };
-
-        return {
-          ...acc,
-          value,
-        };
+      if (v == "true") {
+        v = Boolean(true);
       }
+      // if (k.startsWith("__gte_")) {
+      //   const key = k.replace("__gte_", "");
+      //   const val = parseInt(v);
+      //   const value = { [key]: { [Op.gte]: val } };
+
+      //   return {
+      //     ...acc,
+      //     value,
+      //   };
+      // }
       // reduce to individual key:value pairs
       if (Array.isArray(v)) {
         // if 'v' of [k:v] is an array, pass it through

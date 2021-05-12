@@ -25,13 +25,26 @@ router.get("/", unitSorter, async (req, res) => {
         {
           model: Building,
           as: "building",
-          // include: { model: BuildingAmenities, as: "building_amenities" },
           where: sortedQueries.building,
+          include: {
+            model: BuildingAmenities,
+            as: "building_amenities",
+            where: sortedQueries.buildingAmenities,
+          },
         },
-        { model: UnitAmenities, as: "unit_amenities" },
+        {
+          model: UnitAmenities,
+          as: "unit_amenities",
+          where: sortedQueries.unitAmenities,
+        },
         // { model: UnitImages },
       ],
-      where: sortedQueries.unit,
+      // where: sortedQueries.unit,
+      // where: {
+      //   legal_beds: {
+      //     [Op.gte]: 2,
+      //   },
+      // },
     });
     res.status(200).json(unitData);
   } catch (err) {
