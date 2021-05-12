@@ -6,7 +6,7 @@ const {
   BuildingAmenities,
   UnitAmenities,
 } = require("../models");
-
+// Need router/ for Welcome/Login page 
 router.get("/", async (req, res) => {
   try {
     const buildingData = await Building.findAll({
