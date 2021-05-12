@@ -12,11 +12,12 @@ const cloudinary = require("cloudinary").v2;
 const fileUpload = multer();
 const { Op } = require("sequelize");
 const { query } = require("express");
+const unitSorter = require("../../utils/unitSorter");
 
 // get all units
-router.get("/", async (req, res) => {
-  // let query = req.query;
-  console.log(query);
+router.get("/", unitSorter, async (req, res) => {
+  // ("api/units/?unit[__gte_legal_beds]=2&building[neighborhoods]=Bushwick&building[neighborhoods]=Bed%20Stuy");
+  const { sortedQueries } = req;
 
   try {
     const unitData = await Unit.findAll({
@@ -24,11 +25,13 @@ router.get("/", async (req, res) => {
         {
           model: Building,
           as: "building",
-          include: { model: BuildingAmenities, as: "building_amenities" },
+          // include: { model: BuildingAmenities, as: "building_amenities" },
+          where: sortedQueries.building,
         },
         { model: UnitAmenities, as: "unit_amenities" },
         // { model: UnitImages },
       ],
+      where: sortedQueries.unit,
     });
     res.status(200).json(unitData);
   } catch (err) {
