@@ -6,23 +6,35 @@ const {
   BuildingAmenities,
   UnitAmenities,
 } = require("../../models");
+const unitSorter = require("../../utils/unitSorter");
 
 // get all building
-router.get("/", async (req, res) => {
-  let query = req.query;
+router.get("/", unitSorter, async (req, res) => {
+  const { sortedQueries } = req;
 
   try {
     const buildingData = await Building.findAll({
       include: [
-        { model: BuildingAmenities, as: "building_amenities" },
+        {
+          model: BuildingAmenities,
+          as: "building_amenities",
+          where: sortedQueries.buildingAmenities,
+        },
         { model: Management, as: "management" },
         {
           model: Unit,
           as: "units",
-          include: [{ model: UnitAmenities, as: "unit_amenities" }],
+          where: sortedQueries.unit,
+          include: [
+            {
+              model: UnitAmenities,
+              as: "unit_amenities",
+              where: sortedQueries.unitAmenities,
+            },
+          ],
         },
       ],
-      where: query,
+      where: sortedQueries.building,
     });
     res.status(200).json(buildingData);
   } catch (err) {

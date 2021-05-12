@@ -19,7 +19,7 @@
     >Choose</button>
     <div style="display: none" id="unit_hide">
       <div
-        class="d-flex flex-column justify-content-center align-items-center"
+        class="d-flex flex-column justify-content-center align-items-center mt-4"
         id="unit_rooms"
       >
         <p>Bedrooms</p>
@@ -149,12 +149,6 @@
             <label class="form-check-label" for="water_view">Water View</label>
           </div>
         </div>
-        {{!-- <button
-          type="button"
-          class="btn btn-primary mt-3"
-          onClick="buildQuery('Unit')"
-          id="search-units"
-        >Search Units</button> --}}
       </div>
     </div>
     <div style="display: none" id="building_hide">
@@ -301,18 +295,12 @@
           <label class="form-check-label" for="package_room">Package Room</label>
         </div>
       </div>
-      {{!-- <button
-          type="button"
-          class="btn btn-primary mt-5"
-          onClick="buildQuery('Building')"
-          id="search-buildings"
-        >Search Buildings</button> --}}
-      {<button
+      <button
         type="button"
-        class="btn btn-primary mt-5"
+        class="btn btn-primary mt-4"
         onClick="buildQuery()"
         id="search-main"
-      >Search</button>}
+      >Search</button>
       </div>
     </div>
   </form>
