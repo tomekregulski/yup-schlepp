@@ -39,7 +39,7 @@ router.get("/", unitSorter, async (req, res) => {
         },
         // { model: UnitImages },
       ],
-      // where: sortedQueries.unit,
+      where: sortedQueries.unit,
       // where: {
       //   legal_beds: {
       //     [Op.gte]: 2,

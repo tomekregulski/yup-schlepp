@@ -146,8 +146,8 @@ const unitSorter = (req, res, next) => {
       if (v == "true") {
         v = Boolean(true);
       }
-      // if (k.startsWith("__gte_")) {
-      //   const key = k.replace("__gte_", "");
+      // if (k.startsWith("gte")) {
+      //   const key = k.replace("gte", "");
       //   const val = parseInt(v);
       //   const value = { [key]: { [Op.gte]: val } };
 
@@ -191,11 +191,6 @@ const unitSorter = (req, res, next) => {
     queries.unitAmenities = qSort(Object.entries(unitAmenities));
     console.log(queries.unitAmenities, "final cl");
   }
-
-  // type = where_or
-  // const mapNeighborhoods = neighborhoods.map((neighborhood) => ({
-  //   neighborhood,
-  // }));
 
   req.sortedQueries = queries;
 
