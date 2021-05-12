@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/managements/:id', async (req, res) => {
+router.get('/management/:id', async (req, res) => {
   try {
     const managementData = await Management.findByPk(req.params.id, {
       include: [{ model: Building, as: 'buildings' }],
@@ -82,7 +82,7 @@ router.get('/buildings/:id', async (req, res) => {
         building_id: req.params.id,
       },
     });
-    // res.status(200).json(unitData);
+    res.status(200).json(unitData);
 
     const units = unitData.map((unit) => unit.get({ plain: true }));
     res.render('buildings', {
@@ -116,21 +116,46 @@ router.get('/new-listing/management', async (req, res) => {
   try {
     const mgmtCompanies = await Management.findAll({ order: [['management_name', 'ASC']] });
     const mgmt = mgmtCompanies.map((m) => m.get({ plain: true }));
-    res.render('new-listing', { mgmt });
+    res.render('new-management', { mgmt });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.get('/new-listing/management/buildings/:id', async (req, res) => {
+router.get('/new-listing/buildings/:id', async (req, res) => {
   try {
     const mgmtData = await Management.findAll({ where: { id: req.params.id } });
     const mgmt = mgmtData.map((m) => m.get({ plain: true }));
     const mgmtBuildings = await Building.findAll({ where: { management_id: req.params.id } });
     const buildings = mgmtBuildings.map((building) => building.get({ plain: true }));
-    console.log(mgmtData);
-    res.render('new-listing-new-mgmt-building', { mgmt, buildings });
+    res.render('new-listing-building', { mgmt, buildings });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/new-listing/units/:id', async (req, res) => {
+  try {
+    const buildingData = await Building.findAll({ where: { id: req.params.id } });
+    const buildings = buildingData.map((b) => b.get({ plain: true }));
+    const unitsData = await Unit.findAll({ where: { building_id: req.params.id } });
+    const units = unitsData.map((unit) => unit.get({ plain: true }));
+    res.render('new-listing-unit', { buildings, units });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/new-listing/form/:id', async (req, res) => {
+  try {
+    const buildingData = await Building.findAll({ where: { id: req.params.id } });
+    const buildings = buildingData.map((b) => b.get({ plain: true }));
+    const unitsData = await Unit.findAll({ where: { building_id: req.params.id } });
+    const units = unitsData.map((unit) => unit.get({ plain: true }));
+    res.render('new-listing-form', { buildings, units });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

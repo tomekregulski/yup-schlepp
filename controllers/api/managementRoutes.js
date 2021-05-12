@@ -44,6 +44,27 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// get one management company by name
+router.get('/:management_name', async (req, res) => {
+  try {
+    const managementData = await Management.findByPk(req.params.management_name, {
+      include: [{ model: Building, as: 'buildings' }],
+    });
+
+    if (!managementData) {
+      res.status(404).json({
+        message: `No management company found with name: ${req.params.name}!`,
+      });
+      return;
+    }
+
+    res.status(200).json(managementData);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
 // create a management company
 router.post('/', async (req, res) => {
   try {

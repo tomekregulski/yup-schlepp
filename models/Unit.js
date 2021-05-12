@@ -56,15 +56,15 @@ Unit.init(
     // come back to this one *******
     net_rent: {
       type: DataTypes.INTEGER,
-      get() {
-        return ((this.lease_term - this.months_free) * this.gross_rent) / this.lease_term;
-      },
+      // get() {
+      //   return ((this.lease_term - this.months_free) * this.gross_rent) / this.lease_term;
+      // },
     },
-    furnished: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-      allowNull: false,
-    },
+    // furnished: {
+    //   type: DataTypes.BOOLEAN,
+    //   defaultValue: false,
+    //   allowNull: false,
+    // },
     legal_beds: {
       type: DataTypes.INTEGER,
       allowNull: false,
