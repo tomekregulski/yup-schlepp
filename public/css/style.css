@@ -204,11 +204,18 @@ h1 {
 }
 
 .result-container {
+  /*display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;*/
+  text-align: center;
   margin-top: 30px;
-  margin-left: 10%;
+  margin-left: 35%;
   margin-right: 10%;
+  width: 450px;
   padding: 10px;
-  border: solid 1px black;
+  border-radius: 10px;
+  border: solid 1px rgb(207, 123, 179);
 }
 
 @media screen and (min-width: 1000px) {
