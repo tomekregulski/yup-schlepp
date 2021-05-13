@@ -120,7 +120,7 @@ router.get('/new-listing/management', async (req, res) => {
   try {
     const mgmtCompanies = await Management.findAll({ order: [['management_name', 'ASC']] });
     const mgmt = mgmtCompanies.map((m) => m.get({ plain: true }));
-    res.render('new-management', { mgmt });
+    res.render('new-listing-management', { mgmt });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -147,19 +147,6 @@ router.get('/new-listing/units/:id', async (req, res) => {
     const unitsData = await Unit.findAll({ where: { building_id: req.params.id } });
     const units = unitsData.map((unit) => unit.get({ plain: true }));
     res.render('new-listing-unit', { buildings, units });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-router.get('/new-listing/form/:id', async (req, res) => {
-  try {
-    const buildingData = await Building.findAll({ where: { id: req.params.id } });
-    const buildings = buildingData.map((b) => b.get({ plain: true }));
-    const unitsData = await Unit.findAll({ where: { building_id: req.params.id } });
-    const units = unitsData.map((unit) => unit.get({ plain: true }));
-    res.render('new-listing-form', { buildings, units });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

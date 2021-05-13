@@ -216,6 +216,7 @@ router.patch('/:id/uploadImage', fileUpload.array('image', 2), async (req, res) 
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+    console.log(err);
   }
 });
 

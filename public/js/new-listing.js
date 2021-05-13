@@ -8,6 +8,7 @@ const cardFooter = document.querySelector('.card-footer');
 const buildingAmenForm = document.querySelector('.building-amenities');
 const fullUnitForm = document.querySelector('.unit-full-form');
 const unitAmenForm = document.querySelector('.unit-amenities');
+const unitImageForm = document.querySelector('.unit-images-form');
 
 // dropdown menu event listener
 drop.addEventListener('change', () => {
@@ -288,8 +289,6 @@ const fullUnitFormHandler = async (e) => {
     fullUnitForm.classList.toggle('hide');
     unitAmenForm.classList.toggle('hide');
     document.getElementById('unit-id-amenities').textContent = unitData.id;
-    // document.querySelector('.inner-card').classList.toggle('hide');
-    // buildingAmenForm.classList.toggle('hide');
   } else {
     alert('No good');
   }
@@ -341,12 +340,32 @@ const unitAmenFormHandler = async (e) => {
     headers: { 'Content-Type': 'application/json' },
   });
 
+  const amenitiesData = await postUnitAmenities.json();
+
   if (postUnitAmenities.ok) {
     alert("It's good!");
-    // document.location.replace(`/new-listing/units/${building_id}`);
+    unitAmenForm.classList.toggle('hide');
+    unitImageForm.classList.toggle('hide');
+    building_id_photos = amenitiesData.id;
   } else {
     alert('No good');
   }
+};
+
+let building_id_photos;
+const unitImageFormHandler = async (e) => {
+  e.preventDefault();
+
+  let image = document.getElementById('unit-image-form').files;
+  console.log(image);
+
+  const uploadImages = await fetch(`/api/units/${building_id_photos}/uploadImage`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      image,
+    }),
+    headers: { 'Content-Type': 'application/json' },
+  });
 };
 
 if (
@@ -371,6 +390,7 @@ if (
   unitFormHandler();
   fullUnitForm.addEventListener('submit', fullUnitFormHandler);
   unitAmenForm.addEventListener('submit', unitAmenFormHandler);
+  unitImageForm.addEventListener('submit', unitImageFormHandler);
 }
 // else if (document.location.pathname.includes('/new-listing/form/')) {
 // }
