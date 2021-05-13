@@ -216,6 +216,68 @@ const fullUnitFormHandler = () => {
   });
 };
 
+const buildingAmenFormHandler = async (e) => {
+  e.preventDefault();
+
+  let pets_allowed = document.getElementById('pets').checked;
+  let roof = document.getElementById('roof').checked;
+  let courtyard = document.getElementById('courtyard').checked;
+  let concierge = document.getElementById('concierge').checked;
+  let doorman = document.getElementById('doorman').checked;
+  let elevator = document.getElementById('elevator').checked;
+  let laundry = document.getElementById('laundry').checked;
+  let children_playroom = document.getElementById('children-playroom').checked;
+  let gym = document.getElementById('gym').checked;
+  let media_room = document.getElementById('media-room').checked;
+  let recreation_room = document.getElementById('recreation-room').checked;
+  let swimming_pool = document.getElementById('pool').checked;
+  let live_in_super = document.getElementById('line-in-super').checked;
+  let smoke_free = document.getElementById('smoke-free').checked;
+  let wheelchair_access = document.getElementById('wheelchair-access').checked;
+  let garage_parking = document.getElementById('garage-parking').checked;
+  let valet_parking = document.getElementById('valet-parking').checked;
+  let bike_room = document.getElementById('bike-room').checked;
+  let cold_storage = document.getElementById('cold-storage').checked;
+  let locker_cage = document.getElementById('locker').checked;
+  let package_room = document.getElementById('package-room').checked;
+  let building_id = document.getElementById('building-id-amenities').value;
+
+  const postBuildingAmenities = await fetch('/api/buildings/amenities', {
+    method: 'POST',
+    body: JSON.stringify({
+      pets_allowed,
+      roof,
+      courtyard,
+      concierge,
+      doorman,
+      elevator,
+      laundry,
+      children_playroom,
+      gym,
+      media_room,
+      recreation_room,
+      swimming_pool,
+      live_in_super,
+      smoke_free,
+      wheelchair_access,
+      garage_parking,
+      valet_parking,
+      bike_room,
+      cold_storage,
+      locker_cage,
+      package_room,
+      building_id,
+    }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (postBuildingAmenities.ok) {
+    alert("It's good!");
+  } else {
+    alert('No good');
+  }
+};
+
 if (
   document.location.pathname === '/new-listing/management/' ||
   document.location.pathname === '/new-listing/management'
@@ -237,4 +299,5 @@ if (
   unitFormHandler();
 } else if (document.location.pathname.includes('/new-listing/form/')) {
   fullUnitFormHandler();
+  buildingAmenForm.addEventListener('submit', buildingAmenFormHandler);
 }
