@@ -4,11 +4,12 @@ const multer = require('multer');
 const streamifier = require('streamifier');
 const cloudinary = require('cloudinary').v2;
 const fileUpload = multer();
-const unitSorter = require('../../utils/unitSorter');
+const unitSorter = require("../../utils/unitSorter");
+const { Op } = require("sequelize");
 
 // get all units
-router.get('/', unitSorter, async (req, res) => {
-  // ("api/units/?unit[__gte_legal_beds]=2&building[neighborhoods]=Bushwick&building[neighborhoods]=Bed%20Stuy");
+router.get("/", unitSorter, async (req, res) => {
+
   const { sortedQueries } = req;
 
   try {
@@ -32,12 +33,8 @@ router.get('/', unitSorter, async (req, res) => {
         // { model: UnitImages },
       ],
       where: sortedQueries.unit,
-      // where: {
-      //   legal_beds: {
-      //     [Op.gte]: 2,
-      //   },
-      // },
     });
+
     res.status(200).json(unitData);
   } catch (err) {
     res.status(500).json(err);

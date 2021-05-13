@@ -1,5 +1,5 @@
 const searchPivot = (event) => {
-  // event.preventDefault();
+  event.preventDefault();
   console.log("hello");
   clearSearchResults();
   uncheckAll();
@@ -69,6 +69,7 @@ const fetchUnits = async (url) => {
       units.push(json[i]);
     }
     renderUnitResults(units);
+    window.sessionStorage.setItem("units", units);
   } else {
     alert(response.statusText);
   }
@@ -216,15 +217,31 @@ const hideUnitForm = () => {
   }
 };
 
-const buildQuery = () => {
+const buildQuery = (event) => {
+  event.preventDefault();
   let category = document.getElementById("search-category").value;
   let queryArray = [];
   let url = "";
+  console.log("ok");
   var checkboxes = document.getElementsByName("searchElement");
   for (var checkbox of checkboxes) {
-    if (checkbox.checked) {
+    if (
+      checkbox.checked &&
+      checkbox.value !== "unit[__gte_gross_rent" &&
+      checkbox.value !== "unit[__lte_gross_rent"
+    ) {
       queryArray.push(checkbox.value);
     }
+  }
+  const minRent = document.getElementById("min_rent").value;
+  const maxRent = document.getElementById("max_rent").value;
+  if (minRent > 0) {
+    const gte = `unit[__gte_gross_rent]=${minRent}`;
+    queryArray.push(gte);
+  }
+  if (maxRent > 0) {
+    const lte = `unit[__lte_gross_rent]=${maxRent}`;
+    queryArray.push(lte);
   }
   console.log(queryArray);
   switch (category) {
@@ -266,6 +283,9 @@ const buildQuery = () => {
       break;
     case "Unit":
       console.log("Unit");
+      // redirectUrl = `results/units/${url}`;
+      // console.log(redirectUrl);
+      // document.location.assign(redirectUrl);
       fetchUnits(url);
       break;
   }
@@ -292,6 +312,8 @@ const uncheckAll = () => {
     .getElementsByName("searchElement")
     .forEach((el) => (el.checked = false));
 };
+
+fetchUnits();
 
 document.getElementById("category-btn").addEventListener("click", searchPivot);
 document.getElementById("search-main").addEventListener("click", buildQuery);

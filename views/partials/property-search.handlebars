@@ -21,6 +21,15 @@
       <div
         class="d-flex flex-row justify-content-center align-items-center mt-4"
         id="unit_rooms"
+      > 
+        <div class="form-group">
+          <label for="min_rent">Minimum Rent</label>
+          <input type="number" class="form-control" id="min_rent" name="gte" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="max_rent">Maximum Rent</label>
+          <input type="number" class="form-control" id="max_rent" name="lte" placeholder="">
+        </div>
       >
       <!-- bedrooms -->
       <div>
@@ -79,7 +88,6 @@
         <!-- other rooms -->
         <div>
         <button class="btn btn-outline-light dropdown-toggle my-2 my-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Other Rooms</button>
-        
         <div class="dropdown-menu">
           <a class="dropdown-item">
           <div class="custom-control custom-checkbox">
@@ -418,5 +426,4 @@
     </div>
   </form>
 </section>
-<script src="/js/searchFormArrays.js"></script>
 <script src="/js/property-search.js"></script>
