@@ -166,6 +166,7 @@ router.get('/login', async (req, res) => {
     res.render('login');
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 

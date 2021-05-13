@@ -179,7 +179,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_SECRET,
 });
 
-router.patch('/:id/uploadImage', fileUpload.array('image', 2), async (req, res) => {
+router.patch('/:id/uploadImage', fileUpload.array('image', 20), async (req, res) => {
   const upload = (file) => {
     return new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream((error, result) => {
@@ -213,10 +213,10 @@ router.patch('/:id/uploadImage', fileUpload.array('image', 2), async (req, res) 
     );
 
     res.json(updatedUnit);
+    // console.log(res);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
-    console.log(err);
   }
 });
 

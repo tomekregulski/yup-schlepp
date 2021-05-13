@@ -360,11 +360,12 @@ const unitImageFormHandler = async (e) => {
 
   const uploadImages = await fetch(`/api/units/${building_id_photos}/uploadImage`, {
     method: 'PATCH',
-    body: JSON.stringify({
-      image,
-    }),
+    body: new FormData(unitImageForm),
     headers: { 'Content-Type': 'application/json' },
   });
+
+  let data = await uploadImages.json();
+  console.log(data);
 };
 
 if (
