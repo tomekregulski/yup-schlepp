@@ -1,9 +1,8 @@
 {{> nav}}
-<h2 class="mt-4" style="text-align: center">{{unit.building.street_address}}, Unit {{unit.unit_num}}</h2>
 <div id="edit-link">
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-outline-light my-2 my-sm-0"
       id="edit-listing"><a href="/edit-listing">Edit This Listing</a></button>
 </div>
 
@@ -16,31 +15,36 @@
     </div>
 </section>
 
-<section id="primary-info">
-    <p>General Info</p>
-    <p>Status: {{unit.status}}</p>
+<div id="primary-info">
+<div class="jumbotron">
+    <p class="h2"><strong>{{unit.building.street_address}}, Unit {{unit.unit_num}}</strong></p>
+    <hr class="my-4">
+    <p class="h4"><strong>General Info</strong></p>
+    <p><strong>Status</strong>: {{unit.status}}</p>
     <p>{{unit.building.street_address}}, Unit {{unit.unit_num}}</p>
-    <p>Gross Rent: {{unit.gross_rent}}</p>
-    <p>Months Free: {{unit.months_free}}</p>
-    <p>Net Rent: {{unit.net_rent}}</p>
-    <p>Lease Term: {{unit.lease_term}}</p>
-    <p>OP: {{unit.op}}</p>
-    <p>Market As: {{unit.market_as}}</p>
-    <p>Move-in: {{format_date unit.move_in}}</p>
-    <p>Access: {{unit.access}}</p>
-</section>
+    <p><strong>Gross Rent</strong>: {{unit.gross_rent}}</p>
+    <p><strong>Months Free</strong>: {{unit.months_free}}</p>
+    <p><strong>Net Rent</strong>: {{unit.net_rent}}</p>
+    <p><strong>Lease Term</strong>: {{unit.lease_term}}</p>
+    <p><strong>OP</strong>: {{unit.op}}</p>
+    <p><strong>Market As</strong>: {{unit.market_as}}</p>
+    <p><strong>Move-in</strong>: {{format_date unit.move_in}}</p>
+    <p><strong>Access</strong>: {{unit.access}}</p>
+</div>
+</div>
 
+<div class="listing-info">
 <section id="unit-info">
-    <p>Unit Info</p>
-    <p>Size: {{unit.size}} sq ft</p>
-    <p>Bedrooms: {{unit.legal_beds}}</p>
-    <p>Total Rooms: {{unit.total_rooms}}</p>
-    <p>Bathrooms:</p> 
-    <p>Full: {{unit.full_bath}}</p>
-    <p>Half: {{unit.half_bath}}</p>
+    <p><strong>Unit Info</strong></p>
+    <p><strong>Size</strong>: {{unit.size}} sq ft</p>
+    <p><strong>Bedrooms</strong>: {{unit.legal_beds}}</p>
+    <p><strong>Total Rooms</strong>: {{unit.total_rooms}}</p>
+    <p><strong>Bathrooms:</strong></p> 
+    <p><strong>Full</strong>: {{unit.full_bath}}</p>
+    <p><strong>Half</strong>: {{unit.half_bath}}</p>
 </section>
 <section id="unit-amenities">
-    <p>Unit Amenities</p>
+    <p><strong>Unit Amenities</strong></p>
     {{#if unit.unit_amenities.balcony}}
         <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Balcony</p>
     {{/if}}
@@ -88,7 +92,7 @@
     {{/if}}
 </section>
 <section id='building-amenities'>
-    <p>Building Amenities</p>
+    <p><strong>Building Amenities</strong></p>
     {{#if unit.building.building_amenities.pets_allowed}}
         <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Pets Allowed</p>
     {{/if}}
@@ -153,3 +157,4 @@
         <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Package Room</p>
     {{/if}}
 </section>
+</div>
