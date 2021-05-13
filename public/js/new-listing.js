@@ -76,7 +76,6 @@ const buildingFormHandler = () => {
           `https://maps.googleapis.com/maps/api/geocode/json?address=${buildingVal}&key=${gKey}`
         );
         const data = await response.json();
-        console.log(data);
 
         const { lat, lng: lon } = data.results[0].geometry.location;
         const [
