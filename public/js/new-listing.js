@@ -6,6 +6,8 @@ const drop = document.querySelector('.dropdown');
 const options = drop.options;
 const cardFooter = document.querySelector('.card-footer');
 const buildingAmenForm = document.querySelector('.building-amenities');
+const fullUnitForm = document.querySelector('.unit-full-form');
+const unitAmenForm = document.querySelector('.unit-amenities');
 
 // dropdown menu event listener
 drop.addEventListener('change', () => {
@@ -19,7 +21,9 @@ drop.addEventListener('change', () => {
     if (!cardFooter.classList.contains('hide')) cardFooter.classList.toggle('hide');
   } else if (options.selectedIndex === options.length - 1) {
     if (cardFooter.classList.contains('hide')) cardFooter.classList.toggle('hide');
-    addRow.classList.remove('hide');
+    if (addRow) {
+      addRow.classList.remove('hide');
+    }
     selectRow.classList.add('hide');
   }
 });
@@ -130,88 +134,19 @@ const buildingFormHandler = () => {
 
         const buildingData = await createBuilding.json();
 
-        createBuilding.ok ? document.location.replace(`/new-listing/units/${buildingData.id}`) : alert('No good');
+        if (createBuilding.ok) {
+          buildingForm.classList.toggle('hide');
+          document.querySelector('.inner-card').classList.toggle('hide');
+          buildingAmenForm.classList.toggle('hide');
+          document.querySelector('.address').textContent = buildingData.street_address;
+          document.getElementById('building-id-amenities').textContent = buildingData.id;
+        } else {
+          alert('No good');
+        }
       }
     } else {
       const buildingId = drop.value;
       document.location.replace(`/new-listing/units/${buildingId}`);
-    }
-  });
-};
-
-// add listing - unit dropdown card '/new-listing/units/:id'
-const unitFormHandler = () => {
-  const unit = document.getElementById('unit');
-  const unitForm = document.querySelector('.unit-form');
-  const buildingId = document.getElementById('building-id');
-
-  unitForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (options.selectedIndex === options.length - 1) {
-      document.location.replace(`/new-listing/form/${buildingId.value}`);
-    } else {
-      const unitId = drop.value;
-      // redirect to the view page for this unit once it's built
-    }
-  });
-};
-
-const fullUnitFormHandler = () => {
-  const fullUnitForm = document.querySelector('.unit-full-form');
-
-  fullUnitForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    let status = document.querySelector('.status').value;
-    let unit_num = document.getElementById('unit-number').value;
-    let access = document.getElementById('access').value;
-    let op = document.getElementById('op').value;
-    let move_in = document.getElementById('move-in').value;
-    let market_as = document.querySelector('.market-as').value;
-    let lease_term = document.querySelector('.lease-term').value;
-    let gross_rent = document.getElementById('gross').value;
-    let concession = document.querySelector('.concession');
-    concession = concession.checked ? true : false;
-    let months_free = document.querySelector('.months-free').value;
-    let legal_beds = document.querySelector('.beds').value;
-    let full_bath = document.querySelector('.full-baths').value;
-    let half_bath = document.querySelector('.half-baths').value;
-    let total_rooms = document.querySelector('.rooms').value;
-    let size = document.getElementById('size').value;
-    let desc = document.getElementById('description').value;
-    let building_id = document.getElementById('building-id').value;
-
-    let net_rent = ((lease_term - months_free) * gross_rent) / lease_term;
-
-    const postUnit = await fetch(`/api/units`, {
-      method: 'POST',
-      body: JSON.stringify({
-        status,
-        unit_num,
-        access,
-        op,
-        move_in,
-        market_as,
-        lease_term,
-        gross_rent,
-        concession,
-        months_free,
-        net_rent,
-        legal_beds,
-        full_bath,
-        half_bath,
-        total_rooms,
-        size,
-        desc,
-        building_id,
-      }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    if (postUnit.ok) {
-      fullUnitForm.classList.toggle('hide');
-      buildingAmenForm.classList.toggle('hide');
-    } else {
-      alert('No good');
     }
   });
 };
@@ -240,7 +175,7 @@ const buildingAmenFormHandler = async (e) => {
   let cold_storage = document.getElementById('cold-storage').checked;
   let locker_cage = document.getElementById('locker').checked;
   let package_room = document.getElementById('package-room').checked;
-  let building_id = document.getElementById('building-id-amenities').value;
+  let building_id = document.getElementById('building-id-amenities').textContent;
 
   const postBuildingAmenities = await fetch('/api/buildings/amenities', {
     method: 'POST',
@@ -273,6 +208,142 @@ const buildingAmenFormHandler = async (e) => {
 
   if (postBuildingAmenities.ok) {
     alert("It's good!");
+    document.location.replace(`/new-listing/units/${building_id}`);
+  } else {
+    alert('No good');
+  }
+};
+
+// add listing - unit dropdown card '/new-listing/units/:id'
+const unitFormHandler = () => {
+  const unit = document.getElementById('unit');
+  const unitForm = document.querySelector('.unit-form');
+  const buildingId = document.getElementById('building-id');
+
+  unitForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (options.selectedIndex === options.length - 1) {
+      document.querySelector('.inner-card').classList.toggle('hide');
+      fullUnitForm.classList.toggle('hide');
+    } else {
+      const unitId = drop.value;
+      // redirect to the view page for this unit once it's built
+    }
+  });
+};
+
+const fullUnitFormHandler = async (e) => {
+  // fullUnitForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  let status = document.querySelector('.status').value;
+  let unit_num = document.getElementById('unit-number').value;
+  let access = document.getElementById('access').value;
+  let op = parseInt(document.getElementById('op').value);
+  let move_in = document.getElementById('move-in').value;
+  let market_as = document.querySelector('.market-as').value;
+  let lease_term = parseInt(document.querySelector('.lease-term').value);
+  let gross_rent = parseInt(document.getElementById('gross').value);
+  let concession = document.querySelector('.concession');
+  concession = concession.checked ? true : false;
+  let months_free = parseInt(document.querySelector('.months-free').value);
+  let legal_beds = parseInt(document.querySelector('.beds').value);
+  let full_bath = parseInt(document.querySelector('.full-baths').value);
+  let half_bath = parseInt(document.querySelector('.half-baths').value);
+  let total_rooms = parseInt(document.querySelector('.rooms').value);
+  let size = parseInt(document.getElementById('size').value);
+  let desc = document.getElementById('description').value;
+  let building_id = document.getElementById('building-id').value;
+
+  let net_rent = ((lease_term - months_free) * gross_rent) / lease_term;
+
+  const postUnit = await fetch(`/api/units`, {
+    method: 'POST',
+    body: JSON.stringify({
+      status,
+      unit_num,
+      access,
+      op,
+      move_in,
+      market_as,
+      lease_term,
+      gross_rent,
+      concession,
+      months_free,
+      net_rent,
+      legal_beds,
+      full_bath,
+      half_bath,
+      total_rooms,
+      size,
+      desc,
+      building_id,
+    }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  const unitData = await postUnit.json();
+
+  if (postUnit.ok) {
+    alert("it's good");
+    fullUnitForm.classList.toggle('hide');
+    unitAmenForm.classList.toggle('hide');
+    document.getElementById('unit-id-amenities').textContent = unitData.id;
+    // document.querySelector('.inner-card').classList.toggle('hide');
+    // buildingAmenForm.classList.toggle('hide');
+  } else {
+    alert('No good');
+  }
+  // });
+};
+
+const unitAmenFormHandler = async (e) => {
+  e.preventDefault();
+
+  let furnished = document.getElementById('furnished').checked;
+  let balcony = document.getElementById('balcony').checked;
+  let garden = document.getElementById('private-roof').checked;
+  let private_roof = document.getElementById('garden').checked;
+  let roof_rights = document.getElementById('roof-rights').checked;
+  let terrace = document.getElementById('terrace').checked;
+  let central_air = document.getElementById('central-air').checked;
+  let dishwasher = document.getElementById('dishwasher').checked;
+  let fireplace = document.getElementById('fireplace').checked;
+  let hardwood_floors = document.getElementById('hardwood-floors').checked;
+  let washer_dryer = document.getElementById('washer-dryer').checked;
+  let city_view = document.getElementById('city-view').checked;
+  let garden_view = document.getElementById('garden-view').checked;
+  let park_view = document.getElementById('park-view').checked;
+  let skyline_view = document.getElementById('skyline-view').checked;
+  let water_view = document.getElementById('water-view').checked;
+  let unit_id = parseInt(document.getElementById('unit-id-amenities').textContent);
+
+  const postUnitAmenities = await fetch('/api/units/amenities', {
+    method: 'POST',
+    body: JSON.stringify({
+      furnished,
+      balcony,
+      garden,
+      private_roof,
+      roof_rights,
+      terrace,
+      central_air,
+      dishwasher,
+      fireplace,
+      hardwood_floors,
+      washer_dryer,
+      city_view,
+      garden_view,
+      park_view,
+      skyline_view,
+      water_view,
+      unit_id,
+    }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (postUnitAmenities.ok) {
+    alert("It's good!");
+    // document.location.replace(`/new-listing/units/${building_id}`);
   } else {
     alert('No good');
   }
@@ -295,9 +366,11 @@ if (
     const autocomplete = new google.maps.places.Autocomplete(buildingInput);
   }
   buildingFormHandler();
+  buildingAmenForm.addEventListener('submit', buildingAmenFormHandler);
 } else if (document.location.pathname.includes('/units')) {
   unitFormHandler();
-} else if (document.location.pathname.includes('/new-listing/form/')) {
-  fullUnitFormHandler();
-  buildingAmenForm.addEventListener('submit', buildingAmenFormHandler);
+  fullUnitForm.addEventListener('submit', fullUnitFormHandler);
+  unitAmenForm.addEventListener('submit', unitAmenFormHandler);
 }
+// else if (document.location.pathname.includes('/new-listing/form/')) {
+// }

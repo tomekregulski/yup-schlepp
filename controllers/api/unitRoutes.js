@@ -123,10 +123,11 @@ router.delete('/:id', async (req, res) => {
 // create unit amenities -- not working
 router.post('/amenities', async (req, res) => {
   try {
-    const unitData = await UnitAmenities.create(req.body.unit_amenities);
-    res.status(201).json(unitData);
+    const unitData = await UnitAmenities.create(req.body);
+    res.status(200).json(unitData);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
+    console.log(err);
   }
 });
 

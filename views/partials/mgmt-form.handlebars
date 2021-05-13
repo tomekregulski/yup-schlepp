@@ -1,0 +1,26 @@
+<form class='mgmt-form'>
+  <div class='row d-flex justify-content-center select-row'>
+    <div class='col-12 d-flex justify-content-center p-4'>
+      <select class='custom-select dropdown w-75'>
+        <option selected=''>Select Management Company</option>
+        {{#each mgmt as |mgmt|}}
+          <option value={{mgmt.id}}>{{mgmt.management_name}}</option>
+        {{/each}}
+        <option>Add New Management Company</option>
+      </select>
+    </div>
+  </div>
+  <div class='row d-flex justify-content-center add-row hide'>
+    <hr />
+    <div class='form-group col-12 p-4'>
+      <label for='management-company'>Management Company Name</label>
+      <input type='text' class='form-control' id='mgmt' placeholder='' />
+    </div>
+  </div>
+  <div class='card-footer d-flex justify-content-end hide'>
+    <div class='col-3 d-flex'>
+      <button type='button' class='btn btn-outline-dark col-6 m-2'>Cancel</button>
+      <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Next</button>
+    </div>
+  </div>
+</form>

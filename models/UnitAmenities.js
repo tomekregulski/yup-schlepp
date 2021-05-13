@@ -11,6 +11,11 @@ UnitAmenities.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    furnished: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false,
+    },
     balcony: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,

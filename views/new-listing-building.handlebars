@@ -1,45 +1,18 @@
 {{> nav}}
 <div class="container main-card mt-5">
   <div class="row d-flex justify-content-center building-card">
-    <div class="card col-md address-input m-2 inner-card">
-      <div class="card-body container">
+    <div class="card col-md address-input m-2 p-0 inner-card">
+      <div class="card-body container p-0">
         <div class="row d-flex justify-content-center">
-          <div class="col">
+          <div class="col p-3">
             <h2>Building</h2>
           </div>
         </div>
         <hr>
-        <form class="building-form">
-          <div class="row d-flex justify-content-center select-row">
-            <select class="custom-select dropdown">
-              {{#each mgmt as |mgmt|}}
-              <option selected="">Select Building Associated with {{mgmt.management_name}}</option>
-              {{/each}}
-              {{#each buildings as |building|}}
-              <option value={{ building.id }}>{{building.street_address}}</option>
-              {{/each}}
-              <option>Add New Building {{mgmt.management_name}} </option>
-            </select>
-          </div>
-          <div class="row d-flex justify-content-center add-row hide">
-            <hr>
-            <div class="form-group col-2">
-              <label for="management-company-id">ID</label>
-              {{#each mgmt as |mgmt|}}
-              <input type="text" class="form-control" id="mgmt-id" value={{mgmt.id}} readonly>
-              {{/each}}
-            </div>
-            <div class="form-group col-10">
-              <label for="management-company">Street Address</label>
-              <input type="text" class="form-control" id="building" placeholder="">
-            </div>
-          </div>
-          </div>
-          <div class="card-footer d-flex justify-content-center hide">
-            <button type="button" class="btn btn-outline-dark col-6 m-2">Cancel</button>
-            <button type="submit" class="btn btn-outline-dark col-6 m-2 next-btn">Next</button>
-          </div>
-        </form>
+        {{> building-form}}
+      </div>
     </div>
+{{> new-listing-building-amenities}}
   </div>
 </div>
+
