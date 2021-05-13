@@ -21,7 +21,15 @@
       <div
         class="d-flex flex-column justify-content-center align-items-center mt-4"
         id="unit_rooms"
-      >
+      > 
+        <div class="form-group">
+          <label for="min_rent">Minimum Rent</label>
+          <input type="number" class="form-control" id="min_rent" name="gte" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="max_rent">Maximum Rent</label>
+          <input type="number" class="form-control" id="max_rent" name="lte" placeholder="">
+        </div>
         <p>Bedrooms</p>
         <div>
           <div class="form-check form-check-inline">
@@ -304,5 +312,4 @@
     </div>
   </form>
 </section>
-<script src="/js/searchFormArrays.js"></script>
 <script src="/js/property-search.js"></script>

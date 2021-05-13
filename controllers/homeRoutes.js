@@ -6,6 +6,8 @@ const {
   BuildingAmenities,
   UnitAmenities,
 } = require("../models");
+const unitSorter = require("../utils/unitSorter");
+const { Op } = require("sequelize");
 
 router.get("/", async (req, res) => {
   try {
@@ -64,6 +66,40 @@ router.get("/managements/:id", async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.get("/results/units/?*", unitSorter, async (req, res) => {
+  // console.log(req.query);
+  try {
+    // const { sortedQueries } = req;
+
+    // const unitData = await Unit.findAll({
+    //   include: [
+    //     {
+    //       model: Building,
+    //       as: "building",
+    //       where: sortedQueries.building,
+    //       include: {
+    //         model: BuildingAmenities,
+    //         as: "building_amenities",
+    //         where: sortedQueries.buildingAmenities,
+    //       },
+    //     },
+    //     {
+    //       model: UnitAmenities,
+    //       as: "unit_amenities",
+    //       where: sortedQueries.unitAmenities,
+    //     },
+    //     // { model: UnitImages },
+    //   ],
+    //   where: sortedQueries.unit,
+    // });
+    // console.log(unitData);
+    res.render("results");
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
   }
 });
 
