@@ -14,295 +14,414 @@
     </div>
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-outline-light dropdown-toggle my-2 my-sm-0"
       id="category-btn"
     >Choose</button>
     <div style="display: none" id="unit_hide">
       <div
-        class="d-flex flex-column justify-content-center align-items-center mt-4"
+        class="d-flex flex-row justify-content-center align-items-center mt-4"
         id="unit_rooms"
+      > 
+        <div class="form-group">
+          <label for="min_rent">Minimum Rent</label>
+          <input type="number" class="form-control" id="min_rent" name="gte" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="max_rent">Maximum Rent</label>
+          <input type="number" class="form-control" id="max_rent" name="lte" placeholder="">
+        </div>
       >
-        <p>Bedrooms</p>
-        <div>
-          <div class="form-check form-check-inline">
+      <!-- bedrooms -->
+      <div class='dropdown'>
+        <button class="btn btn-outline-light dropdown-toggle my-2 my-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bedrooms</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
             <input
               name='searchElement'
-              class="form-check-input"
+              class="custom-control-input"
               type="checkbox"
-              value="legal_beds=1"
+              value="unit[legal_beds=1]"
               id="BR1"
             />
-            <label class="form-check-label" for="BR1">1</label>
+            <label class="custom-control-label" for="BR1">1</label>
           </div>
-          <div class="form-check form-check-inline">
+          </a>
+          <a class="dropdown-item" href="#">
+           <div class="custom-control custom-checkbox">
             <input
               name='searchElement'
-              class="form-check-input"
+              class="custom-control-input"
               type="checkbox"
-              value="legal_beds=2"
+              value="unit[legal_beds=2]"
               id="BR2"
             />
-            <label class="form-check-label" for="BR2">2</label>
+            <label class="custom-control-label" for="BR2">2</label>
           </div>
-          <div class="form-check form-check-inline">
+          </a>
+          <a class="dropdown-item" href="#">
+           <div class="custom-control custom-checkbox">
             <input
               name='searchElement'
-              class="form-check-input"
+              class="custom-control-input"
               type="checkbox"
-              value="legal_beds=3"
+              value="unit[legal_beds=3]"
               id="BR3"
             />
-            <label class="form-check-label" for="BR3">3</label>
+            <label class="custom-control-label" for="BR3">3</label>
           </div>
-          <div class="form-check form-check-inline">
+          </a>
+          <a class="dropdown-item" href="#">
+           <div class="custom-control custom-checkbox">
             <input
               name='searchElement'
-              class="form-check-input"
+              class="custom-control-input"
               type="checkbox"
-              value="legal_beds=4"
+              value="unit[legal_beds=4]"
               id="BR4"
             />
-            <label class="form-check-label" for="BR4">4</label>
+            <label class="custom-control-label" for="BR4">4+</label>
           </div>
+          </a>
         </div>
-        <p class="my-3" for="">Other Rooms</p>
+        </div>
+        <!-- other rooms -->
         <div>
-          <div class="form-check form-check-inline">
+        <button class="btn btn-outline-light dropdown-toggle my-2 my-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Other Rooms</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
             <input
               name='searchElement'
-              class="form-check-input"
+              class="custom-control-input"
               type="checkbox"
-              value="full_bath=1"
+              value="unit[full_bath]=1"
               id="full_bath"
             />
-            <label class="form-check-label" for="full_bath">Full Bath</label>
+            <label class="custom-control-label" for="full_bath">Full Bath</label>
           </div>
-          <div class="form-check form-check-inline">
+          </a>
+          <a class="dropdown-item" href="#">
+          <div class="custom-control custom-checkbox">
             <input
               name='searchElement'
-              class="form-check-input"
+              class="custom-control-input"
               type="checkbox"
-              value="half_bath=1"
+              value="unit[half_bath]=1"
               id="half_bath"
             />
-            <label class="form-check-label" for="half_bath">Half Bath</label>
+            <label class="custom-control-label" for="half_bath">Half Bath</label>
           </div>
-          <p class="mt-4">Unit Amenities</p>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[balcony]=true" id="balcony">
-            <label class="form-check-label" for="balcony">Balcony</label>
+          </a>
+        </div>
+        </div>
+          <!-- amenities -->
+        <div>
+        <button class="btn btn-outline-light dropdown-toggle my-2 my-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Unit Amenities</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[balcony]=true" id="balcony">
+            <label class="custom-control-label" for="balcony">Balcony</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[garden]=true" id="garden">
-            <label class="form-check-label" for="garden">Garden</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[garden]=true" id="garden">
+            <label class="custom-control-label" for="garden">Garden</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[private_roof]=true" id="private_roof">
-            <label class="form-check-label" for="private_roof">Private Roof</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[private_roof]=true" id="private_roof">
+            <label class="custom-control-label" for="private_roof">Private Roof</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[roof_rights]=true" id="roof_rights">
-            <label class="form-check-label" for="roof_rights">Roof Rights</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[roof_rights]=true" id="roof_rights">
+            <label class="custom-control-label" for="roof_rights">Roof Rights</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[terrace]=true" id="terrace">
-            <label class="form-check-label" for="terrace">Terrace</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[terrace]=true" id="terrace">
+            <label class="custom-control-label" for="terrace">Terrace</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[central_air]=true" id="central_air">
-            <label class="form-check-label" for="central_air">Central Air</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[central_air]=true" id="central_air">
+            <label class="custom-control-label" for="central_air">Central Air</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[dishwasher]=true" id="dishwasher">
-            <label class="form-check-label" for="dishwasher">Dishwasher</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[dishwasher]=true" id="dishwasher">
+            <label class="custom-control-label" for="dishwasher">Dishwasher</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[fireplace]=true" id="fireplace">
-            <label class="form-check-label" for="fireplace">Fireplace</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[fireplace]=true" id="fireplace">
+            <label class="custom-control-label" for="fireplace">Fireplace</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[hardwood_floors]=true" id="hardwood_floor">
-            <label class="form-check-label" for="hardwood_floors">Hardwood Floors</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[hardwood_floors]=true" id="hardwood_floors">
+            <label class="custom-control-label" for="hardwood_floors">Hardwood Floors</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[washer_dryer]=true" id="washer_dryer">
-            <label class="form-check-label" for="washer_dryer">Washer/Dryer</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[washer_dryer]=true" id="washer_dryer">
+            <label class="custom-control-label" for="washer_dryer">Washer/Dryer</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[city_view]=true" id="city_view">
-            <label class="form-check-label" for="city_view">City View</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[city_view]=true" id="city_view">
+            <label class="custom-control-label" for="city_view">City View</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[garden_view]=true" id="garden_view">
-            <label class="form-check-label" for="garden_view">Garden View</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[garden_view]=true" id="garden_view">
+            <label class="custom-control-label" for="garden_view">Garden View</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[park_view]=true" id="park_view">
-            <label class="form-check-label" for="park_view">Park View</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[park_view]=true" id="park_view">
+            <label class="custom-control-label" for="park_view">Park View</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[skyline_view]=true" id="skyline_view">
-            <label class="form-check-label" for="skyline_view">Skyline View</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[skyline_view]=true" id="skyline_view">
+            <label class="custom-control-label" for="skyline_view">Skyline View</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name='searchElement' value="unitAmenities[water_view]=true" id="water_view">
-            <label class="form-check-label" for="water_view">Water View</label>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[water_view]=true" id="water_view">
+            <label class="custom-control-label" for="water_view">Water View</label>
           </div>
+          </a>
+          </div>
+        </div>
+        <!-- neighborhood -->
+        <div>
+        <button class="btn btn-outline-light dropdown-toggle my-2 my-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Neighborhood</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input
+              name='searchElement'
+              class="custom-control-input"
+              type="checkbox"
+              value="building[neighborhood]=Bushwick"
+              id="bushwick"
+            />
+            <label class="custom-control-label" for="bushwick">Bushwick</label>
+          </div>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input
+              name='searchElement'
+              class="custom-control-input"
+              type="checkbox"
+              value="building[neighborhood]=Ocean Hill"
+              id="ocean_hill"
+            />
+            <label class="custom-control-label" for="ocean_hill">Ocean Hill</label>
+          </div>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input
+              name='searchElement'
+              class="custom-control-input"
+              type="checkbox"
+              value="building[neighborhood]=Bedstuy"
+              id="bedstuy"
+            />
+            <label class="custom-control-label" for="ocean_hill">Bed Stuy</label>
+          </div>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input
+              name='searchElement'
+              class="custom-control-input"
+              type="checkbox"
+              value="building[neighborhood]=Ridgewood"
+              id="ridgewood"
+            />
+            <label class="custom-control-label" for="ridgewood">Ridgewood</label>
+          </div>
+          </a>
+          <a class="dropdown-item">
+          <div class="custom-control custom-checkbox">
+            <input
+              name='searchElement'
+              class="custom-control-input"
+              type="checkbox"
+              value="building[neighborhood]=Prospect Heights"
+              id="prospect_heights"
+            />
+            <label class="custom-control-label" for="prospect_heights">Prospect Heights</label>
+          </div>
+          </a>
+        </div>
+        </div>
+          <!-- building amen -->
+        <div>
+        <button class="btn btn-outline-light dropdown-toggle my-2 my-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Building Amenities</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[pets_allowed]=true" id="pets_allowed">
+              <label class="custom-control-label" for="pets_allowed">Pets Allowed</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[roof]=true" id="roof">
+              <label class="custom-control-label" for="roof">Roof</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[courtyard]=true" id="courtyard">
+              <label class="custom-control-label" for="courtyard">Courtyard</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[concierge]=true" id="concierge">
+              <label class="custom-control-label" for="concierge">Concierge</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[doorman]=true" id="doorman">
+              <label class="custom-control-label" for="doorman">Doorman</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[elevator]=true" id="elevator">
+              <label class="custom-control-label" for="elevator">Elevator</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[laundry]=true" id="laundry">
+              <label class="custom-control-label" for="laundry">Laundry</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[children_playroom]=true" id="children_playroom">
+              <label class="custom-control-label" for="children_playroom">Children's Playroom</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[gym]=true" id="gym">
+              <label class="custom-control-label" for="gym">Gym</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[media_room]=true" id="media_room">
+              <label class="custom-control-label" for="media_room">Media Room</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[recreation_room]=true" id="recreation_room">
+              <label class="custom-control-label" for="recreation_room">Recreation Room</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[swimming_pool]=true" id="swimming_pool">
+              <label class="custom-control-label" for="swimming_pool">Swimming Pool</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[live_in_super]=true" id="live_in_super">
+              <label class="custom-control-label" for="live_in_super">Live-in Super</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[smoke-free]=true" id="smoke-free">
+              <label class="custom-control-label" for="smoke-free">Smoke-free</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[wheelchair_access]=true" id="wheelchair_access">
+              <label class="custom-control-label" for="wheelchair_access">Wheelchair Access</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[garage_parking]=true" id="garage_parking">
+              <label class="custom-control-label" for="garage_parking">Garage Parking</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[valet_parking]=true" id="valet_parking">
+              <label class="custom-control-label" for="valet_parking">Valet Parking</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[bike_room]=true" id="bike_room">
+              <label class="custom-control-label" for="bike_room">Bike Room</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[cold_storage]=true" id="cold_storage">
+              <label class="custom-control-label" for="cold_storage">Cold Storage</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[locker_cage]=true" id="locker_cage">
+              <label class="custom-control-label" for="locker_cage">Locker Cage</label>
+            </div>
+          </a>
+          <a class="dropdown-item">
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[package_room]=true" id="package_room">
+              <label class="custom-control-label" for="package_room">Package Room</label>
+            </div>
+          </a>
+        </div>
         </div>
       </div>
-    </div>
-    <div style="display: none" id="building_hide">
-      <div class="d-flex flex-column justify-content-center align-items-flex-start" id="building_options">
-        <p class="mt-3">Neighborhood</p>
-        <div class="form-check form-check-inline">
-          <input
-            name='searchElement'
-            class="form-check-input"
-            type="checkbox"
-            value="building[neighborhood]=Bushwick"
-            id="bushwick"
-          />
-          <label class="form-check-label" for="bushwick">Bushwick</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            name='searchElement'
-            class="form-check-input"
-            type="checkbox"
-            value="building[neighborhood]=Ocean Hill"
-            id="ocean_hill"
-          />
-          <label class="form-check-label" for="ocean_hill">Ocean Hill</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            name='searchElement'
-            class="form-check-input"
-            type="checkbox"
-            value="building[neighborhood]=Bedstuy"
-            id="bedstuy"
-          />
-          <label class="form-check-label" for="bedstuy">Bedstuy</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            name='searchElement'
-            class="form-check-input"
-            type="checkbox"
-            value="building[neighborhood]=Ridgewood"
-            id="ridgewood"
-          />
-          <label class="form-check-label" for="ridgewood">Ridgewood</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            name='searchElement'
-            class="form-check-input"
-            type="checkbox"
-            value="building[neighborhood]=Prospect Heights"
-            id="prospect_heights"
-          />
-          <label class="form-check-label" for="prospect_heights">Prospect
-            Heights</label>
-        </div>
-        <p class="mt-4">Building Amenities</p>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[pets_allowed]=true" id="pets_allowed">
-          <label class="form-check-label" for="pets_allowed">Pets Allowed</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[roof]=true" id="roof">
-          <label class="form-check-label" for="roof">Roof</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[courtyard]=true" id="courtyard">
-          <label class="form-check-label" for="courtyard">Courtyard</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[concierge]=true" id="concierge">
-          <label class="form-check-label" for="concierge">Concierge</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[doorman]=true" id="doorman">
-          <label class="form-check-label" for="doorman">Doorman</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[elevator]=true" id="elevator">
-          <label class="form-check-label" for="elevator">Elevator</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[laundry]=true" id="laundry">
-          <label class="form-check-label" for="laundry">Laundry</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[children_playroom]=true" id="children_playroom">
-          <label class="form-check-label" for="children_playroom">Children's Playroom</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[gym]=true" id="gym">
-          <label class="form-check-label" for="gym">Gym</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[media_room]=true" id="media_room">
-          <label class="form-check-label" for="media_room">Media Room</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[recreation_room]=true" id="recreation_roo">
-          <label class="form-check-label" for="recreation_room">Media Room</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[recreation_room]=true" id="recreation_room">
-          <label class="form-check-label" for="recreation_room">Recreation Room</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[swimming_pool=true" id="swimming_pool">
-          <label class="form-check-label" for="swimming_pool">Swimming Pool</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[live_in_super]=true" id="live_in_super">
-          <label class="form-check-label" for="live_in_super">Live-in Super</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[smoke_free]=true" id="smoke_free">
-          <label class="form-check-label" for="smoke_free">Smoke-free</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[wheelchair_access]=true" id="wheelchair_access">
-          <label class="form-check-label" for="wheelchair_access">Wheelchair Access</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[garage_parking]=true" id="garage_parking">
-          <label class="form-check-label" for="garage_parking">Garage Parking</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[valet_parking]=true" id="valet_parking">
-          <label class="form-check-label" for="valet_parking">Valet Parking</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[bike_room]=true" id="bike_roo">
-          <label class="form-check-label" for="bike_room">Bike Room</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[cold_storage]=true" id="cold_storage">
-          <label class="form-check-label" for="cold_storage">Cold Storage</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[locker_cage]=true" id="locker_cage">
-          <label class="form-check-label" for="locker_cage">Locker Cage</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name='searchElement' value="buildingAmenities[package_room]=true" id="package_room">
-          <label class="form-check-label" for="package_room">Package Room</label>
-        </div>
-      </div>
+      <div
+        class="d-flex flex-row justify-content-center align-items-center mt-4"
+        id="unit_rooms">
       <button
         type="button"
-        class="btn btn-primary mt-4"
+        class="btn btn-outline-light my-2 my-sm-0"
+
         id="search-main"
       >Search</button>
+      </div>
       </div>
     </div>
   </form>
 </section>
-<script src="/js/searchFormArrays.js"></script>
 <script src="/js/property-search.js"></script>

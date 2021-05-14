@@ -25,19 +25,42 @@
   height: 60px;
 }
 
+.listing-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
 #primary-info {
-  margin: 40px 4% 0;
+  margin-left: 40px 4% 0;
 }
 
 #primary-info p {
   margin-top: 15px;
 }
 
-#more-info {
+#unit-info {
   margin: 40px 4% 0;
 }
 
-#more-info p {
+#unit-info p {
+  margin-top: 15px;
+}
+
+#unit-amenities {
+  margin: 40px 4% 0;
+}
+
+#unit-amenities p {
+  margin-top: 15px;
+}
+
+#building-amenities {
+  margin: 40px 10% 0;
+}
+
+#building-amenities p {
   margin-top: 15px;
 }
 
@@ -58,11 +81,27 @@
     margin-top: 15px;
   }
 
-  #more-info {
+  #unit-info {
     margin: 40px 10% 0;
   }
 
-  #more-info p {
+  #unit-info p {
+    margin-top: 15px;
+  }
+
+  #unit-amenities {
+    margin: 40px 10% 0;
+  }
+
+  #unit-amenities p {
+    margin-top: 15px;
+  }
+
+  #building-amenities {
+    margin: 40px 10% 0;
+  }
+
+  #building-amenities p {
     margin-top: 15px;
   }
 }
