@@ -3,7 +3,7 @@ const { Unit, UnitAmenities, Building, BuildingAmenities } = require('../../mode
 const multer = require('multer');
 const streamifier = require('streamifier');
 const cloudinary = require('cloudinary').v2;
-const fileUpload = multer();
+const fileUpload = multer({ limit: { fileSize: '25MB' } });
 const unitSorter = require('../../utils/unitSorter');
 const { Op } = require('sequelize');
 
