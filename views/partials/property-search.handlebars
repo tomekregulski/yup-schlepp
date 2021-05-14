@@ -32,7 +32,7 @@
         </div>
       >
       <!-- bedrooms -->
-      <div>
+      <div class='dropdown'>
         <button class="btn btn-outline-light dropdown-toggle my-2 my-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bedrooms</button>
         <div class="dropdown-menu">
           <a class="dropdown-item">
@@ -41,7 +41,7 @@
               name='searchElement'
               class="custom-control-input"
               type="checkbox"
-              value="legal_beds=1"
+              value="unit[legal_beds=1]"
               id="BR1"
             />
             <label class="custom-control-label" for="BR1">1</label>
@@ -53,7 +53,7 @@
               name='searchElement'
               class="custom-control-input"
               type="checkbox"
-              value="legal_beds=2"
+              value="unit[legal_beds=2]"
               id="BR2"
             />
             <label class="custom-control-label" for="BR2">2</label>
@@ -65,7 +65,7 @@
               name='searchElement'
               class="custom-control-input"
               type="checkbox"
-              value="legal_beds=3"
+              value="unit[legal_beds=3]"
               id="BR3"
             />
             <label class="custom-control-label" for="BR3">3</label>
@@ -77,7 +77,7 @@
               name='searchElement'
               class="custom-control-input"
               type="checkbox"
-              value="legal_beds=4"
+              value="unit[legal_beds=4]"
               id="BR4"
             />
             <label class="custom-control-label" for="BR4">4+</label>
@@ -94,10 +94,8 @@
             <input
               name='searchElement'
               class="custom-control-input"
-              name='searchElement'
-              class="form-check-input"
               type="checkbox"
-              value="full_bath=1"
+              value="unit[full_bath]=1"
               id="full_bath"
             />
             <label class="custom-control-label" for="full_bath">Full Bath</label>
@@ -109,7 +107,7 @@
               name='searchElement'
               class="custom-control-input"
               type="checkbox"
-              value="half_bath=1"
+              value="unit[half_bath]=1"
               id="half_bath"
             />
             <label class="custom-control-label" for="half_bath">Half Bath</label>
