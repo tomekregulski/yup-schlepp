@@ -1,7 +1,7 @@
 <form class="unit-form">
   <div class="row d-flex justify-content-center select-row">
     <div class='col-12 d-flex justify-content-center p-4'>
-      <select class="custom-select dropdown w-75">
+      <select class="custom-select dropdown w-75 unit-drop">
         {{#each buildings as |building|}}
         <option selected="">Select a unit in {{building.street_address}}</option>
         {{/each}}
@@ -22,9 +22,9 @@
     </div>
   </div>
   </div>
-  <div class='card-footer d-flex justify-content-end hide'>
+  <div class="card-footer d-flex justify-content-end hide">
     <div class='col-3 d-flex'>
-      <button type='button' class='btn btn-outline-dark col-6 m-2'>Cancel</button>
+      <button type='button' class='btn btn-outline-dark col-6 m-2 cancel-btn'>Cancel</button>
       <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Next</button>
     </div>
   </div>

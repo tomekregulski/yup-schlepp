@@ -9,6 +9,7 @@ const buildingAmenForm = document.querySelector('.building-amenities');
 const fullUnitForm = document.querySelector('.unit-full-form');
 const unitAmenForm = document.querySelector('.unit-amenities');
 const unitImageForm = document.querySelector('.unit-images-form');
+const cancelBtn = document.querySelector('.cancel-btn');
 
 // dropdown menu event listener
 drop.addEventListener('change', () => {
@@ -27,6 +28,11 @@ drop.addEventListener('change', () => {
     }
     selectRow.classList.add('hide');
   }
+});
+
+// cancel button
+cancelBtn.addEventListener('click', () => {
+  document.location.replace('/');
 });
 
 // add/edit listing - mgmt dropdown card '/new-listing/management'
@@ -67,6 +73,7 @@ const buildingFormHandler = () => {
     e.preventDefault();
     const buildingVal = buildingInput.value.trim();
     const mgmtID = document.getElementById('mgmt-id');
+    // if the selected index is the last value (add a building)
     if (options.selectedIndex === options.length - 1) {
       if (buildingVal === '') {
         alert('Please enter valid address before submitting');
@@ -216,18 +223,13 @@ const buildingAmenFormHandler = async (e) => {
 
 // add listing - unit dropdown card '/new-listing/units/:id'
 const unitFormHandler = () => {
-  const unit = document.getElementById('unit');
-  const unitForm = document.querySelector('.unit-form');
-  const buildingId = document.getElementById('building-id');
-
-  unitForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  document.querySelector('.unit-drop').addEventListener('change', async (e) => {
     if (options.selectedIndex === options.length - 1) {
       document.querySelector('.inner-card').classList.toggle('hide');
       fullUnitForm.classList.toggle('hide');
     } else {
       const unitId = drop.value;
-      // redirect to the view page for this unit once it's built
+      document.location.replace(`/units/${unitId}`);
     }
   });
 };
@@ -380,8 +382,11 @@ const unitImageFormHandler = async (e) => {
   // console.log(formData.getAll('image'));
   const uploadImages = await fetch(`/api/units/${unitIdPhotos}/uploadImage`, options);
 
-  let data = await uploadImages;
-  console.log(data);
+  if (uploadImages.ok) {
+    document.location.replace(`/units/${unitIdPhotos}`);
+  } else {
+    alert('Something went wrong... Photo uploads are limited to 20 files, each with a maximum size of 10MB');
+  }
 };
 
 if (
