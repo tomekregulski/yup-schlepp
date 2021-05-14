@@ -4,7 +4,7 @@
 </section> --}}
 {{!-- {{/each}} --}}
 {{#each buildings as |building| }}
-<div class="result-container">
+<div class="result-container d-flex">
     <a href="/listings/{{building.id}}">{{building.street_address}}</a>
     <p>{{building.city}}, {{building.state}}, {{building.zip_code}}</p>
     <p>Neighborhood: {{building.neighbothood}}</p>

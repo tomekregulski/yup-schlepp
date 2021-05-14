@@ -4,12 +4,11 @@ const multer = require('multer');
 const streamifier = require('streamifier');
 const cloudinary = require('cloudinary').v2;
 const fileUpload = multer();
-const unitSorter = require("../../utils/unitSorter");
-const { Op } = require("sequelize");
+const unitSorter = require('../../utils/unitSorter');
+const { Op } = require('sequelize');
 
 // get all units
-router.get("/", unitSorter, async (req, res) => {
-
+router.get('/', unitSorter, async (req, res) => {
   const { sortedQueries } = req;
 
   try {
@@ -120,10 +119,11 @@ router.delete('/:id', async (req, res) => {
 // create unit amenities -- not working
 router.post('/amenities', async (req, res) => {
   try {
-    const unitData = await UnitAmenities.create(req.body.unit_amenities);
-    res.status(201).json(unitData);
+    const unitData = await UnitAmenities.create(req.body);
+    res.status(200).json(unitData);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
+    console.log(err);
   }
 });
 
@@ -175,7 +175,8 @@ cloudinary.config({
   api_secret: process.env.CLOUD_SECRET,
 });
 
-router.patch('/:id/uploadImage', fileUpload.array('image', 2), async (req, res) => {
+router.patch('/:id/uploadImage', fileUpload.array('image', 20), async (req, res) => {
+  console.log(req.body);
   const upload = (file) => {
     return new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream((error, result) => {
@@ -188,6 +189,7 @@ router.patch('/:id/uploadImage', fileUpload.array('image', 2), async (req, res) 
     });
   };
 
+  console.log(req);
   try {
     const savedImages = await Promise.all(
       req.files.map(async (file) => {
@@ -197,11 +199,14 @@ router.patch('/:id/uploadImage', fileUpload.array('image', 2), async (req, res) 
       })
     );
 
-    console.log(savedImages);
+    const imageObj = Object.assign({}, savedImages);
+
+    console.log(imageObj);
+    console.log(req.params);
 
     const updatedUnit = await Unit.update(
       {
-        image: savedImages,
+        image: imageObj,
       },
       {
         where: { id: req.params.id },
@@ -209,6 +214,7 @@ router.patch('/:id/uploadImage', fileUpload.array('image', 2), async (req, res) 
     );
 
     res.json(updatedUnit);
+    // console.log(res);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

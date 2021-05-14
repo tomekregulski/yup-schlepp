@@ -1,12 +1,14 @@
 #edit-link {
   margin-top: 30px;
+  margin-bottom: 15px;
   text-align: center;
 }
 
 #listing-images {
-  margin-top: 30px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
+  column-fill: balance;
   justify-content: center;
   align-items: center;
 }
