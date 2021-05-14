@@ -1,7 +1,7 @@
 {{> nav}}
 <div class="container main-card mt-5">
   <div class="row d-flex justify-content-center unit-card">
-    <div class="card col-md address-input m-2 inner-card">
+    <div class="card col-md address-input m-2 p-0 inner-card">
       <div class="card-body container">
         <div class="row d-flex justify-content-center">
           <div class="col">
@@ -9,33 +9,12 @@
           </div>
         </div>
         <hr>
-        <form class="unit-form">
-          <div class="row d-flex justify-content-center select-row">
-            <select class="custom-select dropdown">
-              {{#each buildings as |building|}}
-              <option selected="">Select a unit in {{building.street_address}}</option>
-              {{/each}}
-              {{#each units as |unit|}}
-              <option value={{ unit.id }}>{{unit.unit_num}}</option>
-              {{/each}}
-              <option>Add New Unit</option>
-            </select>
-          </div>
-          <div class="row d-flex justify-content-center add-row hide">
-            <hr>
-            <div class="form-group col-2">
-              <label for="management-company-id">ID</label>
-              {{#each buildings as |building|}}
-              <input type="text" class="form-control" id="building-id" value={{building.id}} readonly>
-              {{/each}}
-            </div>
-          </div>
-          </div>
-          <div class="card-footer d-flex justify-content-center hide">
-            <button type="button" class="btn btn-outline-dark col-6 m-2">Cancel</button>
-            <button type="submit" class="btn btn-outline-dark col-6 m-2 next-btn">Next</button>
-          </div>
-        </form>
+        {{> unit-form}}
+      </div>
     </div>
+    {{> full-unit-form}}
+    {{> new-listing-unit-amenities}}
   </div>
+    {{> unit-images}}
 </div>
+<script src='/js/new-listing.js'></script>

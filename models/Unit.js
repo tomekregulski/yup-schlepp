@@ -22,22 +22,23 @@ Unit.init(
     },
     access: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     op: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     move_in: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     market_as: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     lease_term: {
       type: DataTypes.INTEGER,
+      defaultValue: 12,
       allowNull: false,
     },
     gross_rent: {
@@ -47,10 +48,10 @@ Unit.init(
     concession: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-      allowNull: false,
     },
     months_free: {
       type: DataTypes.INTEGER,
+      defaultValue: 0,
       allowNull: false,
     },
     // come back to this one *******
@@ -75,6 +76,7 @@ Unit.init(
     },
     half_bath: {
       type: DataTypes.INTEGER,
+      defaultValue: 0,
       allowNull: false,
     },
     total_rooms: {

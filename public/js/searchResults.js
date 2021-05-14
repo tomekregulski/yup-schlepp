@@ -1,5 +1,12 @@
-let unitsObject = window.sessionStorage.getItem("units");
-console.log(unitsObject);
+// let unitsObject = window.sessionStorage.getItem("units");
+// console.log(unitsObject);
+const showUnits = () => {
+  let data = sessionStorage.getItem("units");
+  newData = JSON.parse(data);
+  console.log(newData);
+  renderUnitResults(newData);
+};
+
 // function getQuery() {
 //   // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
 //   console.log(document.location.pathname);
@@ -57,18 +64,21 @@ console.log(unitsObject);
 //   });
 // };
 
+// SyntaxError: Unexpected token < in JSON at position 0
+
 // const fetchUnits = async (apiQuery) => {
+//   let data = sessionStorage.getItem('key');
 //   let units = [];
 //   let response = await fetch(apiQuery);
 
 //   if (response.ok) {
-//     let json = await response.json();
+//     let json = await JSON.stringify(response);
 //     console.log(json);
-//     for (var i = 0; i < json.length; i++) {
-//       units.push(json[i]);
-//     }
-//     console.log(units);
-//     renderUnitResults(units);
+//     // for (var i = 0; i < json.length; i++) {
+//     //   units.push(json[i]);
+//     // }
+//     // console.log(units);
+//     // renderUnitResults(units);
 //   } else {
 //     alert(response.statusText);
 //   }
@@ -93,71 +103,37 @@ console.log(unitsObject);
 //   }
 // };
 
-// const renderBuildingResults = (buildings) => {
-//   console.log("rendering buildings...");
-//   console.log(buildings);
-//   clearSearchResults();
-//   let target = document.getElementById("render-test");
-//   if (buildings.length == 0) {
-//     console.log("no match");
-//     container = document.createElement("div");
-//     container.setAttribute("class", "result-container");
-//     noResults = document.createElement("p");
-//     noResults.setAttribute("class", "text-center");
-//     noResults.textContent =
-//       "Sorry! There are currently no entries in the database that match all of those parameters - please try something else";
-//     container.appendChild(noResults);
-//     target.appendChild(container);
-//   }
-//   for (var i = 0; i < buildings.length; i++) {
-//     container = document.createElement("div");
-//     container.setAttribute("class", "result-container");
-//     address = document.createElement("a");
-//     address.setAttribute("href", `/buildings/${buildings[i].id}`);
-//     address.textContent = buildings[i].street_address;
-//     city = document.createElement("p");
-//     city.textContent = `${buildings[i].city}, NY - ${buildings[i].neighborhood}`;
-//     units = document.createElement("p");
-//     units.textContent = `Available Units: ${buildings[i].units.length}`;
-//     container.appendChild(address);
-//     container.appendChild(city);
-//     container.appendChild(units);
-//     target.appendChild(container);
-//   }
-//   toggleBuildings();
-// };
+const renderUnitResults = (newData) => {
+  //   clearSearchResults();
+  let target = document.getElementById("render-test");
+  if (newData.length == 0) {
+    console.log("no match");
+    container = document.createElement("div");
+    // container.setAttribute("class", "result-container");
+    noResults = document.createElement("p");
+    noResults.setAttribute("class", "text-center");
+    noResults.textContent =
+      "Sorry! There are currently no entries in the database that match all of those parameters - please try something else";
+    container.appendChild(noResults);
+    target.appendChild(container);
+  }
+  for (var i = 0; i < newData.length; i++) {
+    console.log("making results");
+    container = document.createElement("div");
+    // container.setAttribute("class", "result-container");
+    address = document.createElement("a");
+    address.setAttribute("href", `/units/${newData[i].id}`);
+    address.textContent = `#${newData[i].unit_num} - ${newData[i].building.street_address}`;
+    city = document.createElement("p");
+    city.textContent = `${newData[i].building.city}, NY - ${newData[i].building.neighborhood}`;
+    bed = document.createElement("p");
+    bed.textContent = `BR: ${newData[i].legal_beds}`;
+    container.appendChild(address);
+    container.appendChild(city);
+    container.appendChild(bed);
+    target.appendChild(container);
+  }
+  //   toggleUnits();
+};
 
-// const renderUnitResults = (units) => {
-//   console.log(units, "units");
-//   clearSearchResults();
-//   let target = document.getElementById("render-test");
-//   if (units.length == 0) {
-//     console.log("no match");
-//     container = document.createElement("div");
-//     container.setAttribute("class", "result-container");
-//     noResults = document.createElement("p");
-//     noResults.setAttribute("class", "text-center");
-//     noResults.textContent =
-//       "Sorry! There are currently no entries in the database that match all of those parameters - please try something else";
-//     container.appendChild(noResults);
-//     target.appendChild(container);
-//   }
-//   for (var i = 0; i < units.length; i++) {
-//     container = document.createElement("div");
-//     container.setAttribute("class", "result-container");
-//     address = document.createElement("a");
-//     address.setAttribute("href", `/units/${units[i].id}`);
-//     address.textContent = `#${units[i].unit_num} - ${units[i].building.street_address}`;
-//     city = document.createElement("p");
-//     city.textContent = `${units[i].building.city}, NY - ${units[i].building.neighborhood}`;
-//     bed = document.createElement("p");
-//     bed.textContent = `BR: ${units[i].legal_beds}`;
-//     container.appendChild(address);
-//     container.appendChild(city);
-//     container.appendChild(bed);
-//     target.appendChild(container);
-//   }
-//   toggleUnits();
-// };
-
-// getQuery();
+showUnits();
