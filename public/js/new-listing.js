@@ -42,7 +42,7 @@ const mgmtFormHandler = () => {
         alert('Please enter a valid management company before submitting');
       } else {
         confirm(`Select OK to add management company: ${mgmtVal}`);
-        const createMgmt = await fetch('/api/management', {
+        const createMgmt = await fetch('/api/managements', {
           method: 'POST',
           body: JSON.stringify({ management_name: mgmtVal }),
           headers: { 'Content-Type': 'application/json' },
