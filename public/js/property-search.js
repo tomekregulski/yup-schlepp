@@ -313,7 +313,5 @@ const uncheckAll = () => {
     .forEach((el) => (el.checked = false));
 };
 
-fetchUnits();
-
 document.getElementById("category-btn").addEventListener("click", searchPivot);
 document.getElementById("search-main").addEventListener("click", buildQuery);
