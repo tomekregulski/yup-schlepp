@@ -3,7 +3,7 @@ const { Unit, UnitAmenities, Building, BuildingAmenities } = require('../../mode
 const multer = require('multer');
 const streamifier = require('streamifier');
 const cloudinary = require('cloudinary').v2;
-const fileUpload = multer();
+const fileUpload = multer({ limits: { fileSize: 1000000000 } });
 const unitSorter = require('../../utils/unitSorter');
 
 // get all units
@@ -180,6 +180,7 @@ cloudinary.config({
 });
 
 router.patch('/:id/uploadImage', fileUpload.array('image', 20), async (req, res) => {
+  console.log(req.body);
   const upload = (file) => {
     return new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream((error, result) => {
@@ -192,6 +193,7 @@ router.patch('/:id/uploadImage', fileUpload.array('image', 20), async (req, res)
     });
   };
 
+  console.log(req);
   try {
     const savedImages = await Promise.all(
       req.files.map(async (file) => {
@@ -201,11 +203,14 @@ router.patch('/:id/uploadImage', fileUpload.array('image', 20), async (req, res)
       })
     );
 
-    console.log(savedImages);
+    const imageObj = Object.assign({}, savedImages);
+
+    console.log(imageObj);
+    console.log(req.params);
 
     const updatedUnit = await Unit.update(
       {
-        image: savedImages,
+        image: imageObj,
       },
       {
         where: { id: req.params.id },

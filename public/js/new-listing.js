@@ -288,6 +288,7 @@ const fullUnitFormHandler = async (e) => {
     fullUnitForm.classList.toggle('hide');
     unitAmenForm.classList.toggle('hide');
     document.getElementById('unit-id-amenities').textContent = unitData.id;
+    unitIdPhotos = unitData.id;
   } else {
     alert('No good');
   }
@@ -351,20 +352,35 @@ const unitAmenFormHandler = async (e) => {
   }
 };
 
+let unitIdPhotos;
 let building_id_photos;
 const unitImageFormHandler = async (e) => {
   e.preventDefault();
 
-  let image = document.getElementById('unit-image-form').files;
-  console.log(image);
+  let images = document.getElementById('unit-image-form').files;
+  // console.log(images);
 
-  const uploadImages = await fetch(`/api/units/${building_id_photos}/uploadImage`, {
-    method: 'PATCH',
-    body: new FormData(unitImageForm),
-    headers: { 'Content-Type': 'application/json' },
+  const formData = new FormData();
+
+  Object.values(images).forEach((image) => {
+    // console.log(image);
+    formData.append('image', image, image.name);
   });
 
-  let data = await uploadImages.json();
+  const options = {
+    method: 'PATCH',
+    body: formData,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  };
+
+  delete options.headers['Content-Type'];
+
+  // console.log(formData.getAll('image'));
+  const uploadImages = await fetch(`/api/units/${unitIdPhotos}/uploadImage`, options);
+
+  let data = await uploadImages;
   console.log(data);
 };
 
