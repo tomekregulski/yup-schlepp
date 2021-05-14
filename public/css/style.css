@@ -4,8 +4,8 @@ YONI ADDITIONS
 
 *******/
 
-@import url('https://use.typekit.net/ihv0ezr.css');
-@import url('https://use.typekit.net/ihv0ezr.css');
+@import url("https://use.typekit.net/ihv0ezr.css");
+@import url("https://use.typekit.net/ihv0ezr.css");
 
 :root {
   --yup-pink: #d07bb3;
@@ -180,6 +180,27 @@ h1 {
   display: none;
 } */
 
+.result-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+  border: solid 1px rgb(207, 123, 179);
+}
+
+@media screen and (min-width: 568px) {
+  .result-container {
+    width: 70%;
+  }
+}
+
 @media screen and (min-width: 650px) {
   h1 {
     text-align: left;
@@ -190,110 +211,13 @@ h1 {
     margin-top: 30px;
   }
 
-  /*.navbar {
-    margin-top: 10px;
-    margin-right: 10%;
-    margin-left: 10%;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .nav-left {
-    flex-direction: row;
-    align-items: baseline;
-  }
-  */
-
-  /* #search-listings {
-    margin-left: 20px;
-  }
-
-  #advanced-search {
-    align-self: flex-start;
-  }
-
-  #property-search {
-    align-items: flex-start;
-  }
-
-  #property-input-group {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-  }
-
-  #min-price {
-    margin-left: 10px;
-  }
-
-  #max-price {
-    margin-left: 10px;
-  }
-
-  #bedrooms-group {
-    display: flex;
-    align-items: baseline;
-  } */
-
   #prop-search-btn {
     margin-top: 10px;
   }
 }
 
-.result-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 30px;
-  margin-left: 10%;
-  margin-right: 10%;
-  width: 50%;
-  padding: 10px;
-  border-radius: 10px;
-  border: solid 1px rgb(207, 123, 179);
-}
-
-@media screen and (min-width: 1000px) {
-  #nav-logo {
-    margin-left: 90px;
+@media screen and (min-width: 750px) {
+  .result-container {
+    width: 600px;
   }
-
-  /*.navbar {
-    margin-right: 90px;
-    margin-left: 90px;
-  }*/
-  /* 
-  #property-section {
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: flex-start;
-    margin-left: 90px;
-  }
-
-  #property-search {
-    margin-top: 10px;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: baseline;
-  }
-
-  #bedrooms {
-    align-self: flex-end;
-    margin-left: 30px;
-  }
-
-  #bedrooms-group {
-    display: flex;
-    align-items: baseline;
-  }
-
-  #prop-search-btn {
-    margin-left: 10px;
-  }
-
-  #advanced-search {
-    margin-left: 10px;
-  } */
 }

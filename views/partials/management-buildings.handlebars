@@ -1,6 +1,22 @@
-{{#each buildings as |building| }}
-<div class="result-container">
-    <a href="/buildings/{{building.id}}">{{building.street_address}}</a>
-    <p>Units Available: {{array_length building.units}}</p>
-</div>
+{{#each buildings as |building|}}
+  <div
+    class="result-container result-container d-flex flex-row justify-content-start align-items-center"
+    style="cursor: pointer"
+    onClick="window.location='/buildings/{{building.id}}'"
+  >
+    <div>
+      <img
+        scr="../public/images/branding/building.png"
+        alt="yup-building-logo"
+        height="90"
+        class="mr-3"
+      />
+    </div>
+    <div class="d-flex flex-column justify-content-between align-items-start">
+      <span class="mt-1">{{building.street_address}}</span>
+      <span class="mt-1">{{building.city}}</span>
+      <span class="mt-1">{{building.neighborhood}}</span>
+      <span class="mt-1">Units Available: {{array_length building.units}}</span>
+    </div>
+  </div>
 {{/each}}
