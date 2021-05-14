@@ -1,16 +1,9 @@
-const router = require("express").Router();
-const {
-  Building,
-  Management,
-  Unit,
-  BuildingAmenities,
-  UnitAmenities,
-} = require("../models");
-const unitSorter = require("../utils/unitSorter");
-const { Op } = require("sequelize");
+const router = require('express').Router();
+const { Building, Management, Unit, BuildingAmenities, UnitAmenities } = require('../models');
+const unitSorter = require('../utils/unitSorter');
+const { Op } = require('sequelize');
 
-router.get("/", async (req, res) => {
-
+router.get('/', async (req, res) => {
   try {
     const buildingData = await Building.findAll({
       include: [
@@ -66,41 +59,7 @@ router.get('/managements/:id', async (req, res) => {
   }
 });
 
-router.get("/results/units/?*", unitSorter, async (req, res) => {
-  // console.log(req.query);
-  try {
-    // const { sortedQueries } = req;
-
-    // const unitData = await Unit.findAll({
-    //   include: [
-    //     {
-    //       model: Building,
-    //       as: "building",
-    //       where: sortedQueries.building,
-    //       include: {
-    //         model: BuildingAmenities,
-    //         as: "building_amenities",
-    //         where: sortedQueries.buildingAmenities,
-    //       },
-    //     },
-    //     {
-    //       model: UnitAmenities,
-    //       as: "unit_amenities",
-    //       where: sortedQueries.unitAmenities,
-    //     },
-    //     // { model: UnitImages },
-    //   ],
-    //   where: sortedQueries.unit,
-    // });
-    // console.log(unitData);
-    res.render("results");
-  } catch (err) {
-    res.status(500).json(err);
-    console.log(err);
-  }
-});
-
-router.get("/buildings/:id", async (req, res) => {
+router.get('/buildings/:id', async (req, res) => {
   try {
     const buildingData = await Building.findByPk(req.params.id, {
       include: [
@@ -125,7 +84,6 @@ router.get("/buildings/:id", async (req, res) => {
         building_id: req.params.id,
       },
     });
-    res.status(200).json(unitData);
 
     const units = unitData.map((unit) => unit.get({ plain: true }));
     res.render('buildings', {
@@ -161,9 +119,11 @@ router.get('/units/:id', async (req, res) => {
 
 router.get('/new-listing/management', async (req, res) => {
   try {
-    const mgmtCompanies = await Management.findAll({ order: [['management_name', 'ASC']] });
+    const mgmtCompanies = await Management.findAll({
+      order: [['management_name', 'ASC']],
+    });
     const mgmt = mgmtCompanies.map((m) => m.get({ plain: true }));
-    res.render('new-management', { mgmt });
+    res.render('new-listing-management', { mgmt });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -174,7 +134,9 @@ router.get('/new-listing/buildings/:id', async (req, res) => {
   try {
     const mgmtData = await Management.findAll({ where: { id: req.params.id } });
     const mgmt = mgmtData.map((m) => m.get({ plain: true }));
-    const mgmtBuildings = await Building.findAll({ where: { management_id: req.params.id } });
+    const mgmtBuildings = await Building.findAll({
+      where: { management_id: req.params.id },
+    });
     const buildings = mgmtBuildings.map((building) => building.get({ plain: true }));
     res.render('new-listing-building', { mgmt, buildings });
   } catch (err) {
@@ -185,9 +147,13 @@ router.get('/new-listing/buildings/:id', async (req, res) => {
 
 router.get('/new-listing/units/:id', async (req, res) => {
   try {
-    const buildingData = await Building.findAll({ where: { id: req.params.id } });
+    const buildingData = await Building.findAll({
+      where: { id: req.params.id },
+    });
     const buildings = buildingData.map((b) => b.get({ plain: true }));
-    const unitsData = await Unit.findAll({ where: { building_id: req.params.id } });
+    const unitsData = await Unit.findAll({
+      where: { building_id: req.params.id },
+    });
     const units = unitsData.map((unit) => unit.get({ plain: true }));
     res.render('new-listing-unit', { buildings, units });
   } catch (err) {
@@ -198,9 +164,13 @@ router.get('/new-listing/units/:id', async (req, res) => {
 
 router.get('/new-listing/form/:id', async (req, res) => {
   try {
-    const buildingData = await Building.findAll({ where: { id: req.params.id } });
+    const buildingData = await Building.findAll({
+      where: { id: req.params.id },
+    });
     const buildings = buildingData.map((b) => b.get({ plain: true }));
-    const unitsData = await Unit.findAll({ where: { building_id: req.params.id } });
+    const unitsData = await Unit.findAll({
+      where: { building_id: req.params.id },
+    });
     const units = unitsData.map((unit) => unit.get({ plain: true }));
     res.render('new-listing-form', { buildings, units });
   } catch (err) {
@@ -222,6 +192,7 @@ router.get('/login', async (req, res) => {
     res.render('login');
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 

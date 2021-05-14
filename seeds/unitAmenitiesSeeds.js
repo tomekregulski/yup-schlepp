@@ -2,6 +2,7 @@ const { UnitAmenities } = require('../models');
 
 const unitAmenitiesData = [
   {
+    furnished: false,
     balcony: true,
     garden: false,
     private_roof: false,
@@ -20,6 +21,7 @@ const unitAmenitiesData = [
     unit_id: 1,
   },
   {
+    furnished: false,
     balcony: false,
     garden: true,
     private_roof: false,
@@ -38,6 +40,7 @@ const unitAmenitiesData = [
     unit_id: 2,
   },
   {
+    furnished: false,
     balcony: false,
     garden: false,
     private_roof: false,
@@ -56,6 +59,7 @@ const unitAmenitiesData = [
     unit_id: 3,
   },
   {
+    furnished: false,
     balcony: false,
     garden: false,
     private_roof: false,
@@ -74,6 +78,7 @@ const unitAmenitiesData = [
     unit_id: 4,
   },
   {
+    furnished: false,
     balcony: true,
     garden: false,
     private_roof: false,
