@@ -1,0 +1,31 @@
+<form class="unit-form">
+  <div class="row d-flex justify-content-center select-row">
+    <div class='col-12 d-flex justify-content-center p-4'>
+      <select class="custom-select dropdown w-75">
+        {{#each buildings as |building|}}
+        <option selected="">Select a unit in {{building.street_address}}</option>
+        {{/each}}
+        {{#each units as |unit|}}
+        <option value={{ unit.id }}>{{unit.unit_num}}</option>
+        {{/each}}
+        <option>Add New Unit</option>
+      </select>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center add-row hide">
+    <hr>
+    <div class="form-group col-2">
+      <label for="management-company-id">ID</label>
+      {{#each buildings as |building|}}
+      <input type="text" class="form-control" id="building-id" value={{building.id}} readonly>
+      {{/each}}
+    </div>
+  </div>
+  </div>
+  <div class='card-footer d-flex justify-content-end hide'>
+    <div class='col-3 d-flex'>
+      <button type='button' class='btn btn-outline-dark col-6 m-2'>Cancel</button>
+      <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Next</button>
+    </div>
+  </div>
+</form>
