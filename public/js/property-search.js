@@ -8,19 +8,16 @@ const searchPivot = (event) => {
   switch (category) {
     case "Management":
       console.log("mgmt");
-      // hideUnitForm();
-      // hideBuildingForm();
+
       buildQuery(category);
       break;
     case "Building":
       console.log("Building");
       showUnitForm();
-      // showBuildingForm();
       break;
     case "Unit":
       console.log("Unit");
       showUnitForm();
-      // showBuildingForm();
       break;
   }
 };
@@ -85,14 +82,36 @@ const renderMgmtResults = (management) => {
   let target = document.getElementById("render-test");
   for (var i = 0; i < management.length; i++) {
     container = document.createElement("div");
-    container.setAttribute("class", "result-container");
-    mgmtName = document.createElement("a");
-    mgmtName.setAttribute("href", `/managements/${management[i].id}`);
-    mgmtName.textContent = management[i].management_name;
-    mgmtBuildings = document.createElement("p");
+    container.setAttribute(
+      "class",
+      "result-container d-flex flex-row justify-content-start justify-content-sm-center align-items-center"
+    );
+    container.setAttribute("style", "cursor: pointer");
+    container.setAttribute(
+      "onClick",
+      `window.location='/managements/${management[i].id}'`
+    );
+    thumbDiv = document.createElement("div");
+    infoDiv = document.createElement("div");
+    infoDiv.setAttribute(
+      "class",
+      "d-flex flex-column justify-content-center align-items-start text-left"
+    );
+    thumbnail = document.createElement("img");
+    thumbnail.setAttribute("src", "/images/branding/building.png");
+    thumbnail.setAttribute("height", "90px");
+    thumbnail.setAttribute("class", "mr-1");
+    mgmtName = document.createElement("span");
+    mgmtName.textContent = `${management[i].management_name} Management`;
+    mgmtBuildings = document.createElement("span");
+    mgmtBuildings.setAttribute("class", "mt-1");
     mgmtBuildings.textContent = `Buildings: ${management[i].buildings.length}`;
-    container.appendChild(mgmtName);
-    container.appendChild(mgmtBuildings);
+
+    thumbDiv.appendChild(thumbnail);
+    infoDiv.appendChild(mgmtName);
+    infoDiv.appendChild(mgmtBuildings);
+    container.appendChild(thumbDiv);
+    container.appendChild(infoDiv);
     target.appendChild(container);
   }
 };
