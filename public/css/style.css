@@ -4,8 +4,8 @@ YONI ADDITIONS
 
 *******/
 
-@import url("https://use.typekit.net/ihv0ezr.css");
-@import url("https://use.typekit.net/ihv0ezr.css");
+@import url('https://use.typekit.net/ihv0ezr.css');
+@import url('https://use.typekit.net/ihv0ezr.css');
 
 :root {
   --yup-pink: #d07bb3;
@@ -43,7 +43,43 @@ body {
   background-color: #faf9f9;
 }
 
+h2 {
+  text-align: center;
+  font-size: 2em;
+}
+
+.main-card {
+  padding: 0 7px !important;
+  width: 35vw;
+  box-shadow: rgba(51, 51, 51, 0.45) 0.95px 0.95px 7.6px;
+}
+
+.inner-card {
+  margin-bottom: 0 !important;
+  border: none !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.px-6 {
+  padding: 0 5rem;
+}
+
+.px-7 {
+  padding: 0 6rem;
+}
+
+.unit-submit {
+  background-color: transparent;
+}
+
 /*****************/
+
+.form-check-input {
+  border-radius: 100% !important;
+}
 
 a {
   color: black;
@@ -204,11 +240,18 @@ h1 {
 }
 
 .result-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin-top: 30px;
   margin-left: 10%;
   margin-right: 10%;
+  width: 450px;
   padding: 10px;
-  border: solid 1px black;
+  border-radius: 10px;
+  border: solid 1px rgb(207, 123, 179);
 }
 
 @media screen and (min-width: 1000px) {

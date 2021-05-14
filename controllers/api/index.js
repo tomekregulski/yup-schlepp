@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const googleRoutes = require('./googleRoutes');
+const googleRoutes = require('./googleRoutes');
 const managementRoutes = require('./managementRoutes');
 const buildingRoutes = require('./buildingRoutes');
 // const buildingAmenRoutes = require('./buildingAmen-routes');
@@ -8,8 +8,8 @@ const userRoutes = require('./usersRoutes');
 const opendataRoutes = require('./openDataRoutes');
 // const unitAmenRoutes = require('./unitAmen-routes');
 
-// router.use('/googleApi', googleRoutes);
-router.use('/managements', managementRoutes);
+router.use('/googleApi', googleRoutes);
+router.use('/management', managementRoutes);
 router.use('/buildings', buildingRoutes);
 // router.use('/building-amenities', buildingAmenRoutes);
 router.use('/units', unitRoutes);

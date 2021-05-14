@@ -1,25 +1,26 @@
 const searchPivot = (event) => {
   event.preventDefault();
   console.log("hello");
-  // let target = document.getElementById("render-test");
-  // while (target.firstChild) {
-  //   target.removeChild(target.firstChild);
-  // }
+  clearSearchResults();
+  uncheckAll();
   const category = document.getElementById("search-category").value;
   console.log(category);
   switch (category) {
     case "Management":
       console.log("mgmt");
+      hideUnitForm();
+      hideBuildingForm();
       buildQuery(category);
       break;
     case "Building":
       console.log("Building");
-      // fetchBuildings();
-      toggleBuildings();
+      hideUnitForm();
+      showBuildingForm();
       break;
     case "Unit":
       console.log("Unit");
-      toggleUnits();
+      showUnitForm();
+      showBuildingForm();
       break;
   }
 };
@@ -68,6 +69,7 @@ const fetchUnits = async (url) => {
       units.push(json[i]);
     }
     renderUnitResults(units);
+    window.sessionStorage.setItem("units", units);
   } else {
     alert(response.statusText);
   }
@@ -97,6 +99,17 @@ const renderBuildingResults = (buildings) => {
   console.log(buildings);
   clearSearchResults();
   let target = document.getElementById("render-test");
+  if (buildings.length == 0) {
+    console.log("no match");
+    container = document.createElement("div");
+    container.setAttribute("class", "result-container");
+    noResults = document.createElement("p");
+    noResults.setAttribute("class", "text-center");
+    noResults.textContent =
+      "Sorry! There are currently no entries in the database that match all of those parameters - please try something else";
+    container.appendChild(noResults);
+    target.appendChild(container);
+  }
   for (var i = 0; i < buildings.length; i++) {
     container = document.createElement("div");
     container.setAttribute("class", "result-container");
@@ -112,12 +125,24 @@ const renderBuildingResults = (buildings) => {
     container.appendChild(units);
     target.appendChild(container);
   }
+  toggleBuildings();
 };
 
 const renderUnitResults = (units) => {
-  console.log(units);
+  console.log(units, "units");
   clearSearchResults();
   let target = document.getElementById("render-test");
+  if (units.length == 0) {
+    console.log("no match");
+    container = document.createElement("div");
+    container.setAttribute("class", "result-container");
+    noResults = document.createElement("p");
+    noResults.setAttribute("class", "text-center");
+    noResults.textContent =
+      "Sorry! There are currently no entries in the database that match all of those parameters - please try something else";
+    container.appendChild(noResults);
+    target.appendChild(container);
+  }
   for (var i = 0; i < units.length; i++) {
     container = document.createElement("div");
     container.setAttribute("class", "result-container");
@@ -139,7 +164,7 @@ const renderUnitResults = (units) => {
 const toggleUnits = () => {
   console.log("unit info");
 
-  toggleCatBtn();
+  toggleBuildings();
 
   let units = document.getElementById("unit_hide");
   if (units.style.display === "none") {
@@ -151,7 +176,6 @@ const toggleUnits = () => {
 
 const toggleBuildings = () => {
   console.log("building info");
-  toggleCatBtn();
 
   let buildings = document.getElementById("building_hide");
   if (buildings.style.display === "none") {
@@ -161,11 +185,65 @@ const toggleBuildings = () => {
   }
 };
 
-const buildQuery = (category) => {
-  console.log(category);
-  let query = [];
+const showBuildingForm = () => {
+  let buildings = document.getElementById("building_hide");
+
+  if (buildings.style.display === "none") {
+    buildings.style.display = "block";
+  }
+};
+
+const showUnitForm = () => {
+  let units = document.getElementById("unit_hide");
+
+  if (units.style.display === "none") {
+    units.style.display = "block";
+  }
+};
+
+const hideBuildingForm = () => {
+  let buildings = document.getElementById("building_hide");
+
+  if (buildings.style.display === "block") {
+    buildings.style.display = "none";
+  }
+};
+
+const hideUnitForm = () => {
+  let units = document.getElementById("unit_hide");
+
+  if (units.style.display === "block") {
+    units.style.display = "none";
+  }
+};
+
+const buildQuery = (event) => {
+  event.preventDefault();
+  let category = document.getElementById("search-category").value;
+  let queryArray = [];
   let url = "";
-  let formArray = "";
+  console.log("ok");
+  var checkboxes = document.getElementsByName("searchElement");
+  for (var checkbox of checkboxes) {
+    if (
+      checkbox.checked &&
+      checkbox.value !== "unit[__gte_gross_rent" &&
+      checkbox.value !== "unit[__lte_gross_rent"
+    ) {
+      queryArray.push(checkbox.value);
+    }
+  }
+  const minRent = document.getElementById("min_rent").value;
+  const maxRent = document.getElementById("max_rent").value;
+  if (minRent > 0) {
+    const gte = `unit[__gte_gross_rent]=${minRent}`;
+    queryArray.push(gte);
+  }
+  if (maxRent > 0) {
+    const lte = `unit[__lte_gross_rent]=${maxRent}`;
+    queryArray.push(lte);
+  }
+  console.log(queryArray);
   switch (category) {
     case "Management":
       console.log("mgmt");
@@ -174,34 +252,25 @@ const buildQuery = (category) => {
     case "Building":
       console.log("Building");
       url = "/api/buildings";
-      formArray = buildingFormArray;
       break;
     case "Unit":
       console.log("Unit");
       url = "/api/units";
-      formArray = unitFormArray;
       break;
   }
-  if (category !== "Management") {
-    for (var i = 0; i < formArray.length; i++) {
-      if (formArray[i].checked) {
-        query.push(formArray[i].value);
-      }
-    }
-  }
 
-  console.log(query);
-  if (query.length > 0) {
-    for (var i = 0; i < query.length; i++) {
+  if (queryArray.length > 0) {
+    for (var i = 0; i < queryArray.length; i++) {
       if (i === 0) {
         url = url + "/?";
       }
       if (i > 0) {
         url = url + "&";
       }
-      url = url + query[i];
+      url = url + queryArray[i];
     }
   }
+
   console.log(url);
   switch (category) {
     case "Management":
@@ -214,12 +283,15 @@ const buildQuery = (category) => {
       break;
     case "Unit":
       console.log("Unit");
+      // redirectUrl = `results/units/${url}`;
+      // console.log(redirectUrl);
+      // document.location.assign(redirectUrl);
       fetchUnits(url);
       break;
   }
 };
 
-const toggleCatBtn = () => {
+const toggleSearchBtn = () => {
   const categoryBtn = document.getElementById("category-btn");
   if (categoryBtn.style.display === "none") {
     categoryBtn.style.display = "block";
@@ -235,4 +307,13 @@ const clearSearchResults = () => {
   }
 };
 
+const uncheckAll = () => {
+  document
+    .getElementsByName("searchElement")
+    .forEach((el) => (el.checked = false));
+};
+
+fetchUnits();
+
 document.getElementById("category-btn").addEventListener("click", searchPivot);
+document.getElementById("search-main").addEventListener("click", buildQuery);

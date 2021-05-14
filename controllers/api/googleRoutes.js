@@ -14,6 +14,7 @@ router.all('*', async (req, res) => {
     res.json(response.data);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 

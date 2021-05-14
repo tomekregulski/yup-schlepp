@@ -1,5 +1,6 @@
 #edit-link {
   margin-top: 30px;
+  margin-bottom: 15px;
   text-align: center;
 }
 
@@ -7,6 +8,7 @@
   margin-top: 30px;
   display: flex;
   flex-direction: column;
+  column-fill: balance;
   justify-content: center;
   align-items: center;
 }
@@ -25,19 +27,42 @@
   height: 60px;
 }
 
+.listing-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
 #primary-info {
-  margin: 40px 4% 0;
+  margin-left: 40px 4% 0;
 }
 
 #primary-info p {
   margin-top: 15px;
 }
 
-#more-info {
+#unit-info {
   margin: 40px 4% 0;
 }
 
-#more-info p {
+#unit-info p {
+  margin-top: 15px;
+}
+
+#unit-amenities {
+  margin: 40px 4% 0;
+}
+
+#unit-amenities p {
+  margin-top: 15px;
+}
+
+#building-amenities {
+  margin: 40px 10% 0;
+}
+
+#building-amenities p {
   margin-top: 15px;
 }
 
@@ -58,11 +83,27 @@
     margin-top: 15px;
   }
 
-  #more-info {
+  #unit-info {
     margin: 40px 10% 0;
   }
 
-  #more-info p {
+  #unit-info p {
+    margin-top: 15px;
+  }
+
+  #unit-amenities {
+    margin: 40px 10% 0;
+  }
+
+  #unit-amenities p {
+    margin-top: 15px;
+  }
+
+  #building-amenities {
+    margin: 40px 10% 0;
+  }
+
+  #building-amenities p {
     margin-top: 15px;
   }
 }
