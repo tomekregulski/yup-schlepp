@@ -5,7 +5,7 @@ const managementData = [
     management_name: 'Gold',
   },
   {
-    management_name: 'Mr. Lox',
+    management_name: 'Mr Lox',
   },
 ];
 
