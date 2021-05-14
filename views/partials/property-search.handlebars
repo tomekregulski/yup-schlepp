@@ -4,7 +4,7 @@
     id="property-search"
   >
     <div class="form-group" id="categories">
-      <label for="">Search Management, Buildings, or Units</label>
+      <label class="text-center" for="">Search Management, Buildings, or Units</label>
       <select name="category" class="form-control mt-2" id="search-category">
         <option value="">--Please choose a category--</option>
         <option value="Management">Management</option>
@@ -14,12 +14,12 @@
     </div>
     <button
       type="button"
-      class="btn btn-outline-light dropdown-toggle my-2 my-sm-0"
+      class="btn btn-outline-light my-2 my-sm-0"
       id="category-btn"
     >Choose</button>
     <div style="display: none" id="unit_hide">
       <div
-        class="d-flex flex-row justify-content-center align-items-center mt-4"
+        class="d-flex flex-column justify-content-center align-items-center mt-4"
         id="unit_rooms"
       > 
         <div class="form-group">
@@ -30,9 +30,13 @@
           <label for="max_rent">Maximum Rent</label>
           <input type="number" class="form-control" id="max_rent" name="lte" placeholder="">
         </div>
-        
+      </div>
       <!-- bedrooms -->
-      <div class='dropdown'>
+      <div
+        class="d-flex flex-column justify-content-center align-items-center mt-4"
+        id="unit_rooms"
+      > 
+      <div>
         <button class="btn btn-outline-light dropdown-toggle my-2 my-sm-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bedrooms</button>
         <div class="dropdown-menu">
           <a class="dropdown-item">
