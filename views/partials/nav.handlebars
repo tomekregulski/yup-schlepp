@@ -25,13 +25,13 @@
         <li class="nav-item">
           <a class="nav-link" href="/new-listing/management">Create New Listing</a>
         </li>
+        {{#if logged_in}}
+        <li class="nav-item">
+          <a class="nav-link" href="" id="logout" class="ml-md-3">Log Out</a>
+        </li>
+        {{/if}}
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button
-          class="btn btn-outline-light my-2 my-sm-0"
-          type="submit"
-        >Search</button>
-      </form>
     </div>
   </nav>
 </header>
+<script src="/js/logout.js"></script>
