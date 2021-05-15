@@ -413,5 +413,3 @@ if (
   unitAmenForm.addEventListener('submit', unitAmenFormHandler);
   unitImageForm.addEventListener('submit', unitImageFormHandler);
 }
-// else if (document.location.pathname.includes('/new-listing/form/')) {
-// }

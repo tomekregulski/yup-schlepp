@@ -9,7 +9,7 @@
                         <img src={{unit.image.[0]}} alt="selected-photo" id="selected-photo">
                         <div id="carousel">
                             {{#each unit.image as |image|}}
-                            <img src={{image}} class="carousel-pic m-3" style="display: block; list-style: none" onClick="selectPic(this.src)">
+                            <img src={{image}} alt="carousel-image" class="carousel-pic m-3" style="display: block; list-style: none" onClick="selectPic(this.src)">
                             {{/each}}
                         </div>
                     </section>

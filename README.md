@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+- [Deployed](https://guarded-atoll-77888.herokuapp.com/)
 - [Repo](https://github.com/yondav/yup-schlepp)
 
 ## About / Synopsis
@@ -10,7 +11,7 @@ Yup Schlepp is the beginning of an intensive project revolving around the needs 
 
 In our first version we present the ability to add and edit listings through their numerous data points spanning from data that corresponds to the landlord, building, unit, amenities, location, etc.
 
-While we have the ability to delete from the database n our routes, we don't offer it through the UI. We chose to deliver the initial version this way with purpose. We don't encourage agents to remove listings from the database. Instead we encourage agents to mark the unit's status to show it's availability. Apartments come back on the market on a yearly basis and we want to offer ease of renewing listings with all of their corresponding data when units come back on the market.
+While we have the ability to delete from the database and our routes, we don't offer it through the UI. We chose to deliver the initial version this way with purpose. We don't encourage agents to remove listings from the database. Instead we encourage agents to mark the unit's status to show it's availability. Apartments come back on the market on a yearly basis and we want to offer ease of renewing listings with all of their corresponding data when units come back on the market.
 
 [Express](http://expressjs.com/) server supports `GET`, `POST`, `PUT`, `PATCH` and `DELETE` requests.
 
