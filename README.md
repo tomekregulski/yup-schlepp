@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+- [Deployed](https://guarded-atoll-77888.herokuapp.com/)
 - [Repo](https://github.com/yondav/yup-schlepp)
 
 ## About / Synopsis
