@@ -37,9 +37,9 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    payment_info: {
-      type: DataTypes.STRING,
-    },
+    // payment_info: {
+    //   type: DataTypes.STRING,
+    // },
     // headshot: {
     //   type: DataTypes.STRING,
     // },
