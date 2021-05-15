@@ -10,7 +10,7 @@ const unitSorter = require("../utils/unitSorter");
 const withAuth = require("../utils/auth");
 const { Op } = require("sequelize");
 
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const buildingData = await Building.findAll({
       include: [
@@ -38,7 +38,7 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-router.get("/managements/:id", withAuth, async (req, res) => {
+router.get("/managements/:id", async (req, res) => {
   try {
     const managementData = await Management.findByPk(req.params.id, {
       include: [{ model: Building, as: "buildings" }],
@@ -76,7 +76,7 @@ router.get("/managements/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/buildings/:id", withAuth, async (req, res) => {
+router.get("/buildings/:id", async (req, res) => {
   try {
     const buildingData = await Building.findByPk(req.params.id, {
       include: [
@@ -115,7 +115,7 @@ router.get("/buildings/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/units/:id", withAuth, async (req, res) => {
+router.get("/units/:id", async (req, res) => {
   try {
     const unitData = await Unit.findByPk(req.params.id, {
       include: [
@@ -140,7 +140,7 @@ router.get("/units/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/new-listing/management", withAuth, async (req, res) => {
+router.get("/new-listing/management", async (req, res) => {
   try {
     const mgmtCompanies = await Management.findAll({
       order: [["management_name", "ASC"]],
@@ -158,7 +158,7 @@ router.get("/new-listing/management", withAuth, async (req, res) => {
   }
 });
 
-router.get("/new-listing/buildings/:id", withAuth, async (req, res) => {
+router.get("/new-listing/buildings/:id", async (req, res) => {
   try {
     const mgmtData = await Management.findAll({ where: { id: req.params.id } });
     const mgmt = mgmtData.map((m) => m.get({ plain: true }));
@@ -181,7 +181,7 @@ router.get("/new-listing/buildings/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/new-listing/units/:id", withAuth, async (req, res) => {
+router.get("/new-listing/units/:id", async (req, res) => {
   try {
     const buildingData = await Building.findAll({
       where: { id: req.params.id },
@@ -204,7 +204,7 @@ router.get("/new-listing/units/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/edit-listing/units/:id", withAuth, async (req, res) => {
+router.get("/edit-listing/units/:id", async (req, res) => {
   try {
     const unitData = await Unit.findByPk(req.params.id, {
       include: [
@@ -231,7 +231,7 @@ router.get("/edit-listing/units/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/edit-listing/mgmt/:id", withAuth, async (req, res) => {
+router.get("/edit-listing/mgmt/:id", async (req, res) => {
   try {
     const mgmtData = await Management.findByPk(req.params.id);
     const mgmt = mgmtData.get({ plain: true });
@@ -249,7 +249,7 @@ router.get("/edit-listing/mgmt/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/new-listing/form/:id", withAuth, async (req, res) => {
+router.get("/new-listing/form/:id", async (req, res) => {
   try {
     const buildingData = await Building.findAll({
       where: { id: req.params.id },
@@ -272,7 +272,7 @@ router.get("/new-listing/form/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/edit-listing", withAuth, async (req, res) => {
+router.get("/edit-listing", async (req, res) => {
   try {
     res.render("edit-listing", {
       logged_in: req.session.logged_in,
