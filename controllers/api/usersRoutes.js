@@ -1,9 +1,9 @@
-const { User } = require('../../models');
-const router = require('express').Router();
+const { User } = require("../../models");
+const router = require("express").Router();
 // const withAuth = require('../../utils/auth');
 
 // get all users for dashboard view
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const allUsers = await User.findAll();
     const userData = allUsers.map((user) => user.get({ plain: true }));
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 });
 
 // Create a new user
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const newUserData = await User.create(req.body);
     req.session.save(() => {
@@ -29,23 +29,23 @@ router.post('/', async (req, res) => {
 });
 
 // login validation
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const userData = await User.findOne({
       where: {
-        email: req.body.username,
+        email: req.body.email,
       },
     });
     console.log(userData);
     if (!userData) {
-      res.status(400).json('Incorrect username or password...');
+      res.status(400).json("Incorrect username or password...");
       return;
-    };
+    }
     console.group(req.body.password, req.body.username);
     const passwordData = await userData.validatePassword(req.body.password);
 
     if (!passwordData) {
-      res.status(400).json('Incorrect password.');
+      res.status(400).json("Incorrect password.");
       return;
     }
 
@@ -54,7 +54,7 @@ router.post('/login', async (req, res) => {
       req.session.email = userData.email;
       req.session.logged_in = true;
 
-      res.status(200).json({ user: userData, message: 'Welcome aboard!' });
+      res.status(200).json({ user: userData, message: "Welcome aboard!" });
     });
   } catch (err) {
     res.status(500).json(err);
@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
 });
 
 // logout
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -73,7 +73,7 @@ router.post('/logout', (req, res) => {
 });
 
 // At the moment the update hook is not working. Look into this later
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const updatedUserData = await User.update(
       {
