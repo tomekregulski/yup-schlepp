@@ -6,8 +6,9 @@ const {
   BuildingAmenities,
   UnitAmenities,
 } = require("../models");
+const withAuth = require("../utils/auth");
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", withAuth, async (req, res) => {
   try {
     const buildingData = await Building.findByPk(req.params.id, {
       include: [
@@ -24,6 +25,9 @@ router.get("/:id", async (req, res) => {
     const singleBuildingData = buildingData.get({ plain: true });
     res.render("sample-listing", {
       singleBuildingData,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      email: req.session.email,
     });
   } catch (err) {
     res.status(500).json(err);
