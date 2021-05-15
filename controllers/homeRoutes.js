@@ -293,7 +293,7 @@ router.get("/login", async (req, res) => {
   }
 });
 
-router.get("/agent-registration", async (req, res) => {
+router.get("/agent-registration", withAuth, async (req, res) => {
   try {
     res.render("user-form", {
       logged_in: req.session.logged_in,
