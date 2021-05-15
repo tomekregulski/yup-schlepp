@@ -30,12 +30,17 @@
 
 .address-field {
   margin-left: 5px;
+  text-align: center;
 }
 
 .property-description {
   margin-top: 30px;
+  text-align: center;
 }
 
 .submit-property {
   margin-top: 30px;
+  text-align: center;
+  width: 70px;
+  line-height: 1.5em;
 }
