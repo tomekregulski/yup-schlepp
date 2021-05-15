@@ -1,0 +1,212 @@
+
+{{> nav}}
+<div class="container main-card mt-5">
+  <div class="row d-flex justify-content-center unit-card">
+    <div class="card col-md address-input m-2 p-0 inner-card">
+      <div class="card-body container">
+        <div class="row d-flex justify-content-center">
+          <div class="col">
+            <h2>{{unit.building.street_address}}, {{unit.unit_num}}</h2>
+          </div>
+        </div>
+        {{!-- <hr> --}}
+        <form action="" class="unit-full-form">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="address">{{building.street_address}}</h2>
+              <hr>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="form-group col-3 px-7">
+              <label for="building-id">Building ID:</label>
+              <input type="text" class="form-control" id="building-id" value={{unit.building.id}} readonly>
+            </div>
+            <div class="form-group col-3 px-7 hide">
+              <label for="building-id">Unit ID:</label>
+              <input type="text" class="form-control" id="unit-id" value={{unit.id}} readonly>
+            </div>
+            <div class="form-group col-3 px-6">
+              <label for="unit-num">Unit Number:</label>
+              <input type="text" class="form-control" id="unit-number" value="{{unit.unit_num}}">
+            </div>
+            <div class="col-3 d-flex flex-column px-7">
+              <label for="select">Status:</label>
+              <select class="custom-select dropdown status">
+                <option value={{unit.status}} selected={{unit.status}}>{{unit.status}}</option>
+                <option value="active">Active</option>
+                <option value="deposit">Deposit</option>
+                <option value="rented">Rented</option>
+              </select>
+            </div>
+            <div class="col-3 d-flex flex-column px-7">
+              <label for="select">Type:</label>
+              <select class="custom-select dropdown market-as">
+                <option value={{unit.market_as}} selected={{unit.market_as}}>{{unit.market_as}}</option>
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+                <option value="Townhouse">Townhouse</option>
+                <option value="Condo">Condo</option>
+                <option value="Co-Op">Co-Op</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="form-group col-3 px-7">
+              <label for="op">OP:</label>
+              <div class="d-flex align-items-baseline">
+                <input type="text" class="form-control" id="op" value="{{unit.op}}">
+                <span class="ml-1">%</span>
+              </div>
+            </div>
+            <div class="form-group col-9">
+              <label for="access">Access:</label>
+              <input type="text" class="form-control" id="access" value="{{unit.access}}">
+            </div>
+          </div>
+          <hr>
+          <div class="row mt-3">
+            <div class="form-group col-4 px-5">
+              <label for="move-in">Move In Date:</label>
+              <input type="date" class="form-control" id="move-in">
+            </div>
+            <div class="col-4 d-flex flex-column px-5">
+              <label for="select">Lease Term:</label>
+              <div class="d-flex align-items-baseline">
+                <select class="custom-select dropdown lease-term">
+                <option value={{unit.lease_term}} selected={{unit.lease_term}}>{{unit.lease_term}}</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                </select>
+                <span class="ml-1">months</span>
+              </div>
+            </div>
+            <div class="col-4 d-flex flex-column px-5">
+              <label for="select">Gross Rent:</label>
+              <div class="d-flex align-items-baseline">
+                <span class="mr-1">$</span>
+                <input type="text" class="form-control" id="gross" value="{{unit.gross_rent}}">
+                <span class="ml-1">.00</span>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-2 d-flex flex-column px-5">
+              <label for="concession">Concession:</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="checkbox" aria-label="Concession" class="concession" {{#if unit.concession}} checked {{/if}}>
+                  </div>
+                </div>
+                <select class="custom-select dropdown ml-1 months-free">
+                  <option value={{unit.months_free}} selected={{unit.months_free}}>{{unit.months_free}}</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-2 d-flex flex-column px-5">
+              <label for="legal-beds">Bedrooms:</label>
+              <select class="custom-select dropdown ml-1 beds">
+                <option value={{unit.legal_beds}} selected={{unit.legal_beds}}>{{unit.legal_beds}}</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+            </div>
+            <div class="col-2 d-flex flex-column px-5">
+              <label for="full-baths">Full Bath:</label>
+              <select class="custom-select dropdown ml-1 full-baths">
+                <option value={{unit.full_bath}} selected={{unit.full_bath}}>{{unit.full_bath}}</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div class="col-2 d-flex flex-column px-5">
+              <label for="half-baths">Half Bath:</label>
+              <select class="custom-select dropdown ml-1 half-baths">
+                <option value={{unit.half_bath}} selected={{unit.half_bath}}>{{unit.half_bath}}</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div class="col-2 d-flex flex-column px-5">
+              <label for="total-rooms">Rooms:</label>
+              <select class="custom-select dropdown ml-1 rooms">
+                <option value={{unit.total_rooms}} selected={{unit.total_rooms}}>{{unit.total_rooms}}</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+            <div class="col-2 d-flex flex-column px-5">
+              <label for="sqft">Size:</label>
+              <div class="d-flex align-items-baseline">
+                <input type="text" class="form-control" id="size" value="{{unit.size}}">
+                <span class="ml-1">sqft</span>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row d-flex flex-column align-items-center">
+            <div class="form-group col-10">
+              <label for="description">Description</label>
+              <textarea class="form-control" id="description" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="row d-flex flex-column align-items-center">
+            <div class="card-footer d-flex justify-content-center col-6  unit-submit">
+              <button type="button" class="btn btn-outline-dark col-6 m-2 cancel-btn">Cancel</button>
+              <button type="submit" class="btn btn-outline-dark col-6 m-2 next-btn">Next</button>
+            </div>
+          </div>
+        </form>
+        {{> new-listing-unit-amenities}}
+      </div>
+    </div>
+  </div>
+</div>
+<script src='/js/edit-listing.js'></script>

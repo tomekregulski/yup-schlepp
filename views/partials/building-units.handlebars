@@ -1,22 +1,17 @@
 {{#each units as |unit|}}
   <div
-    class="result-container result-container d-flex flex-row justify-content-start align-items-center"
-    style="cursor: pointer"
+    class='result-container result-container d-flex flex-row justify-content-start align-items-center'
+    style='cursor: pointer'
     onClick="window.location='/units/{{unit.id}}'"
   >
     <div>
-      <img
-        src={{unit.image.0}}
-        alt="unit-photo"
-        style="height: 90px;"
-        class="mr-3"
-      />
+      <img src={{unit.image.[0]}} alt='unit-photo' style='height: 90px;' class='mr-3' />
     </div>
-    <div class="d-flex flex-column justify-content-between align-items-start">
-      <span class="mt-1">{{unit.building.street_address}}</span>
-      <span class="mt-1">{{unit.building.city}}</span>
-      <span class="mt-1">{{unit.building.neighborhood}}</span>
-      <span class="mt-1">Bedrooms:
+    <div class='d-flex flex-column justify-content-between align-items-start'>
+      <span class='mt-1'>{{unit.building.street_address}}</span>
+      <span class='mt-1'>{{unit.building.city}}</span>
+      <span class='mt-1'>{{unit.building.neighborhood}}</span>
+      <span class='mt-1'>Bedrooms:
         {{unit.legal_beds}}
         | Rent: ${{unit.gross_rent}}/mo</span>
     </div>

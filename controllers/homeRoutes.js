@@ -162,6 +162,24 @@ router.get('/new-listing/units/:id', async (req, res) => {
   }
 });
 
+router.get('/edit-listing/units/:id', async (req, res) => {
+  try {
+    const unitData = await Unit.findByPk(req.params.id, {
+      include: [
+        { model: Building, as: 'building', include: { model: BuildingAmenities, as: 'building_amenities' } },
+        { model: UnitAmenities, as: 'unit_amenities' },
+      ],
+    });
+    const unit = unitData.get({ plain: true });
+    // const units = unitsData.map((unit) => unit.get({ plain: true }));
+    res.render('edit-listing-unit', { unit });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
 router.get('/new-listing/form/:id', async (req, res) => {
   try {
     const buildingData = await Building.findAll({
