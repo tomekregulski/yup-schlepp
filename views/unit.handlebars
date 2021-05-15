@@ -162,6 +162,9 @@
         <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Package Room</p>
     {{/if}}
 </section>
+{{#each unit.building.trains as |train|}}
+<h1>{{train.name}}</h1>
+{{/each}}
 </div>
 </div>
 <script src='/js/unitView.js'></script>
