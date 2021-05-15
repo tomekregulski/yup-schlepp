@@ -4,8 +4,8 @@ YONI ADDITIONS
 
 *******/
 
-@import url("https://use.typekit.net/ihv0ezr.css");
-@import url("https://use.typekit.net/ihv0ezr.css");
+@import url('https://use.typekit.net/ihv0ezr.css');
+@import url('https://use.typekit.net/ihv0ezr.css');
 
 :root {
   --yup-pink: #d07bb3;
@@ -75,6 +75,13 @@ h2 {
   background-color: transparent;
 }
 
+.edit-footer {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  background-color: var(--yup-pink);
+  box-shadow: rgba(51, 51, 51, 0.45) 0.95px 0.95px 7.6px;
+}
 /*****************/
 
 .form-check-input {
