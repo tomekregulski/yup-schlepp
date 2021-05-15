@@ -180,6 +180,19 @@ router.get('/edit-listing/units/:id', async (req, res) => {
   }
 });
 
+router.get('/edit-listing/mgmt/:id', async (req, res) => {
+  try {
+    const mgmtData = await Management.findByPk(req.params.id);
+    const mgmt = mgmtData.get({ plain: true });
+    // const units = unitsData.map((unit) => unit.get({ plain: true }));
+    res.render('edit-listing-mgmt', { mgmt });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
 router.get('/new-listing/form/:id', async (req, res) => {
   try {
     const buildingData = await Building.findAll({
