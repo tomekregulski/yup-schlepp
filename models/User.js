@@ -6,7 +6,6 @@ class User extends Model {
   validatePassword(inputPassword) {
     console.group(inputPassword, this.password);
     return bcrypt.compareSync(inputPassword, this.password);
-    
   }
 }
 
@@ -41,13 +40,13 @@ User.init(
     payment_info: {
       type: DataTypes.STRING,
     },
-    headshot: {
-      type: DataTypes.STRING,
-    },
+    // headshot: {
+    //   type: DataTypes.STRING,
+    // },
   },
   {
     hooks: {
-     beforeCreate: async (newUserData) => {
+      beforeCreate: async (newUserData) => {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },

@@ -227,4 +227,12 @@ router.get('/login', async (req, res) => {
   }
 });
 
+router.get('/agent-registration', async (req, res) => {
+  try {
+    res.render('user-form');
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
