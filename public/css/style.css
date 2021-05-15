@@ -82,6 +82,10 @@ h2 {
   background-color: var(--yup-pink);
   box-shadow: rgba(51, 51, 51, 0.45) 0.95px 0.95px 7.6px;
 }
+
+.agent-reg-form {
+  width: 100%;
+}
 /*****************/
 
 .form-check-input {
