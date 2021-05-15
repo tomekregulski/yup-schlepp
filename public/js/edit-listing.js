@@ -57,9 +57,6 @@ const fullUnitFormHandler = async (e) => {
   if (putUnit.ok) {
     alert("it's good");
     fullUnitForm.classList.toggle('hide');
-    // unitAmenForm.classList.toggle('hide');
-    // document.getElementById('unit-id-amenities').textContent = unitData.id;
-    // unitIdPhotos = unitData.id;
   } else {
     alert('No good');
   }
@@ -113,8 +110,6 @@ const unitAmenFormHandler = async (e) => {
 
   if (putUnitAmenities.ok) {
     alert("It's good!");
-    unitAmenForm.classList.toggle('hide');
-    // unitImageForm.classList.toggle('hide');
   } else {
     alert('No good');
   }
