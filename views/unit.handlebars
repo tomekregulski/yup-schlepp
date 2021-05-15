@@ -1,45 +1,38 @@
 {{> nav}}
-<div class="container">
-    <div class="row d-flex flex-column justify-content-center align-items-center"
-        <div id="edit-link">
-            <button type="button" class="btn btn-outline-light my-2 my-sm-0" id="edit-listing"><a href="/edit-listing/units/{{unit.id}}">Edit This Listing</a></button>
+<div class="container-fluid">
+    <div class="row d-flex flex-column justify-content-center align-items-center">
+        <div id="edit-link" class="mt-4">
+            <button type="button" class="btn btn-outline-light" id="edit-listing"><a href="/edit-listing/units/{{unit.id}}">Edit This Listing</a></button>
         </div>
-        <div class="container">
-            <div class="row d-flex flex-column flex-xl-row justify-content-center align-items-center">
-                <div class="col-6">
-                    <div id="primary-info">
-                        <div class="jumbotron">
-                            <p class="h2"><strong>{{unit.building.street_address}}, Unit {{unit.unit_num}}</strong></p>
-                            <hr class="my-4">
-                            <p class="h4"><strong>General Info</strong></p>
-                            <p><strong>Status</strong>: {{unit.status}}</p>
-                            <p>{{unit.building.street_address}}, Unit {{unit.unit_num}}</p>
-                            <p><strong>Gross Rent</strong>: {{unit.gross_rent}}</p>
-                            <p><strong>Months Free</strong>: {{unit.months_free}}</p>
-                            <p><strong>Net Rent</strong>: {{unit.net_rent}}</p>
-                            <p><strong>Lease Term</strong>: {{unit.lease_term}}</p>
-                            <p><strong>OP</strong>: {{unit.op}}</p>
-                            <p><strong>Market As</strong>: {{unit.market_as}}</p>
-                            <p><strong>Move-in</strong>: {{format_date unit.move_in}}</p>
-                            <p><strong>Access</strong>: {{unit.access}}</p>
-                        </div>
-                    </div>
+        <div class="row d-flex flex-column flex-lg-row-reverse justify-content-center justify-content-lg-between align-items-center mt-4">
+            <section id="primary-info" class="jumbotron col-12 col-lg-6">
+                <p class="h2"><strong>{{unit.building.street_address}}, Unit {{unit.unit_num}}</strong></p>
+                <hr class="my-4">
+                <p class="h4"><strong>General Info</strong></p>
+                <p><strong>Status</strong>: {{unit.status}}</p>
+                <p>{{unit.building.street_address}}, Unit {{unit.unit_num}}</p>
+                <p><strong>Gross Rent</strong>: {{unit.gross_rent}}</p>
+                <p><strong>Months Free</strong>: {{unit.months_free}}</p>
+                <p><strong>Net Rent</strong>: {{unit.net_rent}}</p>
+                <p><strong>Lease Term</strong>: {{unit.lease_term}}</p>
+                <p><strong>OP</strong>: {{unit.op}}</p>
+                <p><strong>Market As</strong>: {{unit.market_as}}</p>
+                <p><strong>Move-in</strong>: {{format_date unit.move_in}}</p>
+                <p><strong>Access</strong>: {{unit.access}}</p>
+            </section>
+            <section class=" col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center align-self-lg-start" id="carousel-test">
+                <img src={{unit.image.[0]}} alt="selected-photo" id="selected-photo">
+                <div id="carousel">
+                    {{#each unit.image as |image|}}
+                    <img src={{image}} height="50" class="carousel-pic" style="display: block; list-style: none" onClick="selectPic(this.src)">
+                    {{/each}}
                 </div>
-                <div class="col-6">
-                    <section class="d-flex flex-column justify-content-center align-items-center" id="carousel-test">
-                        <img src={{unit.image.[0]}} alt="selected-photo" style="width: 500px;" id="selected-photo">
-                        <div id="carousel" style="overflow: scroll; width: 500px;">
-                            {{#each unit.image as |image|}}
-                            <img src={{image}} height="50" class="carousel-pic" style="display: block; list-style: none" onClick="selectPic(this.src)">
-                            {{/each}}
-                        </div>
-                    </section>
-                </div>
-            </div>
+            </section>
         </div>
+    </div>
 </div>
-<div class="listing-info d-flex flex-column justify-content-center align-items-center">
-    <section id="unit-info">
+<div class="listing-info d-flex flex-column flex-md-row justify-content-center justify-content-md-center align-items-center align-items-md-start mt-md-4 mb-5">
+    <section id="unit-info" class="mt-5 mt-md-3 mr-md-5 d-flex flex-column justify-content-center align-items-center">
         <p><strong>Unit Info</strong></p>
         <p><strong>Size</strong>: {{unit.size}} sq ft</p>
         <p><strong>Bedrooms</strong>: {{unit.legal_beds}}</p>
@@ -48,7 +41,7 @@
         <p><strong>Full</strong>: {{unit.full_bath}}</p>
         <p><strong>Half</strong>: {{unit.half_bath}}</p>
     </section>
-    <section id="unit-amenities">
+    <section id="unit-amenities" class="mt-3 mr-md-5 d-flex flex-column justify-content-center align-items-center">
         <p><strong>Unit Amenities</strong></p>
         {{#if unit.unit_amenities.balcony}}
         <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Balcony</p>
@@ -96,7 +89,7 @@
         <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Water View</p>
         {{/if}}
     </section>
-    <section id='building-amenities'>
+    <section id='building-amenities' class="mt-3 d-flex flex-column justify-content-center align-items-center">
         <p><strong>Building Amenities</strong></p>
         {{#if unit.building.building_amenities.pets_allowed}}
         <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Pets Allowed</p>
@@ -160,8 +153,7 @@
         {{/if}}
         {{#if unit.building.building_amenities.package_room}}
         <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Package Room</p>
-    {{/if}}
-</section>
-</div>
+        {{/if}}
+    </section>
 </div>
 <script src='/js/unitView.js'></script>

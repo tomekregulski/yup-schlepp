@@ -1,147 +1,87 @@
-#edit-link {
+/* #edit-link {
   margin-top: 30px;
   margin-bottom: 15px;
   text-align: center;
-}
-
-#listing-images {
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  column-fill: balance;
-  justify-content: center;
-  align-items: center;
-}
+} */
 
 #carousel {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
-}
-
-#selected-photo {
-  height: 200px;
+  overflow: scroll;
+  width: 200px;
 }
 
 .carousel-pic {
   height: 60px;
 }
 
-.listing-info {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
 #primary-info {
-  margin-left: 40px 4% 0;
+  width: 270px;
 }
 
-#primary-info p {
-  margin-top: 15px;
+#selected-photo {
+  width: 200px;
 }
 
-#unit-info {
-  margin: 40px 4% 0;
+@media screen and (min-width: 300px) {
+  #selected-photo {
+    width: 250px;
+  }
+
+  #carousel {
+    overflow: scroll;
+    width: 250px;
+  }
 }
 
-#unit-info p {
-  margin-top: 15px;
-}
+@media screen and (min-width: 400px) {
+  #selected-photo {
+    width: 370px;
+  }
 
-#unit-amenities {
-  margin: 40px 4% 0;
-}
-
-#unit-amenities p {
-  margin-top: 15px;
-}
-
-#building-amenities {
-  margin: 40px 10% 0;
-}
-
-#building-amenities p {
-  margin-top: 15px;
+  #carousel {
+    overflow: scroll;
+    width: 370px;
+  }
 }
 
 @media screen and (min-width: 500px) {
   #selected-photo {
-    height: 300px;
-  }
-
-  .carousel-pic {
-    height: 80px;
-  }
-
-  #primary-info {
-    margin: 40px 10% 0;
-  }
-
-  #primary-info p {
-    margin-top: 15px;
-  }
-
-  #unit-info {
-    margin: 40px 10% 0;
-  }
-
-  #unit-info p {
-    margin-top: 15px;
-  }
-
-  #unit-amenities {
-    margin: 40px 10% 0;
-  }
-
-  #unit-amenities p {
-    margin-top: 15px;
-  }
-
-  #building-amenities {
-    margin: 40px 10% 0;
-  }
-
-  #building-amenities p {
-    margin-top: 15px;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  #edit-link {
-    margin-top: 50px;
-    margin-left: 10%;
-    text-align: left;
-  }
-  #listing-images {
-    margin-left: 10%;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    width: 450px;
   }
 
   #carousel {
-    justify-content: flex-start;
-    margin-top: 20px;
+    overflow: scroll;
+    width: 450px;
   }
-
-  #selected-photo {
-    height: 300px;
-  }
-
   .carousel-pic {
     height: 80px;
-    margin-left: 15px;
   }
 
   #primary-info {
-    display: inline-block;
-    margin: 0 5% 0;
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #selected-photo {
+    width: 500px;
   }
 
-  #primary-info p {
-    margin-top: 15px;
+  #carousel {
+    overflow: scroll;
+    width: 500px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #selected-photo {
+    width: 400px;
+  }
+
+  #carousel {
+    overflow: scroll;
+    width: 400px;
   }
 }
