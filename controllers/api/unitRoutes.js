@@ -74,6 +74,7 @@ router.post('/', async (req, res) => {
     res.status(201).json(unitData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
