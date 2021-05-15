@@ -115,6 +115,13 @@ h1 {
   background-color: rgb(207, 123, 179);
 }
 
+.cancel-btn {
+  padding: 5px;
+  background-color: rgb(207, 123, 179);
+  width: 70px;
+
+}
+
 .amenity-icon {
   height: 20px;
 }
