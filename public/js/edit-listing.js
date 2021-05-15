@@ -1,8 +1,7 @@
 const fullUnitForm = document.querySelector('.unit-full-form');
 const unitId = document.getElementById('unit-id').value;
 const unitAmenForm = document.querySelector('.unit-amenities');
-
-console.log(unitId);
+const unitImageForm = document.querySelector('.unit-images-form');
 
 const fullUnitFormHandler = async (e) => {
   // fullUnitForm.addEventListener('submit', async (e) => {
@@ -58,7 +57,7 @@ const fullUnitFormHandler = async (e) => {
   if (putUnit.ok) {
     alert("it's good");
     fullUnitForm.classList.toggle('hide');
-    unitAmenForm.classList.toggle('hide');
+    // unitAmenForm.classList.toggle('hide');
     // document.getElementById('unit-id-amenities').textContent = unitData.id;
     // unitIdPhotos = unitData.id;
   } else {
@@ -112,17 +111,48 @@ const unitAmenFormHandler = async (e) => {
     headers: { 'Content-Type': 'application/json' },
   });
 
-  // const amenitiesData = await putUnitAmenities.json();
-
   if (putUnitAmenities.ok) {
     alert("It's good!");
-    // unitAmenForm.classList.toggle('hide');
+    unitAmenForm.classList.toggle('hide');
     // unitImageForm.classList.toggle('hide');
-    // building_id_photos = amenitiesData.id;
   } else {
     alert('No good');
   }
 };
 
+const unitImageFormHandler = async (e) => {
+  e.preventDefault();
+
+  let images = document.getElementById('unit-image-form').files;
+  // console.log(images);
+
+  const formData = new FormData();
+
+  Object.values(images).forEach((image) => {
+    // console.log(image);
+    formData.append('image', image, image.name);
+  });
+
+  const options = {
+    method: 'PATCH',
+    body: formData,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  };
+
+  delete options.headers['Content-Type'];
+
+  // console.log(formData.getAll('image'));
+  const uploadImages = await fetch(`/api/units/${unitId}/uploadImage`, options);
+
+  if (uploadImages.ok) {
+    alert("It's good!");
+  } else {
+    alert('Something went wrong... Photo uploads are limited to 20 files, each with a maximum size of 10MB');
+  }
+};
+
 fullUnitForm.addEventListener('submit', fullUnitFormHandler);
 unitAmenForm.addEventListener('submit', unitAmenFormHandler);
+unitImageForm.addEventListener('submit', unitImageFormHandler);

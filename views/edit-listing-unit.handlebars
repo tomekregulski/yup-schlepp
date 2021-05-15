@@ -197,14 +197,14 @@
               <textarea class="form-control" id="description" rows="3"></textarea>
             </div>
           </div>
-          <div class="row d-flex flex-column align-items-center">
+          <div class="row d-flex flex-column align-items-center mb-5 p-4">
             <div class="card-footer d-flex justify-content-center col-6  unit-submit">
-              <button type="button" class="btn btn-outline-dark col-6 m-2 cancel-btn">Cancel</button>
-              <button type="submit" class="btn btn-outline-dark col-6 m-2 next-btn">Next</button>
+              {{!-- <button type="button" class="btn btn-outline-dark col-6 m-2 cancel-btn">Cancel</button> --}}
+              <button type="submit" class="btn btn-outline-dark col-6 m-2 next-btn">Update</button>
             </div>
           </div>
         </form>
-        <form action='' class='unit-amenities '>
+        <form action='' class='unit-amenities'>
           <div class='row'>
             <div class='col-12'>
               <h2 class='address'>Amenities</h2>
@@ -340,12 +340,32 @@
               </div>
             </div>
           </div>
-
-          
           <div class='row d-flex flex-column align-items-center mt-4'>
             <div class='card-footer d-flex justify-content-center col-6 unit-submit'>
-              <button type='button' class='btn btn-outline-dark col-6 m-2 cancel-btn'>Cancel</button>
-              <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Next</button>
+              {{!-- <button type='button' class='btn btn-outline-dark col-6 m-2 cancel-btn'>Cancel</button> --}}
+              <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Update</button>
+            </div>
+          </div>
+        </form>
+        <form enctype='multipart/form-data' class='unit-images-form'>
+          <div class='row'>
+            <div class='col-12'>
+              <h2 class='address'>Photos</h2>
+              <hr />
+            </div>
+          </div>
+          <div class='row'>
+            <div class='col-12 d-flex justify-content-center p-4'>
+              <div class='custom-file w-75'>
+                <input type='file' name='image' accept='image/*' class='custom-file-input' id='unit-image-form' multiple />
+                <label class='custom-file-label' for='unit-image-form'>Choose files</label>
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex flex-column align-items-center">
+            <div class="card-footer d-flex justify-content-center col-6  unit-submit">
+              {{!-- <button type="button" class="btn btn-outline-dark col-6 m-2 cancel-btn">Cancel</button> --}}
+              <button type="submit" class="btn btn-outline-dark col-6 m-2 next-btn">Update</button>
             </div>
           </div>
         </form>
