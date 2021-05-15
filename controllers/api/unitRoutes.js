@@ -143,9 +143,11 @@ router.put('/amenities/:id', async (req, res) => {
       return;
     } else {
       res.json(unitData);
+      console.log(res);
     }
   } catch (err) {
     res.status(500).json;
+    console.log(err);
   }
 });
 

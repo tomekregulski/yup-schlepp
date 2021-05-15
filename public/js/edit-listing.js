@@ -67,4 +67,62 @@ const fullUnitFormHandler = async (e) => {
   // });
 };
 
+const unitAmenFormHandler = async (e) => {
+  e.preventDefault();
+  console.log('you called?');
+  let furnished = document.getElementById('furnished').checked;
+  let balcony = document.getElementById('balcony').checked;
+  let garden = document.getElementById('private-roof').checked;
+  let private_roof = document.getElementById('garden').checked;
+  let roof_rights = document.getElementById('roof-rights').checked;
+  let terrace = document.getElementById('terrace').checked;
+  let central_air = document.getElementById('central-air').checked;
+  let dishwasher = document.getElementById('dishwasher').checked;
+  let fireplace = document.getElementById('fireplace').checked;
+  let hardwood_floors = document.getElementById('hardwood-floors').checked;
+  let washer_dryer = document.getElementById('washer-dryer').checked;
+  let city_view = document.getElementById('city-view').checked;
+  let garden_view = document.getElementById('garden-view').checked;
+  let park_view = document.getElementById('park-view').checked;
+  let skyline_view = document.getElementById('skyline-view').checked;
+  let water_view = document.getElementById('water-view').checked;
+  let unit_id = unitId;
+
+  const putUnitAmenities = await fetch(`/api/units/amenities/${unitId}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      furnished,
+      balcony,
+      garden,
+      private_roof,
+      roof_rights,
+      terrace,
+      central_air,
+      dishwasher,
+      fireplace,
+      hardwood_floors,
+      washer_dryer,
+      city_view,
+      garden_view,
+      park_view,
+      skyline_view,
+      water_view,
+      unit_id,
+    }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  // const amenitiesData = await putUnitAmenities.json();
+
+  if (putUnitAmenities.ok) {
+    alert("It's good!");
+    // unitAmenForm.classList.toggle('hide');
+    // unitImageForm.classList.toggle('hide');
+    // building_id_photos = amenitiesData.id;
+  } else {
+    alert('No good');
+  }
+};
+
 fullUnitForm.addEventListener('submit', fullUnitFormHandler);
+unitAmenForm.addEventListener('submit', unitAmenFormHandler);

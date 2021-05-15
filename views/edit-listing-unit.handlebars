@@ -204,7 +204,151 @@
             </div>
           </div>
         </form>
-        {{> new-listing-unit-amenities}}
+        <form action='' class='unit-amenities '>
+          <div class='row'>
+            <div class='col-12'>
+              <h2 class='address'>Amenities</h2>
+              <hr />
+            </div>
+          </div>
+          <div class='row'>
+            {{! Furnished }}
+            <div class='col-2 px-5'>
+              <div class='row'>
+                <h3>Furniture <i class='fas fa-couch'></i></h3>
+              </div>
+              <div class='row'>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='furnished' {{#if unit.unit_amenities.furnished}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='furnished'>Furnished</label>
+                </div>
+              </div>
+            </div>
+            {{! outdoor }}
+            <div class='col-5 px-5'>
+              <div class='row d-flex justify-content-center'>
+                <h3>Outdoor <i class='fab fa-pagelines'></i></h3>
+              </div>
+              <div class='row d-flex'>
+                <div class='col-6 d-flex flex-column align-items-center'>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='balcony' {{#if unit.unit_amenities.balcony}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='balcony'>Balcony</label>
+                  </div>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='garden' {{#if unit.unit_amenities.garden}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='garden'>Garden</label>
+                  </div>
+                </div>
+                <div class='col-6 d-flex flex-column align-items-center'>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='private-roof' {{#if unit.unit_amenities.private_roof}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='private-roof'>Private Roof</label>
+                  </div>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='roof-rights' {{#if unit.unit_amenities.roof_rights}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='roof-rights'>Roof Rights</label>
+                  </div>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='terrace' {{#if unit.unit_amenities.terrace}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='terrace'>Terrace</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class='row d-flex flex-column'>
+            {{! features }}
+            <div class='row d-flex justify-content-around mb-3'>
+              <h3>Unit Features <i class='fas fa-bed'></i></h3>
+            </div>
+            <div class='row d-flex justify-content-between'>
+              <div class='col-2 px-5'>
+                <div class='row d-flex flex-column'>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='central-air' {{#if unit.unit_amenities.central_air}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='central-air'>Central Air</label>
+                  </div>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='dishwasher' {{#if unit.unit_amenities.dishwasher}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='dishwasher'>Dishwasher</label>
+                  </div>
+                </div>
+              </div>
+              <div class='col-2 px-5'>
+                <div class='row d-flex flex-column'>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='fireplace' {{#if unit.unit_amenities.fireplace}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='fireplace'>Fireplace</label>
+                  </div>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='hardwood-floors' {{#if unit.unit_amenities.hardwood_floors}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='hardwood-floors'>Hardwood Floors</label>
+                  </div>
+                </div>
+              </div>
+              <div class='col-2 px-5'>
+                <div class='row d-flex flex-column'>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='washer-dryer' {{#if unit.unit_amenities.washer_dryer}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='washer-dryer'>Washer-Dryer</label>
+                  </div>
+                </div>
+              </div>
+              <div class='col-2 px-5'>
+            </div>
+          </div>
+          <hr />
+          <div class='row d-flex flex-column'>
+            {{! views }}
+            <div class='row d-flex justify-content-around mb-3'>
+              <h3>Views <i class="fas fa-binoculars"></i></h3>
+            </div>
+            <div class='row d-flex justify-content-between'>
+              <div class='col-2 px-5'>
+                <div class='row d-flex flex-column'>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='city-view' {{#if unit.unit_amenities.city_view}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='city-view'>City View</label>
+                  </div>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='garden-view' {{#if unit.unit_amenities.garden_view}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='garden-view'>Garden View</label>
+                  </div>
+                </div>
+              </div>
+              <div class='col-2 px-5'>
+                <div class='row d-flex flex-column'>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='park-view' {{#if unit.unit_amenities.park_view}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='park-view'>Park View</label>
+                  </div>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='skyline-view' {{#if unit.unit_amenities.skyline_view}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='skyline-view'>Skyline View</label>
+                  </div>
+                </div>
+              </div>
+              <div class='col-2 px-5'>
+                <div class='row d-flex flex-column'>
+                  <div class='custom-control custom-checkbox d-flex align-items-center'>
+                    <input type='checkbox' class='custom-control-input' id='water-view' {{#if unit.unit_amenities.water_view}} checked {{/if}}/>
+                    <label class='custom-control-label align' for='water-view'>Water View</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class='row d-flex flex-column align-items-center mt-4'>
+            <div class='card-footer d-flex justify-content-center col-6 unit-submit'>
+              <button type='button' class='btn btn-outline-dark col-6 m-2 cancel-btn'>Cancel</button>
+              <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Next</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
