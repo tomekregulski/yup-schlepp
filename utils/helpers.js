@@ -11,4 +11,7 @@ module.exports = {
   round_distance: (distance) => {
     return Math.round(distance * 100) / 100;
   },
+  to_lowerCase: (train) => {
+    return train.toLowerCase();
+  },
 };
