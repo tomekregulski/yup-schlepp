@@ -131,7 +131,7 @@ const renderUnitResults = (newData) => {
     container.setAttribute("style", "cursor: pointer");
     container.setAttribute(
       "onClick",
-      `window.location='/buildings/${newData[i].id}'`
+      `window.location='/units/${newData[i].id}'`
     );
     thumbDiv = document.createElement("div");
     infoDiv = document.createElement("div");
