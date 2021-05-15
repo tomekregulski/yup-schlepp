@@ -57,6 +57,7 @@ const fetchBuildings = async (apiUrl, redirectUrl) => {
   }
 };
 
+// Fetch units with constructed query
 const fetchUnits = async (apiUrl, redirectUrl) => {
   let units = [];
 
