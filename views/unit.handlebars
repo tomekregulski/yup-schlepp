@@ -213,7 +213,7 @@
                         <div class="row p-1">
                             <div class="col-6">
                                 {{#each train.station_lines as |line|}}
-                                <img src="/images/trains/{{line}}.svg" alt="{{line}}" class="train-icon">
+                                <img src="/images/trains/{{to_lowerCase line}}.svg" alt="{{line}}" class="train-icon">
                                 {{/each}}
                             </div>
                             <div class="col-6">
