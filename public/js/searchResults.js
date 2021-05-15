@@ -111,7 +111,7 @@ const renderUnitResults = (newData) => {
     container = document.createElement("div");
     container.setAttribute("class", "result-container");
     noResults = document.createElement("p");
-    noResults.setAttribute("class", "text-center");
+    noResults.setAttribute("style", "text-center");
     noResults.textContent =
       "Sorry! There are currently no entries in the database that match all of those parameters - please try something else";
     container.appendChild(noResults);
@@ -120,10 +120,6 @@ const renderUnitResults = (newData) => {
   for (var i = 0; i < newData.length; i++) {
     console.log("making results");
     container = document.createElement("div");
-    container.setAttribute(
-      "class",
-      "result-container d-flex flex-row justify-content-start align-items-center"
-    );
     container.setAttribute(
       "class",
       "result-container d-flex flex-row justify-content-start align-items-center"

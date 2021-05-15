@@ -1,170 +1,263 @@
 {{> nav}}
-<div class="container">
-    <div class="row d-flex flex-column justify-content-center align-items-center"
-        <div id="edit-link">
-            <button type="button" class="btn btn-outline-light my-2 my-sm-0" id="edit-listing"><a href="/edit-listing/units/{{unit.id}}">Edit This Listing</a></button>
-        </div>
-        <div class="container">
-            <div class="row d-flex flex-column flex-xl-row justify-content-center align-items-center">
-                <div class="col-6">
-                    <div id="primary-info">
-                        <div class="jumbotron">
-                            <p class="h2"><strong>{{unit.building.street_address}}, Unit {{unit.unit_num}}</strong></p>
-                            <hr class="my-4">
-                            <p class="h4"><strong>General Info</strong></p>
-                            <p><strong>Status</strong>: {{unit.status}}</p>
-                            <p>{{unit.building.street_address}}, Unit {{unit.unit_num}}</p>
-                            <p><strong>Gross Rent</strong>: {{unit.gross_rent}}</p>
-                            <p><strong>Months Free</strong>: {{unit.months_free}}</p>
-                            <p><strong>Net Rent</strong>: {{unit.net_rent}}</p>
-                            <p><strong>Lease Term</strong>: {{unit.lease_term}}</p>
-                            <p><strong>OP</strong>: {{unit.op}}</p>
-                            <p><strong>Market As</strong>: {{unit.market_as}}</p>
-                            <p><strong>Move-in</strong>: {{format_date unit.move_in}}</p>
-                            <p><strong>Access</strong>: {{unit.access}}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <section class="d-flex flex-column justify-content-center align-items-center" id="carousel-test">
-                        <img src={{unit.image.[0]}} alt="selected-photo" style="width: 500px;" id="selected-photo">
-                        <div id="carousel" style="overflow: scroll; width: 500px;">
+
+<div class="container main-card mt-5">
+    <div class="row d-flex justify-content-center unit-card">
+        <div class="card col-md address-input m-2 p-0 inner-card">
+            <div class="card-body container agent-reg-card p-3">
+                <div class="row d-flex">
+                    <section class=" col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center align-self-lg-start" id="carousel-test">
+                        <img src={{unit.image.[0]}} alt="selected-photo" id="selected-photo">
+                        <div id="carousel">
                             {{#each unit.image as |image|}}
-                            <img src={{image}} height="50" class="carousel-pic" style="display: block; list-style: none" onClick="selectPic(this.src)">
+                            <img src={{image}} class="carousel-pic m-3" style="display: block; list-style: none" onClick="selectPic(this.src)">
                             {{/each}}
                         </div>
                     </section>
+                    <div class="col-12 col-lg-6">
+                        <section id="primary-info" class=" jumbotron jumbo m-0">
+                            <div class="row">
+                                <div class="col">
+                                    <h2><strong>{{unit.building.street_address}}, Unit {{unit.unit_num}}</strong></h2>
+                                </div>
+                            </div>
+                            <hr class="my-4">
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-4">
+                                    <p><strong>OP</strong>: {{unit.op}}%</p>
+
+                                </div>
+                                <div class="col-4">
+                                    <p><strong>Type</strong>: {{unit.market_as}}</p>
+                                </div>
+                                <div class="col-4">
+                                    <p><strong>Status</strong>: {{unit.status}}</p>
+                                </div>
+                            </div>
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-4">
+                                    <p><strong>Gross Rent</strong>: {{unit.gross_rent}}</p>
+                                </div>
+                                <div class="col-4">
+                                    <p><strong>Months Free</strong>: {{unit.months_free}}</p>
+                                </div>
+                                <div class="col-4">
+                                    <p><strong>Net Rent</strong>: {{unit.net_rent}}</p>
+                                </div>
+                            </div>
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-4">
+                                    <p><strong>Lease Term</strong>: {{unit.lease_term}}</p>
+                                </div>
+                                <div class="col-4">
+                                    <p><strong>Move-in</strong>: {{format_date unit.move_in}}</p>
+                                </div>
+                                <div class="col-4">
+                                    <p><strong>Access</strong>: {{unit.access}}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row d-flex justify-content-between mb-3">
+                                <div class="col-12">
+                                    <section id="unit-info" class="mt-md-3 mr-md-5 d-flex flex-wrap justify-content-between">
+                                        {{!-- <p><strong>Unit Info</strong></p> --}}
+                                        <p class="text-center"><strong>Size</strong>: <br>{{unit.size}} sq ft</p>
+                                        <p class="text-center"><strong>Rooms</strong>: <br>{{unit.total_rooms}}</p>
+                                        <p class="text-center"><strong>Beds</strong>: <br>{{unit.legal_beds}}</p>
+                                        <p class="text-center"><strong>Full Bath</strong>: <br>{{unit.full_bath}}</p>
+                                        <p class="text-center"><strong>Half Bath</strong>: <br>{{unit.half_bath}}</p>
+                                    </section>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row d-flex justify-content-between mb-3">
+                                <div class="col-12 text-center">
+                                    <p><strong>Unit Amenities</strong></p>
+                                    <section id="unit-amenities" class="mr-md-5 d-flex flex-wrap justify-content-between">
+                                        {{#if unit.unit_amenities.balcony}}
+                                        <p><i class="fas fa-check"></i>Balcony</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.garden}}
+                                        <p><i class="fas fa-check"></i>Garden</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.private_roof}}
+                                        <p><i class="fas fa-check"></i>Private Roof</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.roof_rights}}
+                                        <p><i class="fas fa-check"></i>Roof Rights</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.terrace}}
+                                        <p><i class="fas fa-check"></i>Terrace</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.central_air}}
+                                        <p><i class="fas fa-check"></i>Central Air</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.dishwasher}}
+                                        <p><i class="fas fa-check"></i>Dishwasher</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.fireplace}}
+                                        <p><i class="fas fa-check"></i>Fireplace</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.hardwood_floors}}
+                                        <p><i class="fas fa-check"></i>Hardwood Floors</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.washer_dryer}}
+                                        <p><i class="fas fa-check"></i>Washer/Dryer</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.city_view}}
+                                        <p><i class="fas fa-check"></i>City View</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.garden_view}}
+                                        <p><i class="fas fa-check"></i>Gaden View</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.park_view}}
+                                        <p><i class="fas fa-check"></i>Park View</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.garden_view}}
+                                        <p><i class="fas fa-check"></i>Gaden View</p>
+                                        {{/if}}
+                                        {{#if unit.unit_amenities.water_view}}
+                                        <p><i class="fas fa-check"></i>Water View</p>
+                                        {{/if}}
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-12 text-center">
+                                    <p><strong>Building Amenities</strong></p>
+                                    <section id='building-amenities' class="d-flex flex-wrap justify-content-between">
+                                        {{#if unit.building.building_amenities.pets_allowed}}
+                                        <p><i class="fas fa-check"></i>Pets Allowed</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.roof}}
+                                        <p><i class="fas fa-check"></i>Roof</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.courtyard}}
+                                        <p><i class="fas fa-check"></i>Courtyard</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.concierge}}
+                                        <p><i class="fas fa-check"></i>Concierge</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.doorman}}
+                                        <p><i class="fas fa-check"></i>Doorman</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.elevator}}
+                                        <p><i class="fas fa-check"></i>Elevator</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.laundry}}
+                                        <p><i class="fas fa-check"></i>Laundry</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.children_playroom}}
+                                        <p><i class="fas fa-check"></i>Children's Playroom</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.gym}}
+                                        <p><i class="fas fa-check"></i>Gym</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.media_room}}
+                                        <p><i class="fas fa-check"></i>Media Room</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.recreation_room}}
+                                        <p><i class="fas fa-check"></i>Recreation Room</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.swimming_pool}}
+                                        <p><i class="fas fa-check"></i>Swimming Pool</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.live_in_super}}
+                                        <p><i class="fas fa-check"></i>Live-in Super</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.smoke_free}}
+                                        <p><i class="fas fa-check"></i>Smoke-free</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.wheelchair_access}}
+                                        <p><i class="fas fa-check"></i>Wheelchair Access</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.garage_parking}}
+                                        <p><i class="fas fa-check"></i>Garage Parking</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.valet_parking}}
+                                        <p><i class="fas fa-check"></i>Valet Parking</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.bike_room}}
+                                        <p><i class="fas fa-check"></i>Bike Room</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.cold_storage}}
+                                        <p><i class="fas fa-check"></i>Cold Storage</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.locker_cage}}
+                                        <p><i class="fas fa-check"></i>Locker Cage</p>
+                                        {{/if}}
+                                        {{#if unit.building.building_amenities.package_room}}
+                                        <p><i class="fas fa-check"></i>Package Room</p>
+                                        {{/if}}
+                                    </section>
+                                </div>
+                            </div>
+                            <hr>
+                        </section>
+                    </div>
                 </div>
+                <div class="row d-flex flex-column mt-5">
+                    <div class="col-12 justify-content-center">
+                        <h2>Additional Info:</h2>
+                    </div>
+                    <hr>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-7">
+                            <p>{{unit.desc}}</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                {{#each unit.building.trains as |train|}}
+                <div class="row d-flex justify-content-end">
+                    <div class="col-6">
+                        <div class="row p-1">
+                            <div class="col-6">
+                                {{#each train.station_lines as |line|}}
+                                <img src="/images/trains/{{line}}.svg" alt="{{line}}" class="train-icon">
+                                {{/each}}
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span>{{train.name}}</span>       
+                                    </div>
+                                </div>
+                                <div class="row my-2">
+                                    <div class="col-12">
+                                        <span>{{round_distance train.distance}} mi</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
             </div>
         </div>
+    </div>
 </div>
-<div class="listing-info d-flex flex-column justify-content-center align-items-center">
-    <section id="unit-info">
-        <p><strong>Unit Info</strong></p>
-        <p><strong>Size</strong>: {{unit.size}} sq ft</p>
-        <p><strong>Bedrooms</strong>: {{unit.legal_beds}}</p>
-        <p><strong>Total Rooms</strong>: {{unit.total_rooms}}</p>
-        <p><strong>Bathrooms:</strong></p>
-        <p><strong>Full</strong>: {{unit.full_bath}}</p>
-        <p><strong>Half</strong>: {{unit.half_bath}}</p>
-    </section>
-    <section id="unit-amenities">
-        <p><strong>Unit Amenities</strong></p>
-        {{#if unit.unit_amenities.balcony}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Balcony</p>
-        {{/if}}
-        {{#if unit.unit_amenities.garden}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Garden</p>
-        {{/if}}
-        {{#if unit.unit_amenities.private_roof}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Private Roof</p>
-        {{/if}}
-        {{#if unit.unit_amenities.roof_rights}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Roof Rights</p>
-        {{/if}}
-        {{#if unit.unit_amenities.terrace}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Terrace</p>
-        {{/if}}
-        {{#if unit.unit_amenities.central_air}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Central Air</p>
-        {{/if}}
-        {{#if unit.unit_amenities.dishwasher}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Dishwasher</p>
-        {{/if}}
-        {{#if unit.unit_amenities.fireplace}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Fireplace</p>
-        {{/if}}
-        {{#if unit.unit_amenities.hardwood_floors}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Hardwood Floors</p>
-        {{/if}}
-        {{#if unit.unit_amenities.washer_dryer}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Washer/Dryer</p>
-        {{/if}}
-        {{#if unit.unit_amenities.city_view}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>City View</p>
-        {{/if}}
-        {{#if unit.unit_amenities.garden_view}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Gaden View</p>
-        {{/if}}
-        {{#if unit.unit_amenities.park_view}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Park View</p>
-        {{/if}}
-        {{#if unit.unit_amenities.garden_view}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Gaden View</p>
-        {{/if}}
-        {{#if unit.unit_amenities.water_view}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Water View</p>
-        {{/if}}
-    </section>
-    <section id='building-amenities'>
-        <p><strong>Building Amenities</strong></p>
-        {{#if unit.building.building_amenities.pets_allowed}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Pets Allowed</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.roof}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Roof</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.courtyard}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Courtyard</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.concierge}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Concierge</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.doorman}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Doorman</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.elevator}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Elevator</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.laundry}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Laundry</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.children_playroom}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Children's Playroom</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.gym}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Gym</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.media_room}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Media Room</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.recreation_room}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Recreation Room</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.swimming_pool}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Swimming Pool</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.live_in_super}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Live-in Super</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.smoke_free}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Smoke-free</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.wheelchair_access}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Wheelchair Access</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.garage_parking}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Garage Parking</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.valet_parking}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Valet Parking</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.bike_room}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Bike Room</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.cold_storage}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Cold Storage</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.locker_cage}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Locker Cage</p>
-        {{/if}}
-        {{#if unit.building.building_amenities.package_room}}
-        <p><img src="/images/checkmark.jpeg" alt='checkmark' class='amenity-icon'>Package Room</p>
-    {{/if}}
-</section>
-{{#each unit.building.trains as |train|}}
-<h1>{{train.name}}</h1>
-{{/each}}
+
+    <div class="container">
+
+    </div>
+
+
+
+
+
+
+
+
+
 </div>
-</div>
+    <div class="container-fluid edit-footer mt-5 p-5">
+    <div class="row">
+        <div class="col d-flex justify-content-end">
+        <a href="/edit-listing/units/{{unit.id}}">
+            <button type="button" class="btn btn-outline-light">Edit This Listing</button>
+        </a>
+        </div>
+    </div>
+    </div>
+
 <script src='/js/unitView.js'></script>

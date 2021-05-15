@@ -1,15 +1,30 @@
-<h1 id="login-logo">
-    <img src="/images/branding/yup.png" alt="login-logo">
-</h1>
-<form class="property-form login-form">
-    <div>
-        <input type="email" id="email-login" class="input-field" name="email" placeholder="Email" />
+{{> nav}}
+<div class="container main-card login-card mt-5">
+  <div class="row d-flex justify-content-center building-card">
+    <div class="card col-md address-input m-2 p-0 inner-card">
+      <div class="card-body container p-0">
+        <div class="row d-flex justify-content-center">
+          <div class="col p-3 text-center">
+            <img src="/images/branding/circle-logo.svg" alt="login-logo" id="login-logo">
+            
+          </div>
+        </div>
+        <hr>
+        <form class="property-form login-form m-5">
+            <div>
+                <input type="email" id="email-login" class="form-control" name="email" placeholder="Email" />
+            </div>
+            <div>
+                <input type="text" id="password-login" class="form-control mt-3" name="password" placeholder="Password" />
+            </div>
+            <div>
+    <button type='submit' id="login" class='btn btn-outline-dark mt-3 py-2 px-3 next-btn'>Login</button>
+            </div>
+        </form>
+      </div>
     </div>
-    <div>
-        <input type="text" id="password-login" class="input-field" name="password" placeholder="Password" />
-    </div>
-    <div>
-        <button type="submit" id="login" class="btn btn-outline-light mt-3 py-2 px-3"><a href="/">Login</a></button>
-    </div>
-</form>
+  </div>
+</div>
+
+
 <script src="js/login.js"></script>

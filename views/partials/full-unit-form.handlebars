@@ -7,16 +7,16 @@
       </div>
     </div>
     <div class="row mt-3">
-      <div class="form-group col-3 px-7">
+      <div class="form-group col-lg-3 flex-column justify-content-center align-items-center px-4">
         <label for="building-id">Building ID:</label>
         <input type="text" class="form-control" id="building-id" value={{building.id}} readonly>
         {{/each}}
       </div>
-      <div class="form-group col-3 px-6">
+      <div class="form-group col-lg-3 flex-column justify-content-center align-items-center px-4">
         <label for="unit-num">Unit Number:</label>
         <input type="text" class="form-control" id="unit-number">
       </div>
-      <div class="col-3 d-flex flex-column px-7">
+      <div class="col-lg-3 flex-column justify-content-center align-items-center px-4">
         <label for="select">Status:</label>
         <select class="custom-select dropdown status">
           <option selected="">Select Status</option>
@@ -25,7 +25,7 @@
           <option value="rented">Rented</option>
         </select>
       </div>
-      <div class="col-3 d-flex flex-column px-7">
+      <div class="col-lg-3 flex-column justify-content-center align-items-center px-4">
         <label for="select">Type:</label>
         <select class="custom-select dropdown market-as">
           <option selected="">Select Type</option>
@@ -38,25 +38,25 @@
       </div>
     </div>
     <div class="row mt-3">
-      <div class="form-group col-3 px-7">
+      <div class="form-group col-lg-3 flex-column justify-content-center align-items-center px-4">
         <label for="op">OP:</label>
         <div class="d-flex align-items-baseline">
           <input type="text" class="form-control" id="op" placeholder="">
           <span class="ml-1">%</span>
         </div>
       </div>
-      <div class="form-group col-9">
+      <div class="form-group col-lg-3 flex-column justify-content-center align-items-center px-4">
         <label for="access">Access:</label>
         <input type="text" class="form-control" id="access" placeholder="">
       </div>
     </div>
     <hr>
     <div class="row mt-3">
-      <div class="form-group col-4 px-5">
+      <div class="form-group col-lg-4 flex-column justify-content-center align-items-center px-4">
         <label for="move-in">Move In Date:</label>
         <input type="date" class="form-control" id="move-in" placeholder="">
       </div>
-      <div class="col-4 d-flex flex-column px-5">
+      <div class="form-group col-lg-4 flex-column justify-content-center align-items-center px-4">
         <label for="select">Lease Term:</label>
         <div class="d-flex align-items-baseline">
           <select class="custom-select dropdown lease-term">
@@ -84,7 +84,7 @@
           <span class="ml-1">months</span>
         </div>
       </div>
-      <div class="col-4 d-flex flex-column px-5">
+      <div class="form-group col-lg-3 flex-column justify-content-center align-items-center px-4">
         <label for="select">Gross Rent:</label>
         <div class="d-flex align-items-baseline">
           <span class="mr-1">$</span>
@@ -94,7 +94,7 @@
       </div>
     </div>
     <div class="row mt-3">
-      <div class="col-2 d-flex flex-column px-5">
+      <div class="form-group col-lg-2 flex-column justify-content-center align-items-center px-4">
         <label for="concession">Concession:</label>
         <div class="input-group">
           <div class="input-group-prepend">
@@ -113,7 +113,7 @@
           </select>
         </div>
       </div>
-      <div class="col-2 d-flex flex-column px-5">
+      <div class="col-lg-2 flex-column justify-content-center align-items-center px-4">
         <label for="legal-beds">Bedrooms:</label>
         <select class="custom-select dropdown ml-1 beds">
           <option value="0" selected="">0</option>
@@ -127,7 +127,7 @@
           <option value="8">8</option>
         </select>
       </div>
-      <div class="col-2 d-flex flex-column px-5">
+      <div class="col-lg-2 flex-column justify-content-center align-items-center px-4">
         <label for="full-baths">Full Bath:</label>
         <select class="custom-select dropdown ml-1 full-baths">
           <option value="0" selected="">0</option>
@@ -137,7 +137,7 @@
           <option value="4">4</option>
         </select>
       </div>
-      <div class="col-2 d-flex flex-column px-5">
+      <div class="col-lg-2 flex-column justify-content-center align-items-center px-4">
         <label for="half-baths">Half Bath:</label>
         <select class="custom-select dropdown ml-1 half-baths">
           <option value="0" selected="">0</option>
@@ -147,7 +147,7 @@
           <option value="4">4</option>
         </select>
       </div>
-      <div class="col-2 d-flex flex-column px-5">
+      <div class="col-lg-2 flex-column justify-content-center align-items-center px-4">
         <label for="total-rooms">Rooms:</label>
         <select class="custom-select dropdown ml-1 rooms">
           <option selected="">Select</option>
@@ -163,7 +163,7 @@
           <option value="10">10</option>
         </select>
       </div>
-      <div class="col-2 d-flex flex-column px-5">
+      <div class="form-group col-lg-2 flex-column justify-content-center align-items-center px-4">
         <label for="sqft">Size:</label>
         <div class="d-flex align-items-baseline">
           <input type="text" class="form-control" id="size" placeholder="">
