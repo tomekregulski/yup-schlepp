@@ -52,7 +52,7 @@ npm i
 
 ## Usage
 
-![authentication](./readme-gifs/auth.png)
+![authentication](./readme/auth.png)
 
 ### Authentication
 
@@ -67,8 +67,8 @@ password: password
 
 ### Views & Queries
 
-![views](./readme-gifs/view.gif)
-![queries](./readme-gifs/queries.gif)
+![views](./readme/view.gif)
+![queries](./readme/queries.gif)
 
 - The following query example will return all apartments within the price range of $1000 and $3000 in Bushwick with at least one bedroom, a balcony and permits pets:
 
@@ -78,8 +78,8 @@ http://127.0.0.1:8080/results/units/?unit[legal_beds=1]&unitAmenities[balcony]=t
 
 ### Add & Edit Listings
 
-![edit](./readme-gifs/edit.gif)
-![add](./readme-gifs/add.gif)
+![edit](./readme/edit.gif)
+![add](./readme/add.gif)
 
 - Add and edit listings in the database
 
