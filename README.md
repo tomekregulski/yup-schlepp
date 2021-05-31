@@ -195,6 +195,7 @@ Report issues by selecting the [issues](https://github.com/yondav/yup-schlepp/is
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
 - [Bootstrap](https://getbootstrap.com/)
 - [Font-Awesome](https://fontawesome.com/)
+- [Handlebars](https://handlebarsjs.com/)
 
 ## Licenses
 
