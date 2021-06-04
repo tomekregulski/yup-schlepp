@@ -10,6 +10,8 @@ YONI ADDITIONS
 
 :root {
   --yup-pink: #d07bb3;
+  --pale-pink: #e6bad7;
+  --nav-collapse: #a2618b;
   --button-hover: #bd71a3;
   --primary-dark: #1b1017;
   --primary-light: #fffdfe;
@@ -66,13 +68,9 @@ a {
   text-decoration: none;
 }
 
-a:visited {
-  color: black;
-}
-
-a:hover {
-  text-shadow: 0 5px 5px rgba(0, 0, 0, 0.29);
-}
+/* a:visited {
+  color: var(--pale-pink);
+} */
 
 .main-card {
   padding: 0.5rem 0.5rem !important;
@@ -84,32 +82,6 @@ a:hover {
   border: none !important;
 }
 
-label {
-  white-space: nowrap;
-}
-
-nav {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  margin-top: 0 !important;
-  background-color: var(--yup-pink);
-  box-shadow: var(--shadow);
-}
-
-nav a {
-  font-size: 1.4em !important;
-}
-
-nav img {
-  width: 5rem;
-}
-
-.unit-inner {
-  box-shadow: none;
-}
-
 button:active,
 button:focus {
   outline: none !important;
@@ -118,61 +90,6 @@ button:focus {
 .btn {
   padding: 0.3rem;
   border: none;
-}
-
-.cancel-btn {
-  color: var(--yup-pink);
-}
-
-.cancel-btn:hover,
-.cancel-btn:focus,
-.cancel-btn:active {
-  background-color: var(--primary-light);
-  color: var(--button-hover);
-}
-
-.next-btn {
-  background-color: var(--yup-pink);
-  color: var(--primary-light);
-}
-
-.next-btn:hover,
-.next-btn:focus,
-.next-btn:active {
-  background-color: var(--button-hover);
-}
-
-.custom-control-label::after {
-  cursor: pointer;
-  border-radius: 0.5rem;
-}
-
-.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
-  background-color: var(--button-hover);
-}
-
-.custom-control-input ~ .custom-control-label::before {
-  color: var(--primary-light);
-  border-color: #c4c4c4;
-  background-color: #c4c4c4;
-}
-
-.custom-control-input:checked ~ .custom-control-label::before {
-  color: var(--primary-light);
-  border-color: var(--button-hover);
-  background-color: var(--button-hover);
-}
-
-.unit-submit {
-  background-color: transparent;
-}
-
-.edit-footer {
-  position: absolute;
-  left: 0;
-  width: 100vw;
-  background-color: var(--yup-pink);
-  box-shadow: var(--shadow);
 }
 
 .hide {
@@ -187,9 +104,9 @@ button:focus {
   padding: 0 6rem;
 }
 
-.agent-reg-form {
+/* .agent-reg-form {
   width: 100%;
-}
+} */
 
 .train-icon {
   width: 1.5rem;
@@ -207,11 +124,6 @@ button:focus {
   width: 100% !important;
 }
 
-.dollar {
-  position: absolute;
-  margin: 0.5rem 0.2rem;
-}
-
 /*****************/
 
 .form-check-input {
@@ -226,17 +138,9 @@ button:focus {
   height: 20px;
 }
 
-#nav-logo {
+/* #nav-logo {
   height: 90px;
-}
-
-.navbar {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+} */
 
 .nav-left {
   display: flex;
@@ -343,10 +247,6 @@ button:focus {
     font-size: 14px;
   }
 
-  .unit-inner {
-    box-shadow: var(--shadow);
-  }
-
   .result-container {
     width: 600px;
   }
@@ -355,29 +255,6 @@ button:focus {
 @media screen and (min-width: 990px) {
   html {
     font-size: 16px;
-  }
-
-  .unit-inner {
-    padding: 2rem 0 !important;
-    width: 100%;
-  }
-
-  label {
-    width: 100;
-  }
-
-  .custom-file-label {
-    width: auto;
-  }
-
-  .form-control,
-  .concession-group,
-  .custom-select {
-    width: 21.25rem;
-  }
-
-  .inline-select {
-    width: 10rem !important;
   }
 
   .month-span {

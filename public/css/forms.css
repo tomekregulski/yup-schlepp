@@ -1,34 +1,3 @@
-.login-card {
-  width: 35vw !important;
-}
-
-#login-logo {
-  text-align: center;
-}
-
-#login-logo {
-  width: 50%;
-  /* margin-top: 150px; */
-}
-
-#password {
-  margin-top: 15px;
-}
-
-#login {
-  margin-top: 15px;
-}
-
-a {
-  text-decoration: none;
-}
-
-a:hover,
-a:focus,
-a:active {
-  color: #fafafa !important;
-}
-
 .property-form-title {
   text-align: center;
   margin-top: 30px;
@@ -59,8 +28,105 @@ a:active {
   line-height: 1.5em;
 }
 
-@media screen and (max-width: 768px) {
-  .login-card {
-    width: 75vw !important;
+/********** 
+add/edit forms 
+***********/
+
+.unit-inner {
+  box-shadow: none;
+}
+
+label {
+  white-space: nowrap;
+}
+
+.cancel-btn {
+  color: var(--yup-pink);
+}
+
+.cancel-btn:hover,
+.cancel-btn:focus,
+.cancel-btn:active {
+  background-color: var(--primary-light);
+  color: var(--button-hover);
+}
+
+.next-btn {
+  background-color: var(--yup-pink);
+  color: var(--primary-light);
+}
+
+.next-btn:hover,
+.next-btn:focus,
+.next-btn:active {
+  background-color: var(--button-hover);
+}
+
+.dollar {
+  position: absolute;
+  margin: 0.5rem 0.2rem;
+}
+
+.custom-control-label::after {
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+  background-color: var(--button-hover);
+}
+
+.custom-control-input ~ .custom-control-label::before {
+  color: var(--primary-light);
+  border-color: #c4c4c4;
+  background-color: #c4c4c4;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: var(--primary-light);
+  border-color: var(--button-hover);
+  background-color: var(--button-hover);
+}
+
+.unit-submit {
+  background-color: transparent;
+}
+
+.edit-footer {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  background-color: var(--yup-pink);
+  box-shadow: var(--shadow);
+}
+
+@media screen and (min-width: 750px) {
+  .unit-inner {
+    box-shadow: var(--shadow);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .unit-inner {
+    padding: 2rem 0 !important;
+    width: 100%;
+  }
+
+  label {
+    width: 100;
+  }
+
+  .custom-file-label {
+    width: auto;
+  }
+
+  .form-control,
+  .concession-group,
+  .custom-select {
+    width: 21.25rem;
+  }
+
+  .inline-select {
+    width: 10rem !important;
   }
 }

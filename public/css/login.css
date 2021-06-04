@@ -1,0 +1,19 @@
+#login-logo {
+  width: 15rem;
+}
+
+.form-control-full {
+  width: 22rem;
+}
+
+@media screen and (min-width: 750px) {
+  .login-card {
+    width: 50vw;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .login-card {
+    width: 40vw;
+  }
+}
