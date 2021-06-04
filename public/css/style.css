@@ -4,114 +4,61 @@ YONI ADDITIONS
 
 *******/
 
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://use.typekit.net/ihv0ezr.css');
 @import url('https://use.typekit.net/ihv0ezr.css');
 
 :root {
   --yup-pink: #d07bb3;
-  --muli: muli, sans-serif;
-  --futura: futura-pt-condensed, sans-serif;
+  --button-hover: #bd71a3;
+  --primary-dark: #1b1017;
+  --primary-light: #fffdfe;
+  --shadow: rgba(27, 16, 23, 0.09) 5.25px 3.25px 12.6px;
+  --muli: 'Mulish', sans-serif;
+  --futura: futura, sans-serif;
 }
 
-nav {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  margin-top: 0 !important;
-  background-color: var(--yup-pink);
-  box-shadow: rgba(51, 51, 51, 0.45) 0.95px 0.95px 7.6px;
-}
-
-nav a {
-  font-size: 1.4em !important;
-}
-
-nav img {
-  width: 5rem;
-}
-
-button:active,
-button:focus {
-  outline: none !important;
+html {
+  font-size: 10px;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   width: 100vw;
   margin: 0;
   font-family: var(--muli) !important;
-  font-size: 0.8em;
-  background-color: #faf9f9;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1em;
+  line-height: 140%;
+  color: var(--primary-dark);
+  background-color: var(--primary-light);
+}
+
+h1 {
+  font-family: var(--futura);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 4.25em;
+  line-height: 140%;
 }
 
 h2 {
-  text-align: center;
-  font-size: 2em;
+  font-family: var(--muli);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2.5em;
+  line-height: 140%;
 }
 
-.main-card {
-  padding: 0 7px !important;
-  /* width: 35vw; */
-  box-shadow: rgba(51, 51, 51, 0.45) 0.95px 0.95px 7.6px;
-}
-
-.inner-card {
-  margin-bottom: 0 !important;
-  border: none !important;
-}
-
-.hide {
-  display: none !important;
-}
-
-.px-6 {
-  padding: 0 5rem;
-}
-
-.px-7 {
-  padding: 0 6rem;
-}
-
-.unit-submit {
-  background-color: transparent;
-}
-
-.edit-footer {
-  position: absolute;
-  left: 0;
-  width: 100vw;
-  background-color: var(--yup-pink);
-  box-shadow: rgba(51, 51, 51, 0.45) 0.95px 0.95px 7.6px;
-}
-
-.agent-reg-form {
-  width: 100%;
-}
-
-.train-icon {
-  width: 1.5rem;
-}
-
-#selected-photo {
-  width: 100%;
-}
-
-.unit-wrap {
-  box-shadow: rgba(51, 51, 51, 0.45) 0.95px 0.95px 7.6px;
-}
-
-.jumbo {
-  width: 100% !important;
-}
-
-/*****************/
-
-.form-check-input {
-  border-radius: 100% !important;
+h3 {
+  font-family: var(--primary-dark);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.5em;
+  line-height: 140%;
 }
 
 a {
@@ -127,24 +74,152 @@ a:hover {
   text-shadow: 0 5px 5px rgba(0, 0, 0, 0.29);
 }
 
-h1 {
-  text-align: center;
-  margin-top: 35px;
+.main-card {
+  padding: 0.5rem 0.5rem !important;
+  box-shadow: var(--shadow);
+}
+
+.inner-card {
+  margin-bottom: 0 !important;
+  border: none !important;
+}
+
+label {
+  white-space: nowrap;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  margin-top: 0 !important;
+  background-color: var(--yup-pink);
+  box-shadow: var(--shadow);
+}
+
+nav a {
+  font-size: 1.4em !important;
+}
+
+nav img {
+  width: 5rem;
+}
+
+.unit-inner {
+  box-shadow: none;
+}
+
+button:active,
+button:focus {
+  outline: none !important;
+}
+
+.btn {
+  padding: 0.3rem;
+  border: none;
+}
+
+.cancel-btn {
+  color: var(--yup-pink);
+}
+
+.cancel-btn:hover,
+.cancel-btn:focus,
+.cancel-btn:active {
+  background-color: var(--primary-light);
+  color: var(--button-hover);
+}
+
+.next-btn {
+  background-color: var(--yup-pink);
+  color: var(--primary-light);
+}
+
+.next-btn:hover,
+.next-btn:focus,
+.next-btn:active {
+  background-color: var(--button-hover);
+}
+
+.custom-control-label::after {
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+  background-color: var(--button-hover);
+}
+
+.custom-control-input ~ .custom-control-label::before {
+  color: var(--primary-light);
+  border-color: #c4c4c4;
+  background-color: #c4c4c4;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: var(--primary-light);
+  border-color: var(--button-hover);
+  background-color: var(--button-hover);
+}
+
+.unit-submit {
+  background-color: transparent;
+}
+
+.edit-footer {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  background-color: var(--yup-pink);
+  box-shadow: var(--shadow);
+}
+
+.hide {
+  display: none !important;
+}
+
+.px-6 {
+  padding: 0 5rem;
+}
+
+.px-7 {
+  padding: 0 6rem;
+}
+
+.agent-reg-form {
+  width: 100%;
+}
+
+.train-icon {
+  width: 1.5rem;
+}
+
+#selected-photo {
+  width: 100%;
+}
+
+.unit-wrap {
+  box-shadow: var(--shadow);
+}
+
+.jumbo {
+  width: 100% !important;
+}
+
+.dollar {
+  position: absolute;
+  margin: 0.5rem 0.2rem;
+}
+
+/*****************/
+
+.form-check-input {
+  border-radius: 100% !important;
 }
 
 .input-field {
   padding: 5px;
-}
-
-.btn {
-  padding: 5px;
-  background-color: rgb(207, 123, 179);
-}
-
-.cancel-btn {
-  padding: 5px;
-  background-color: rgb(207, 123, 179);
-  width: 70px;
 }
 
 .amenity-icon {
@@ -235,12 +310,20 @@ h1 {
 }
 
 @media screen and (min-width: 568px) {
+  html {
+    font-size: 12px;
+  }
+
   .result-container {
     width: 70%;
   }
 }
 
 @media screen and (min-width: 650px) {
+  html {
+    font-size: 13px;
+  }
+
   h1 {
     text-align: left;
   }
@@ -256,7 +339,54 @@ h1 {
 }
 
 @media screen and (min-width: 750px) {
+  html {
+    font-size: 14px;
+  }
+
+  .unit-inner {
+    box-shadow: var(--shadow);
+  }
+
   .result-container {
     width: 600px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  html {
+    font-size: 16px;
+  }
+
+  .unit-inner {
+    padding: 2rem 0 !important;
+    width: 100%;
+  }
+
+  label {
+    width: 100;
+  }
+
+  .custom-file-label {
+    width: auto;
+  }
+
+  .form-control,
+  .concession-group,
+  .custom-select {
+    width: 21.25rem;
+  }
+
+  .inline-select {
+    width: 10rem !important;
+  }
+
+  .month-span {
+    white-space: nowrap;
+    /* width: 7.8rem; */
+  }
+
+  .btn {
+    width: 9.3rem;
+    height: 3.375rem;
   }
 }

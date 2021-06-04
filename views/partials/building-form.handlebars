@@ -1,34 +1,41 @@
 <form class='building-form'>
-  <div class='row d-flex justify-content-center select-row'>
-    <div class='col-12 d-flex justify-content-center p-4'>
-      <select class='custom-select dropdown w-75'>
+  <div class='row d-flex justify-content-start mt-5 select-row'>
+    <div class='col-lg-8 col-md-12 col-sm-12 mb-4'>
+      <div class="form-group px-5">
+        <label for="building">Building Address</label>
+        <div class="d-flex align-items-baseline">
+          <select class='custom-select dropdown w-100'>
+            {{#each mgmt as |mgmt|}}
+              <option selected=''>Select Building Associated with {{mgmt.management_name}}</option>
+            {{/each}}
+            {{#each buildings as |building|}}
+              <option value={{building.id}}>{{building.street_address}}</option>
+            {{/each}}
+            <option>Add New Building {{mgmt.management_name}} </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='row d-flex justify-content-start mt-5 add-row hide'>
+    <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+      <div class='form-group hide'>
         {{#each mgmt as |mgmt|}}
-          <option selected=''>Select Building Associated with {{mgmt.management_name}}</option>
+          <input type='text' class='form-control' id='mgmt-id' value={{mgmt.id}} readonly />
         {{/each}}
-        {{#each buildings as |building|}}
-          <option value={{building.id}}>{{building.street_address}}</option>
-        {{/each}}
-        <option>Add New Building {{mgmt.management_name}} </option>
-      </select>
+      </div>
+      <div class='form-group px-5'>
+        <label for='management-company'>Street Address</label>
+        <input type='text' class='form-control w-100' id='building' placeholder='' />
+      </div>
     </div>
   </div>
-  <div class='row d-flex justify-content-center add-row hide'>
-    <hr />
-    <div class='form-group col-2'>
-      <label for='management-company-id'>ID</label>
-      {{#each mgmt as |mgmt|}}
-        <input type='text' class='form-control' id='mgmt-id' value={{mgmt.id}} readonly />
-      {{/each}}
-    </div>
-    <div class='form-group col-10'>
-      <label for='management-company'>Street Address</label>
-      <input type='text' class='form-control' id='building' placeholder='' />
-    </div>
-  </div>
-  <div class='card-footer d-flex justify-content-end hide'>
-    <div class='col-3 d-flex'>
-      <button type='button' class='btn btn-outline-dark col-6 m-2 cancel-btn'>Cancel</button>
-      <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Next</button>
+  <div class="row d-flex justify-content-end mt-3">
+    <div class="col-lg-4 col-md-5 col-sm-12">
+      <div class='card-footer d-flex justify-content-end hide unit-submit'>
+        <button type='button' class='btn btn-outline-dark m-2 cancel-btn'>Cancel</button>
+        <button type='submit' class='btn btn-outline-dark m-2 next-btn'>Next</button>
+      </div>
     </div>
   </div>
 </form>

@@ -1,31 +1,38 @@
 <form class="unit-form">
-  <div class="row d-flex justify-content-center select-row">
-    <div class='col-12 d-flex justify-content-center p-4'>
-      <select class="custom-select dropdown w-75 unit-drop">
+  <div class="row d-flex justify-content-start mt-5 select-row">
+    <div class='col-lg-8 col-md-12 col-sm-12 mb-4'>
+      <div class="form-group px-5">
+        <label for="unit">Unit Number</label>
+        <div class="d-flex align-items-baseline">
+          <select class="custom-select dropdown w-75 unit-drop">
+            {{#each buildings as |building|}}
+            <option selected="">Select a unit in {{building.street_address}}</option>
+            {{/each}}
+            {{#each units as |unit|}}
+            <option value={{ unit.id }}>{{unit.unit_num}}</option>
+            {{/each}}
+            <option>Add New Unit</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-start mt-5 add-row hide">
+    <div class="col-lg-8 col-mg-12 col-sm-12 mb-4">
+      <div class="form-group hide">
+        <label for="management-company-id">ID</label>
         {{#each buildings as |building|}}
-        <option selected="">Select a unit in {{building.street_address}}</option>
+        <input type="text" class="form-control" id="building-id" value={{building.id}} readonly>
         {{/each}}
-        {{#each units as |unit|}}
-        <option value={{ unit.id }}>{{unit.unit_num}}</option>
-        {{/each}}
-        <option>Add New Unit</option>
-      </select>
+      </div>
     </div>
   </div>
-  <div class="row d-flex justify-content-center add-row hide">
-    <hr>
-    <div class="form-group col-2">
-      <label for="management-company-id">ID</label>
-      {{#each buildings as |building|}}
-      <input type="text" class="form-control" id="building-id" value={{building.id}} readonly>
-      {{/each}}
-    </div>
-  </div>
-  </div>
-  <div class="card-footer d-flex justify-content-end hide">
-    <div class='col-3 d-flex'>
-      <button type='button' class='btn btn-outline-dark col-6 m-2 cancel-btn'>Cancel</button>
-      <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Next</button>
+  <div class="row d-flex justify-content-end mt-3">
+    <div class="col-lg-4 col-md-5 col-sm-12">
+      <div class="card-footer d-flex justify-content-end hide unit-submit">
+        <button type='button' class='btn btn-outline-dark m-2 cancel-btn'>Cancel</button>
+        <button type='submit' class='btn btn-outline-dark m-2 next-btn'>Next</button>
+      </div>
     </div>
   </div>
 </form>
