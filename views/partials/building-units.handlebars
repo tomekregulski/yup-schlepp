@@ -2,7 +2,9 @@
 {{#each units as |unit|}}
   <div class="col-lg-4 col-md-6 col-sm-12">
     <div onClick="window.location='/units/{{unit.id}}'" class="card display-card my-5">
-      <img class="card-img" src={{unit.image.[0]}} alt="Card image">
+      <div class="image-wrap d-flex flex-column justify-content-end">
+        <img class="card-img" src={{unit.image.[0]}} alt="Card image">
+      </div>
       <div class="card-img-overlay rent-bar d-flex justify-content-center align-items-center">
         <span class="rent">${{unit.net_rent}}</span>
       </div>

@@ -10,6 +10,7 @@
 }
 
 .display-card {
+  height: 22rem;
   border: 1px solid var(--yup-pink);
   border-radius: 20px;
   overflow: hidden;
@@ -36,6 +37,14 @@
 .rent {
   font-size: 1.6em;
   font-weight: 700;
+}
+
+.image-wrap {
+  height: 13rem;
+  overflow: hidden;
+}
+
+.card-img {
 }
 
 .unit-num {

@@ -1,5 +1,16 @@
 {{> nav}}
-<h2 class="mt-5">Available Buildings from {{singleManagementData.management_name}} Management</h2>
-<section class="container d-flex flex-column align-items-center justify-content-center mt-3">
-    {{> management-buildings}}
-</section>
+<div class="container main-card mt-5">
+    <div class="row d-flex justify-content-center mgmt-card">
+        <div class="card col-md address-input m-2 p-0 inner-card">
+            <div class="card-body container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col">
+                        <h2 class="px-5">{{singleManagementData.management_name}} Buildings</h2>
+                    </div>
+                </div>
+                <hr>
+                {{> management-buildings}}
+            </div>
+        </div>
+    </div>
+</div>
