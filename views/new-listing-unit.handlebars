@@ -5,16 +5,18 @@
       <div class="card-body container">
         <div class="row d-flex justify-content-center">
           <div class="col">
-            <h2>Unit</h2>
+            {{#each buildings as |building|}}
+            <h2 class="px-5">{{building.street_address}} New Unit</h2>
+            {{/each}}
           </div>
         </div>
         <hr>
         {{> unit-form}}
+        {{> full-unit-form}}
+        {{> new-listing-unit-amenities}}
+        {{> unit-images}}
       </div>
     </div>
-    {{> full-unit-form}}
-    {{> new-listing-unit-amenities}}
   </div>
-    {{> unit-images}}
 </div>
 <script src='/js/new-listing.js'></script>

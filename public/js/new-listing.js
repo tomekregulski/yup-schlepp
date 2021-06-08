@@ -143,7 +143,6 @@ const buildingFormHandler = () => {
 
         if (createBuilding.ok) {
           buildingForm.classList.toggle('hide');
-          document.querySelector('.inner-card').classList.toggle('hide');
           buildingAmenForm.classList.toggle('hide');
           document.querySelector('.address').textContent = buildingData.street_address;
           document.getElementById('building-id-amenities').textContent = buildingData.id;
@@ -225,7 +224,7 @@ const buildingAmenFormHandler = async (e) => {
 const unitFormHandler = () => {
   document.querySelector('.unit-drop').addEventListener('change', async (e) => {
     if (options.selectedIndex === options.length - 1) {
-      document.querySelector('.inner-card').classList.toggle('hide');
+      document.querySelector('.unit-form').classList.toggle('hide');
       fullUnitForm.classList.toggle('hide');
     } else {
       const unitId = drop.value;

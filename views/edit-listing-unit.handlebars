@@ -6,370 +6,369 @@
       <div class="card-body container">
         <div class="row d-flex justify-content-center">
           <div class="col">
-            <h2>{{unit.building.street_address}}, {{unit.unit_num}}</h2>
+            <h2 class="px-5">{{unit.building.street_address}}, {{unit.unit_num}}</h2>
           </div>
         </div>
-        {{!-- <hr> --}}
-        <form action="" class="unit-full-form">
-          <div class="row">
-            <div class="col-12">
-              <h2 class="address">{{building.street_address}}</h2>
-              <hr>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="form-group col-3 px-7">
-              <label for="building-id">Building ID:</label>
-              <input type="text" class="form-control" id="building-id" value={{unit.building.id}} readonly>
-            </div>
-            <div class="form-group col-3 px-7 hide">
-              <label for="building-id">Unit ID:</label>
-              <input type="text" class="form-control" id="unit-id" value={{unit.id}} readonly>
-            </div>
-            <div class="form-group col-3 px-6">
-              <label for="unit-num">Unit Number:</label>
-              <input type="text" class="form-control" id="unit-number" value="{{unit.unit_num}}">
-            </div>
-            <div class="col-3 d-flex flex-column px-7">
-              <label for="select">Status:</label>
-              <select class="custom-select dropdown status">
-                <option value={{unit.status}} selected={{unit.status}}>{{unit.status}}</option>
-                <option value="active">Active</option>
-                <option value="deposit">Deposit</option>
-                <option value="rented">Rented</option>
-              </select>
-            </div>
-            <div class="col-3 d-flex flex-column px-7">
-              <label for="select">Type:</label>
-              <select class="custom-select dropdown market-as">
-                <option value={{unit.market_as}} selected={{unit.market_as}}>{{unit.market_as}}</option>
-                <option value="Apartment">Apartment</option>
-                <option value="House">House</option>
-                <option value="Townhouse">Townhouse</option>
-                <option value="Condo">Condo</option>
-                <option value="Co-Op">Co-Op</option>
-              </select>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="form-group col-3 px-7">
-              <label for="op">OP:</label>
-              <div class="d-flex align-items-baseline">
-                <input type="text" class="form-control" id="op" value="{{unit.op}}">
-                <span class="ml-1">%</span>
-              </div>
-            </div>
-            <div class="form-group col-9">
-              <label for="access">Access:</label>
-              <input type="text" class="form-control" id="access" value="{{unit.access}}">
-            </div>
-          </div>
-          <hr>
-          <div class="row mt-3">
-            <div class="form-group col-4 px-5">
-              <label for="move-in">Move In Date:</label>
-              <input type="date" class="form-control" id="move-in">
-            </div>
-            <div class="col-4 d-flex flex-column px-5">
-              <label for="select">Lease Term:</label>
-              <div class="d-flex align-items-baseline">
-                <select class="custom-select dropdown lease-term">
-                <option value={{unit.lease_term}} selected={{unit.lease_term}}>{{unit.lease_term}}</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                </select>
-                <span class="ml-1">months</span>
-              </div>
-            </div>
-            <div class="col-4 d-flex flex-column px-5">
-              <label for="select">Gross Rent:</label>
-              <div class="d-flex align-items-baseline">
-                <span class="mr-1">$</span>
-                <input type="text" class="form-control" id="gross" value="{{unit.gross_rent}}">
-                <span class="ml-1">.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-2 d-flex flex-column px-5">
-              <label for="concession">Concession:</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <input type="checkbox" aria-label="Concession" class="concession" {{#if unit.concession}} checked {{/if}}>
+        <hr>
+        <div class="form-group col-3 px-7 hide">
+          <label for="building-id">Unit ID:</label>
+          <input type="text" class="form-control" id="unit-id" value={{unit.id}} readonly>
+        </div>
+
+        {{!-- unit update form --}}
+        <form class="unit-full-form">
+          <div class="row d-flex justify-content-between mt-5">
+            {{!-- left side --}}
+            <div class="col-lg-8 col-md-7 col-sm-12 mb-4">
+              <div class="container main-card unit-inner">
+                {{!-- move-in date --}}
+                <div class="form-group px-5">
+                  <label for="move-in">Move In Date:</label>
+                  <input type="date" class="form-control" id="move-in">
+                </div>
+                {{!-- lease term --}}
+                <div class="form-group px-5">
+                  <label for="select">Lease Term:</label>
+                  <div class="d-flex align-items-baseline">
+                    <select class="custom-select dropdown lease-term">
+                    <option value={{unit.lease_term}} selected={{unit.lease_term}}>{{unit.lease_term}}</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    </select>
+                    <span class="ml-1">months</span>
                   </div>
                 </div>
-                <select class="custom-select dropdown ml-1 months-free">
-                  <option value={{unit.months_free}} selected={{unit.months_free}}>{{unit.months_free}}</option>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                </select>
+                {{!-- gross rent --}}
+                <div class="form-group px-5">
+                  <label for="gross">Gross Rent:</label>
+                  <div class="d-flex align-items-baseline">
+                    <span class="dollar">$</span>
+                    <input type="text" class="form-control" id="gross" value="{{unit.gross_rent}}">
+                    <span class="ml-1">.00</span>
+                  </div>
+                </div>
+                {{!-- concession --}}
+                <div class="form-group px-5">
+                  <label for="concession">Concession:</label>
+                  <div class="d-flex align-items-baseline">
+                    <div class="concession-group d-flex">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <input type="checkbox" aria-label="Concession" class="concession" {{#if unit.concession}} checked {{/if}}>
+                          </div>
+                        </div>
+                        <select class="custom-select dropdown ml-1 months-free">
+                          <option value={{unit.months_free}} selected={{unit.months_free}}>{{unit.months_free}}</option>
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                        </select>
+                      </div>
+                    </div>
+                    <span class="month-span ml-1">months free</span>
+                  </div>
+                </div>
+                {{!-- rooms/size --}}
+                <div class="form-group px-5">
+                  <div class="d-flex align-items-end">
+                    <div class="concession-group d-flex justify-content-between">
+                      <div class="d-flex flex-column">
+                        <label for="total-rooms">Rooms:</label>
+                        <select class="custom-select inline-select dropdown ml-1 rooms">
+                          <option value={{unit.total_rooms}} selected={{unit.total_rooms}}>{{unit.total_rooms}}</option>
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                        </select>
+                      </div>
+                      <div class="d-flex flex-column">
+                        <label for="sqft">Size:</label>
+                        <input type="text" class="form-control inline-select" id="size" value="{{unit.size}}">
+                      </div>
+                    </div>
+                    <span class="ml-1 mb-2">sqft</span>
+                  </div>
+                </div>
+                {{!-- beds/baths/half-baths --}}
+                <div class="form-group px-5">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column">
+                      <label for="legal-beds">Bedrooms:</label>
+                      <select class="custom-select inline-select dropdown ml-1 beds">
+                        <option value={{unit.legal_beds}} selected={{unit.legal_beds}}>{{unit.legal_beds}}</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                      </select>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <label for="full-baths">Full Bath:</label>
+                        <select class="custom-select inline-select dropdown ml-1 full-baths">
+                          <option value={{unit.full_bath}} selected={{unit.full_bath}}>{{unit.full_bath}}</option>
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <label for="half-baths">Half Bath:</label>
+                      <select class="custom-select inline-select dropdown ml-1 half-baths">
+                        <option value={{unit.half_bath}} selected={{unit.half_bath}}>{{unit.half_bath}}</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                {{!-- description --}}
+                <div class="form-group px-5">
+                  <div class="d-flex flex-column">
+                    <label for="description">Description</label>
+                    <textarea class="form-control w-100" id="description" rows="6" cols="50"></textarea>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col-2 d-flex flex-column px-5">
-              <label for="legal-beds">Bedrooms:</label>
-              <select class="custom-select dropdown ml-1 beds">
-                <option value={{unit.legal_beds}} selected={{unit.legal_beds}}>{{unit.legal_beds}}</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-              </select>
-            </div>
-            <div class="col-2 d-flex flex-column px-5">
-              <label for="full-baths">Full Bath:</label>
-              <select class="custom-select dropdown ml-1 full-baths">
-                <option value={{unit.full_bath}} selected={{unit.full_bath}}>{{unit.full_bath}}</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </div>
-            <div class="col-2 d-flex flex-column px-5">
-              <label for="half-baths">Half Bath:</label>
-              <select class="custom-select dropdown ml-1 half-baths">
-                <option value={{unit.half_bath}} selected={{unit.half_bath}}>{{unit.half_bath}}</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </div>
-            <div class="col-2 d-flex flex-column px-5">
-              <label for="total-rooms">Rooms:</label>
-              <select class="custom-select dropdown ml-1 rooms">
-                <option value={{unit.total_rooms}} selected={{unit.total_rooms}}>{{unit.total_rooms}}</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
-            </div>
-            <div class="col-2 d-flex flex-column px-5">
-              <label for="sqft">Size:</label>
-              <div class="d-flex align-items-baseline">
-                <input type="text" class="form-control" id="size" value="{{unit.size}}">
-                <span class="ml-1">sqft</span>
+            {{!-- right side --}}
+            <div class="col-lg-4 col-md-5 col-sm-12 d-flex flex-column justify-content-between mb-4">
+              <div class="row">
+                <div class="col">
+                  {{!-- building id --}}
+                  <div class="form-group px-5">
+                    <label for="building-id">Building ID:</label>
+                    <input type="text" class="form-control inline-select" id="building-id" value={{unit.building.id}} readonly>
+                  </div>
+                  {{!-- unit number --}}
+                  <div class="form-group px-5">
+                    <label for="unit-num">Unit Number:</label>
+                    <input type="text" class="form-control inline-select" id="unit-number" value="{{unit.unit_num}}">
+                  </div>
+                  {{!-- status --}}
+                  <div class="form-group d-flex flex-column px-5">
+                    <label for="select">Status:</label>
+                    <select class="custom-select inline-select dropdown status">
+                      <option value={{unit.status}} selected={{unit.status}}>{{unit.status}}</option>
+                      <option value="active">Active</option>
+                      <option value="deposit">Deposit</option>
+                      <option value="rented">Rented</option>
+                    </select>
+                  </div>
+                  {{!-- market as --}}
+                  <div class="form-group d-flex flex-column px-5">
+                    <label for="select">Type:</label>
+                    <select class="custom-select inline-select dropdown market-as">
+                      <option value={{unit.market_as}} selected={{unit.market_as}}>{{unit.market_as}}</option>
+                      <option value="Apartment">Apartment</option>
+                      <option value="House">House</option>
+                      <option value="Townhouse">Townhouse</option>
+                      <option value="Condo">Condo</option>
+                      <option value="Co-Op">Co-Op</option>
+                    </select>
+                  </div>
+                  {{!-- op --}}
+                  <div class="form-group px-5">
+                    <label for="op">OP:</label>
+                    <div class="d-flex align-items-baseline">
+                      <input type="text" class="form-control inline-select" id="op" value="{{unit.op}}">
+                      <span class="ml-1">%</span>
+                    </div>
+                  </div>
+                  {{!-- access --}}
+                  <div class="form-group px-5">
+                    <label for="access">Access:</label>
+                    <input type="text" class="form-control inline-select" id="access" value="{{unit.access}}">
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <hr>
-          <div class="row d-flex flex-column align-items-center">
-            <div class="form-group col-10">
-              <label for="description">Description</label>
-              <textarea class="form-control" id="description" rows="3"></textarea>
-            </div>
-          </div>
-          <div class="row d-flex flex-column align-items-center mb-5 p-4">
-            <div class="card-footer d-flex justify-content-center col-6  unit-submit">
-              {{!-- <button type="button" class="btn btn-outline-dark col-6 m-2 cancel-btn">Cancel</button> --}}
-              <button type="submit" class="btn btn-outline-dark col-6 m-2 next-btn">Update</button>
+              <div class="row d-flex justify-content-end mt-5">
+                <div class="col">
+                  <div class="form-group">
+                    <div class="card-footer d-flex justify-content-end unit-submit">
+                      <button type="button" class="btn btn-outline-light ml-2 cancel-btn">Cancel</button>
+                      <button type="submit" class="btn btn-outline-dark ml-2 next-btn">Update</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </form>
-        <form action='' class='unit-amenities'>
-          <div class='row'>
-            <div class='col-12'>
-              <h2 class='address'>Amenities</h2>
-              <hr />
+
+        {{!-- unit amenities update form --}}
+        <form class='unit-amenities'>
+          <div class="row d-flex justify-content-start mt-5">
+            <div class="col">
+              <h2 class="px-5">Amenities</h2>
             </div>
           </div>
-          <div class='row'>
-            {{! Furnished }}
-            <div class='col-2 px-5'>
-              <div class='row'>
-                <h3>Furniture <i class='fas fa-couch'></i></h3>
-              </div>
-              <div class='row'>
+          <div class="row d-flex justify-content-between mt-5">
+            {{!-- furnished --}}
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+              <div class="concession-group px-5">
+                <h3>Furniture</h3>
                 <div class='custom-control custom-checkbox d-flex align-items-center'>
                   <input type='checkbox' class='custom-control-input' id='furnished' {{#if unit.unit_amenities.furnished}} checked {{/if}}/>
                   <label class='custom-control-label align' for='furnished'>Furnished</label>
                 </div>
               </div>
             </div>
-            {{! outdoor }}
-            <div class='col-5 px-5'>
-              <div class='row d-flex justify-content-center'>
-                <h3>Outdoor <i class='fab fa-pagelines'></i></h3>
-              </div>
-              <div class='row d-flex'>
-                <div class='col-6 d-flex flex-column align-items-center'>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='balcony' {{#if unit.unit_amenities.balcony}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='balcony'>Balcony</label>
-                  </div>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='garden' {{#if unit.unit_amenities.garden}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='garden'>Garden</label>
-                  </div>
+            {{!-- outdoor --}}
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+              <div class="concession-group px-5">
+                <h3>Outdoor</h3>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='balcony' {{#if unit.unit_amenities.balcony}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='balcony'>Balcony</label>
                 </div>
-                <div class='col-6 d-flex flex-column align-items-center'>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='private-roof' {{#if unit.unit_amenities.private_roof}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='private-roof'>Private Roof</label>
-                  </div>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='roof-rights' {{#if unit.unit_amenities.roof_rights}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='roof-rights'>Roof Rights</label>
-                  </div>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='terrace' {{#if unit.unit_amenities.terrace}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='terrace'>Terrace</label>
-                  </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='garden' {{#if unit.unit_amenities.garden}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='garden'>Garden</label>
+                </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='private-roof' {{#if unit.unit_amenities.private_roof}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='private-roof'>Private Roof</label>
+                </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='roof-rights' {{#if unit.unit_amenities.roof_rights}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='roof-rights'>Roof Rights</label>
+                </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='terrace' {{#if unit.unit_amenities.terrace}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='terrace'>Terrace</label>
+                </div>
+              </div>
+            </div>
+            {{!-- unit features --}}
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+              <div class="concession-group px-5">
+                <h3>Unit Features</h3>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='central-air' {{#if unit.unit_amenities.central_air}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='central-air'>Central Air</label>
+                </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='dishwasher' {{#if unit.unit_amenities.dishwasher}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='dishwasher'>Dishwasher</label>
+                </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='fireplace' {{#if unit.unit_amenities.fireplace}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='fireplace'>Fireplace</label>
+                </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='hardwood-floors' {{#if unit.unit_amenities.hardwood_floors}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='hardwood-floors'>Hardwood Floors</label>
+                </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='washer-dryer' {{#if unit.unit_amenities.washer_dryer}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='washer-dryer'>Washer-Dryer</label>
+                </div>
+              </div>
+            </div>
+            {{!-- views --}}
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+              <div class="concession-group px-5">
+                <h3>Views</h3>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='city-view' {{#if unit.unit_amenities.city_view}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='city-view'>City View</label>
+                </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='garden-view' {{#if unit.unit_amenities.garden_view}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='garden-view'>Garden View</label>
+                </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='park-view' {{#if unit.unit_amenities.park_view}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='park-view'>Park View</label>
+                </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='skyline-view' {{#if unit.unit_amenities.skyline_view}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='skyline-view'>Skyline View</label>
+                </div>
+                <div class='custom-control custom-checkbox d-flex align-items-center'>
+                  <input type='checkbox' class='custom-control-input' id='water-view' {{#if unit.unit_amenities.water_view}} checked {{/if}}/>
+                  <label class='custom-control-label align' for='water-view'>Water View</label>
                 </div>
               </div>
             </div>
           </div>
-          <hr />
-          <div class='row d-flex flex-column'>
-            {{! features }}
-            <div class='row d-flex justify-content-around mb-3'>
-              <h3>Unit Features <i class='fas fa-bed'></i></h3>
-            </div>
-            <div class='row d-flex justify-content-between'>
-              <div class='col-2 px-5'>
-                <div class='row d-flex flex-column'>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='central-air' {{#if unit.unit_amenities.central_air}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='central-air'>Central Air</label>
-                  </div>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='dishwasher' {{#if unit.unit_amenities.dishwasher}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='dishwasher'>Dishwasher</label>
-                  </div>
-                </div>
+          <div class="row d-flex justify-content-end mt-5">
+            <div class="col-lg-4 col-md-5 col-sm-12">
+              <div class='card-footer d-flex justify-content-end unit-submit'>
+                <button type='button' class='btn btn-outline-dark m-2 cancel-btn'>Cancel</button>
+                <button type='submit' class='btn btn-outline-dark m-2 next-btn'>Update</button>
               </div>
-              <div class='col-2 px-5'>
-                <div class='row d-flex flex-column'>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='fireplace' {{#if unit.unit_amenities.fireplace}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='fireplace'>Fireplace</label>
-                  </div>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='hardwood-floors' {{#if unit.unit_amenities.hardwood_floors}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='hardwood-floors'>Hardwood Floors</label>
-                  </div>
-                </div>
-              </div>
-              <div class='col-2 px-5'>
-                <div class='row d-flex flex-column'>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='washer-dryer' {{#if unit.unit_amenities.washer_dryer}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='washer-dryer'>Washer-Dryer</label>
-                  </div>
-                </div>
-              </div>
-              <div class='col-2 px-5'>
-            </div>
-          </div>
-          <hr />
-          <div class='row d-flex flex-column'>
-            {{! views }}
-            <div class='row d-flex justify-content-around mb-3'>
-              <h3>Views <i class="fas fa-binoculars"></i></h3>
-            </div>
-            <div class='row d-flex justify-content-between'>
-              <div class='col-2 px-5'>
-                <div class='row d-flex flex-column'>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='city-view' {{#if unit.unit_amenities.city_view}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='city-view'>City View</label>
-                  </div>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='garden-view' {{#if unit.unit_amenities.garden_view}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='garden-view'>Garden View</label>
-                  </div>
-                </div>
-              </div>
-              <div class='col-2 px-5'>
-                <div class='row d-flex flex-column'>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='park-view' {{#if unit.unit_amenities.park_view}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='park-view'>Park View</label>
-                  </div>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='skyline-view' {{#if unit.unit_amenities.skyline_view}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='skyline-view'>Skyline View</label>
-                  </div>
-                </div>
-              </div>
-              <div class='col-2 px-5'>
-                <div class='row d-flex flex-column'>
-                  <div class='custom-control custom-checkbox d-flex align-items-center'>
-                    <input type='checkbox' class='custom-control-input' id='water-view' {{#if unit.unit_amenities.water_view}} checked {{/if}}/>
-                    <label class='custom-control-label align' for='water-view'>Water View</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class='row d-flex flex-column align-items-center mt-4'>
-            <div class='card-footer d-flex justify-content-center col-6 unit-submit'>
-              {{!-- <button type='button' class='btn btn-outline-dark col-6 m-2 cancel-btn'>Cancel</button> --}}
-              <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Update</button>
             </div>
           </div>
         </form>
+
+        {{!-- photos --}}
         <form enctype='multipart/form-data' class='unit-images-form'>
-          <div class='row'>
-            <div class='col-12'>
-              <h2 class='address'>Photos</h2>
-              <hr />
+          <div class="row d-flex justify-content-start mt-5">
+            <div class="col">
+              <h2 class="px-5">Photos</h2>
             </div>
           </div>
-          <div class='row'>
-            <div class='col-12 d-flex justify-content-center p-4'>
-              <div class='custom-file w-75'>
-                <input type='file' name='image' accept='image/*' class='custom-file-input' id='unit-image-form' multiple />
-                <label class='custom-file-label' for='unit-image-form'>Choose files</label>
+          <div class="row d-flex justify-content-between mt-5">
+            <div class="col-lg-8 col-md-10 col-sm-12 mb-4">
+              <div class="form-group px-5">
+                <div class='custom-file'>
+                  <input type='file' name='image' accept='image/*' class='custom-file-input' id='unit-image-form' multiple />
+                  <label class='custom-file-label' for='unit-image-form'>Choose files</label>
+                </div>
               </div>
             </div>
           </div>
-          <div class="row d-flex flex-column align-items-center">
-            <div class="card-footer d-flex justify-content-center col-6  unit-submit">
-              {{!-- <button type="button" class="btn btn-outline-dark col-6 m-2 cancel-btn">Cancel</button> --}}
-              <button type="submit" class="btn btn-outline-dark col-6 m-2 next-btn">Update</button>
+          <div class="row d-flex justify-content-end mt-5">
+            <div class="col-lg-4 col-md-5 col-sm-12">
+              <div class='card-footer d-flex justify-content-end unit-submit'>
+                <button type='button' class='btn btn-outline-dark m-2 cancel-btn'>Cancel</button>
+                <button type='submit' class='btn btn-outline-dark m-2 next-btn'>Update</button>
+              </div>
             </div>
           </div>
         </form>
-        </div>
+      </div>
     </div>
   </div>
 </div>

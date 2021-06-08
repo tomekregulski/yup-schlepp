@@ -4,7 +4,7 @@ const BuildingAmenities = require('./BuildingAmenities');
 const Unit = require('./Unit');
 const UnitAmenities = require('./UnitAmenities');
 const User = require('./User');
-const UnitImages = require('./UnitImages');
+const Brooklyn = require('./Brooklyn');
 
 UnitAmenities.belongsTo(Unit, {
   foreignKey: 'unit_id',
@@ -14,7 +14,6 @@ UnitAmenities.belongsTo(Unit, {
 Unit.hasOne(UnitAmenities, {
   foreignKey: 'unit_id',
   as: 'unit_amenities',
-  // onDelete: 'CASCADE',
 });
 
 Unit.belongsTo(Building, {
@@ -50,5 +49,5 @@ module.exports = {
   Unit,
   UnitAmenities,
   User,
-  UnitImages,
+  Brooklyn,
 };

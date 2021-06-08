@@ -1,22 +1,25 @@
 <form enctype='multipart/form-data' class='unit-images-form hide'>
-  <div class='row'>
-    <div class='col-12'>
-      <h2 class='address'>Photos</h2>
-      <hr />
+  <div class='row d-flex justify-content-start mt-5'>
+    <div class='col'>
+      <h2 class='px-5'>Photos</h2>
     </div>
   </div>
-  <div class='row'>
-    <div class='col-12 d-flex justify-content-center p-4'>
-      <div class='custom-file w-75'>
-        <input type='file' name='image' accept='image/*' class='custom-file-input' id='unit-image-form' multiple />
-        <label class='custom-file-label' for='unit-image-form'>Choose files</label>
+  <div class='row d-flex justify-content-between mt-5'>
+    <div class='col-lg-8 col-md-10 col-sm-12 mb-4'>
+      <div class="form-group px-5">
+        <div class='custom-file'>
+          <input type='file' name='image' accept='image/*' class='custom-file-input' id='unit-image-form' multiple />
+          <label class='custom-file-label' for='unit-image-form'>Choose files</label>
+        </div>
       </div>
     </div>
   </div>
-  <div class='card-footer d-flex justify-content-end'>
-    <div class='col-3 d-flex'>
-      <button type='button' class='btn btn-outline-dark col-6 m-2 cancel-btn'>Cancel</button>
-      <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Next</button>
+  <div class="row d-flex justify-content-end mt-5">
+    <div class="col-lg-4 col-md-5 col-sm-12">
+      <div class='card-footer d-flex justify-content-end unit-submit'>
+        <button type='button' class='btn btn-outline-dark m-2 cancel-btn'>Cancel</button>
+        <button type='submit' class='btn btn-outline-dark m-2 next-btn'>Next</button>
+      </div>
     </div>
   </div>
 </form>

@@ -1,7 +1,30 @@
-    {{> nav}}
-<section>
-    {{> property-search}}
-</section>
-<section class="d-flex flex-column justify-content-center align-items-center" id="render-test">
-    
-</section>
+
+
+{{> nav}}
+<div class="container main-card d-flex justify-content-center mt-5">
+    <div class="row d-flex justify-content-center card-width">
+        <div class="card col-md address-input m-2 p-0 inner-card">
+            <div class="card-body container">
+                <div class="row dflex justify-content-center">
+                    <div class="col">
+                        <h2 class="title-container">Search</h2>
+                        <hr>
+                    </div>
+                        {{> property-search}}
+                </div>
+                {{!-- <hr> --}}
+                <div class="row results-container hide">
+                    
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="text-center" id="mgmt-list">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/property-search.js"></script>

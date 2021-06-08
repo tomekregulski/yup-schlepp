@@ -1,28 +1,34 @@
 <form class='mgmt-form'>
-  <div class='row d-flex justify-content-center select-row'>
-    <div class='col-12 d-flex justify-content-center p-4'>
-      <select class='custom-select dropdown w-75'>
-        <option selected=''>Select Management Company</option>
-        {{#each mgmt as |mgmt|}}
-        <option value={{mgmt.id}}>{{mgmt.management_name}}</option>
-        {{/each}}
-        <option>Add New Management Company</option>
-      </select>
+  <div class='row d-flex justify-content-start mt-5 select-row'>
+    <div class='col-lg-8 col-md-12 col-sm-12 mb-4'>
+      <div class="form-group px-5">
+        <label for="management">Management Company</label>
+        <div class="d-flex align-items-baseline">
+          <select class='custom-select dropdown w-100'>
+            <option selected=''>Select Management Company</option>
+            {{#each mgmt as |mgmt|}}
+            <option value={{mgmt.id}}>{{mgmt.management_name}}</option>
+            {{/each}}
+            <option>Add New Management Company</option>
+          </select>
+        </div>
+      </div>
     </div>
   </div>
-  
-    <div class='row d-flex justify-content-center add-row hide'>
-      <hr />
-      <div class='form-group col-12 p-4'>
+  <div class='row d-flex justify-content-start mt-5 add-row hide'>
+    <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+      <div class='form-group px-5'>
         <label for='management-company'>Management Company Name</label>
-        <input type='text' class='form-control' id='mgmt' placeholder='' />
+        <input type='text' class='form-control w-100' id='mgmt' placeholder='' />
       </div>
     </div>
-    <div class='card-footer d-flex justify-content-end hide'>
-      <div class='col-3 d-flex'>
-        <button type='button' class='btn btn-outline-dark col-6 m-2 cancel-btn'>Cancel</button>
-        <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Next</button>
+  </div>
+  <div class="row d-flex justify-content-end mt-3">
+    <div class="col-lg-4 col-md-5 col-sm-12">
+      <div class='card-footer d-flex justify-content-end hide unit-submit'>
+        <button type='button' class='btn btn-outline-dark m-2 cancel-btn'>Cancel</button>
+        <button type='submit' class='btn btn-outline-dark m-2 next-btn'>Next</button>
       </div>
     </div>
-  
+  </div>
 </form>

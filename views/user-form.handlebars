@@ -1,54 +1,60 @@
 
 {{> nav}}
-
 <div class="container main-card mt-5">
   <div class="row d-flex justify-content-center unit-card">
     <div class="card col-md address-input m-2 p-0 inner-card">
-      <div class="card-body container agent-reg-card p-3">
+      <div class="card-body container">
         <div class="row d-flex justify-content-center">
           <div class="col">
-            <h2>Agent Registration</h2>
+            <h2 class="px-5">Agent Registration</h2>
           </div>
         </div>
         <hr>
-        <div class="agent-reg-card row justify-content-center">
-          <form class="agent-reg-form">
-            <div class="row justify-content-center">
-              <div class="col-6">
-                <div class="form-group">
+        <form class="agent-reg-form">
+          <div class="row d-flex justify-content-between mt-5">
+            {{!-- left side --}}
+            <div class="col-lg-8 col-md-7 col-sm-12 mb-4">
+              <div class="container main-card unit-inner">
+                <div class="form-group px-5">
                   <label for="first-name">First Name</label>
                   <input type="text" class="form-control" id="first-name">
                 </div>
-                <div class="form-group">
+                <div class="form-group px-5">
                   <label for="last-name">Last Name</label>
                   <input type="text" class="form-control" id="last-name">
                 </div>
-                <div class="form-group">
+                <div class="form-group px-5">
                   <label for="email">Email</label>
                   <input type="email" class="form-control" id="email">
                 </div>
-                <div class="form-group">
+                <div class="form-group px-5">
                   <label for="phone-number">Phone Number</label>
                   <input type="tel" class="form-control" id="phone-number">
                 </div>
-                <div class="form-group">
+                <div class="form-group px-5">
                   <label for="password">Password</label>
                   <input type="password" class="form-control" id="password">
                 </div>
-                <div class="form-group">
+                <div class="form-group px-5">
                   <label for="password-confirm">Password Confirmation</label>
                   <input type="password" class="form-control" id="password-confirm">
                 </div>
               </div>
             </div>
-              <div class='card-footer d-flex justify-content-end mt-3'>
-              <div class='col-3 d-flex'>
-                <button type='button' class='btn btn-outline-dark col-6 m-2 cancel-btn'>Cancel</button>
-                <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Next</button>
+            <div class="col-lg-4 col-md-5 col-sm-12 d-flex flex-column justify-content-end mb-4">
+              <div class="row d-flex justify-content-end mt-5">
+                <div class="col">
+                  <div class="form-group">
+                    <div class="card-footer d-flex justify-content-end unit-submit">
+                      <button type='button' class='btn btn-outline-dark m-2 cancel-btn'>Cancel</button>
+                      <button type='submit' class='btn btn-outline-dark m-2 next-btn'>Next</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

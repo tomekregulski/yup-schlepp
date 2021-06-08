@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
-class UnitImages extends Model {}
+class Brooklyn extends Model {}
 
-UnitImages.init(
+Brooklyn.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,17 +11,12 @@ UnitImages.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    unit_id: {
-      type: DataTypes.INTEGER,
+    neighborhood: {
+      type: DataTypes.STRING,
       allowNull: false,
-      references: {
-        model: 'unit',
-        key: 'id',
-      },
     },
-    image: {
+    sub_neighborhood: {
       type: DataTypes.JSON,
-      allowNull: false,
     },
   },
   {
@@ -29,8 +24,8 @@ UnitImages.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'unit_images',
+    modelName: 'brooklyn',
   }
 );
 
-module.exports = UnitImages;
+module.exports = Brooklyn;

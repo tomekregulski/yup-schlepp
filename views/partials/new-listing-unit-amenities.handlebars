@@ -1,22 +1,19 @@
-<form action='' class='unit-amenities hide'>
-  <div class='row'>
-    <div class='col-12'>
-      <h2 class='address'>Amenities</h2>
-      <hr />
+<form class='unit-amenities hide'>
+  <div class='row d-flex justify-content-start mt-5'>
+    <div class='col'>
+      <h2 class="px-5">Amenities</h2>
     </div>
   </div>
-  <div class='row d-flex justify-content-center'>
+  <div class='row d-flex justify-content-between mt-5'>
     {{! unit id }}
-    <div class='form-group col-2 px-5'>
+    <div class='form-group hide'>
       <label for='unit-id'>Unit ID:</label>
       <span id='unit-id-amenities'></span>
     </div>
-    {{! Furnished }}
-    <div class='col-2 px-5'>
-      <div class='row'>
-        <h3>Furniture <i class='fas fa-couch'></i></h3>
-      </div>
-      <div class='row'>
+    {{! furnished }}
+    <div class='col-lg-3 col-md-6 col-sm-12 mb-4'>
+      <div class='concession-group px-5'>
+        <h3>Furniture</h3>
         <div class='custom-control custom-checkbox d-flex align-items-center'>
           <input type='checkbox' class='custom-control-input' id='furnished' />
           <label class='custom-control-label align' for='furnished'>Furnished</label>
@@ -24,125 +21,90 @@
       </div>
     </div>
     {{! outdoor }}
-    <div class='col-5 px-5'>
-      <div class='row d-flex justify-content-center'>
-        <h3>Outdoor <i class='fab fa-pagelines'></i></h3>
-      </div>
-      <div class='row d-flex'>
-        <div class='col-6 d-flex flex-column align-items-center'>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='balcony' />
-            <label class='custom-control-label align' for='balcony'>Balcony</label>
-          </div>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='garden' />
-            <label class='custom-control-label align' for='garden'>Garden</label>
-          </div>
+    <div class='col-lg-3 col-md-6 col-sm-12 mb-4'>
+      <div class='concession-group px-5'>
+        <h3>Outdoor</h3>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='balcony' />
+          <label class='custom-control-label align' for='balcony'>Balcony</label>
         </div>
-        <div class='col-6 d-flex flex-column align-items-center'>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='private-roof' />
-            <label class='custom-control-label align' for='private-roof'>Private Roof</label>
-          </div>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='roof-rights' />
-            <label class='custom-control-label align' for='roof-rights'>Roof Rights</label>
-          </div>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='terrace' />
-            <label class='custom-control-label align' for='terrace'>Terrace</label>
-          </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='garden' />
+          <label class='custom-control-label align' for='garden'>Garden</label>
+        </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='private-roof' />
+          <label class='custom-control-label align' for='private-roof'>Private Roof</label>
+        </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='roof-rights' />
+          <label class='custom-control-label align' for='roof-rights'>Roof Rights</label>
+        </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='terrace' />
+          <label class='custom-control-label align' for='terrace'>Terrace</label>
+        </div>
+      </div>
+    </div>
+    {{!-- unit features --}}
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+      <div class="concession-group px-5">
+        <h3>Unit Features</h3>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='central-air' />
+          <label class='custom-control-label align' for='central-air'>Central Air</label>
+        </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='dishwasher' />
+          <label class='custom-control-label align' for='dishwasher'>Dishwasher</label>
+        </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='fireplace' />
+          <label class='custom-control-label align' for='fireplace'>Fireplace</label>
+        </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='hardwood-floors' />
+          <label class='custom-control-label align' for='hardwood-floors'>Hardwood Floors</label>
+        </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='washer-dryer' />
+          <label class='custom-control-label align' for='washer-dryer'>Washer-Dryer</label>
+        </div>
+      </div>
+    </div>
+    {{!-- views --}}
+    <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+      <div class="concession-group px-5">
+        <h3>Views</h3>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='city-view' />
+          <label class='custom-control-label align' for='city-view'>City View</label>
+        </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='garden-view' />
+          <label class='custom-control-label align' for='garden-view'>Garden View</label>
+        </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='park-view' />
+          <label class='custom-control-label align' for='park-view'>Park View</label>
+        </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='skyline-view' />
+          <label class='custom-control-label align' for='skyline-view'>Skyline View</label>
+        </div>
+        <div class='custom-control custom-checkbox d-flex align-items-center'>
+          <input type='checkbox' class='custom-control-input' id='water-view' />
+          <label class='custom-control-label align' for='water-view'>Water View</label>
         </div>
       </div>
     </div>
   </div>
-  <hr />
-  <div class='row d-flex flex-column'>
-    {{! features }}
-    <div class='row d-flex justify-content-center mb-3'>
-      <h3>Unit Features <i class='fas fa-bed'></i></h3>
-    </div>
-    <div class='row d-flex justify-content-center'>
-      <div class='col-2 px-5'>
-        <div class='row d-flex flex-column'>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='central-air' />
-            <label class='custom-control-label align' for='central-air'>Central Air</label>
-          </div>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='dishwasher' />
-            <label class='custom-control-label align' for='dishwasher'>Dishwasher</label>
-          </div>
-        </div>
+  <div class='row d-flex justify-content-end mt-5'>
+    <div class="col-lg-4 col-md-5 col-sm-12">
+      <div class='card-footer d-flex justify-content-end unit-submit'>
+        <button type='button' class='btn btn-outline-dark m-2 cancel-btn'>Cancel</button>
+        <button type='submit' class='btn btn-outline-dark m-2 next-btn'>Next</button>
       </div>
-      <div class='col-2 px-5'>
-        <div class='row d-flex flex-column'>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='fireplace' />
-            <label class='custom-control-label align' for='fireplace'>Fireplace</label>
-          </div>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='hardwood-floors' />
-            <label class='custom-control-label align' for='hardwood-floors'>Hardwood Floors</label>
-          </div>
-        </div>
-      </div>
-      <div class='col-2 px-5'>
-        <div class='row d-flex flex-column'>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='washer-dryer' />
-            <label class='custom-control-label align' for='washer-dryer'>Washer-Dryer</label>
-          </div>
-        </div>
-      </div>
-  </div>
-  <hr />
-  <div class='row d-flex flex-column'>
-    {{! views }}
-    <div class='row d-flex justify-content-center mb-3'>
-      <h3>Views <i class="fas fa-binoculars"></i></h3>
-    </div>
-    <div class='row d-flex justify-content-center'>
-      <div class='col-2 px-5'>
-        <div class='row d-flex flex-column'>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='city-view' />
-            <label class='custom-control-label align' for='city-view'>City View</label>
-          </div>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='garden-view' />
-            <label class='custom-control-label align' for='garden-view'>Garden View</label>
-          </div>
-        </div>
-      </div>
-      <div class='col-2 px-5'>
-        <div class='row d-flex flex-column'>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='park-view' />
-            <label class='custom-control-label align' for='park-view'>Park View</label>
-          </div>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='skyline-view' />
-            <label class='custom-control-label align' for='skyline-view'>Skyline View</label>
-          </div>
-        </div>
-      </div>
-      <div class='col-2 px-5'>
-        <div class='row d-flex flex-column'>
-          <div class='custom-control custom-checkbox d-flex align-items-center'>
-            <input type='checkbox' class='custom-control-input' id='water-view' />
-            <label class='custom-control-label align' for='water-view'>Water View</label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  
-  <div class='row d-flex flex-column align-items-center mt-4'>
-    <div class='card-footer d-flex justify-content-center col-6 unit-submit'>
-      <button type='button' class='btn btn-outline-dark col-6 m-2 cancel-btn'>Cancel</button>
-      <button type='submit' class='btn btn-outline-dark col-6 m-2 next-btn'>Next</button>
     </div>
   </div>
 </form>
