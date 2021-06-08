@@ -4,6 +4,7 @@ const BuildingAmenities = require('./BuildingAmenities');
 const Unit = require('./Unit');
 const UnitAmenities = require('./UnitAmenities');
 const User = require('./User');
+const Brooklyn = require('./Brooklyn');
 
 UnitAmenities.belongsTo(Unit, {
   foreignKey: 'unit_id',
@@ -48,4 +49,5 @@ module.exports = {
   Unit,
   UnitAmenities,
   User,
+  Brooklyn,
 };

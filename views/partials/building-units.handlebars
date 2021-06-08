@@ -1,20 +1,29 @@
+<div class="row">
 {{#each units as |unit|}}
-  <div
-    class='result-container result-container d-flex flex-row justify-content-start align-items-start'
-    style='cursor: pointer'
-    onClick="window.location='/units/{{unit.id}}'"
-  >
-    <div>
-      <img src={{unit.image.[0]}} alt='unit-photo' style='height: 90px;' class='mr-3' />
-    </div>
-    <div class='d-flex flex-column justify-content-between align-items-start'>
-      <span class='mt-1'>{{unit.building.street_address}}, Unit #{{unit.unit_num}}</span>
-      <span class='mt-1'>{{unit.building.street_address}}</span>
-      <span class='mt-1'>{{unit.building.city}}</span>
-      <span class='mt-1'>{{unit.building.neighborhood}}</span>
-      <span class='mt-1'>Bedrooms:
-        {{unit.legal_beds}}
-        | Rent: ${{unit.gross_rent}}/mo</span>
+  <div class="col-lg-4 col-md-6 col-sm-12">
+    <div onClick="window.location='/units/{{unit.id}}'" class="card display-card my-5">
+      <img class="card-img" src={{unit.image.[0]}} alt="Card image">
+      <div class="card-img-overlay rent-bar d-flex justify-content-center align-items-center">
+        <span class="rent">${{unit.net_rent}}</span>
+      </div>
+      <div class="status p-2">
+        <span>{{to_upperCase unit.status}}</span>
+      </div>
+      <div class="card-body text-center">
+        <div class="row d-flex justify-content-between align-items-baseline px-2">
+          <div class="col-3 col-lg-4">
+            <h3 class="card-title unit-num">#{{unit.unit_num}}</h3>
+          </div>
+          <div class="col-9 col-lg-8 specs">
+            <span>{{unit.legal_beds}}</span>
+            <span>Beds</span>
+            <span>|</span>
+            <span>{{total_baths unit.full_bath unit.half_bath}}</span>
+            <span>Baths</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 {{/each}}
+</div>

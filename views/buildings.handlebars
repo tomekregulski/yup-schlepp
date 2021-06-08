@@ -1,5 +1,23 @@
 {{> nav}}
-<h2 class="mt-5">Available Units at {{singleBuildingData.street_address}}</h2>
-<section class="container d-flex flex-column align-items-center justify-content-center mt-5">
-    {{> building-units}}
-</section>
+<div class="container main-card d-flex justify-content-center mt-5">
+    <div class="row d-flex justify-content-center card-width">
+        <div class="card col-md address-input m-2 p-0 inner-card">
+            <div class="card-body container">
+                <div class="row dflex justify-content-center">
+                    <div class="col d-flex flex-column justify-content-around align-items-center">
+                        <h2 class="text-center">{{singleBuildingData.street_address}}</h2>
+                        <div class="neighborhood p-2">
+                            <span>{{singleBuildingData.neighborhood}}</span>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                {{> building-units}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- <section class="container d-flex flex-column align-items-center justify-content-center mt-5">
+    
+</section> --}}

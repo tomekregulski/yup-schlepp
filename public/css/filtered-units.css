@@ -1,0 +1,92 @@
+.card-width {
+  width: 100vw;
+}
+
+.neighborhood {
+  font-size: 1.4em;
+  color: var(--primary-light);
+  background-color: var(--yup-pink);
+  border-radius: 20px;
+}
+
+.display-card {
+  border: 1px solid var(--yup-pink);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.display-card:hover,
+.display-card:focus,
+.display-card:active {
+  transform: scale(1.05);
+}
+
+.rent-bar {
+  height: 4rem;
+  width: fit-content;
+  color: var(--primary-light);
+  background-color: var(--yup-pink);
+  box-shadow: var(--shadow);
+  border-bottom-right-radius: 20px;
+}
+
+.rent {
+  font-size: 1.6em;
+  font-weight: 700;
+}
+
+.unit-num {
+  font-size: 1.2em;
+  font-weight: 700;
+  text-decoration: underline;
+  color: var(--yup-pink);
+}
+
+.status {
+  color: var(--primary-light);
+  background-color: var(--yup-pink);
+}
+
+.specs {
+  font-size: 1.2em;
+}
+
+.mgmt-row {
+  border-bottom: 1px solid var(--yup-pink);
+}
+
+.mgmt-link {
+  width: fit-content;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.mgmt-link:hover,
+.mgmt-link:focus,
+.mgmt-link:active {
+  color: var(--button-hover);
+  transform: scale(1.05);
+}
+
+@media screen and (min-width: 750px) {
+  .rent-bar {
+    height: 3rem;
+  }
+
+  .rent {
+    font-size: 1.26em;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .unit-num {
+    font-size: 1em;
+  }
+
+  .specs {
+    font-size: 1em;
+  }
+}

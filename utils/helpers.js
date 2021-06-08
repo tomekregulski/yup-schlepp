@@ -14,4 +14,12 @@ module.exports = {
   to_lowerCase: (train) => {
     return train.toLowerCase();
   },
+  to_upperCase: (str) => {
+    return str.toUpperCase();
+  },
+  total_baths: (full, half) => {
+    const half_baths = half / 2;
+
+    return full + half_baths;
+  },
 };

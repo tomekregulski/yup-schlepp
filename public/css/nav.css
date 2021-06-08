@@ -25,6 +25,7 @@ nav {
 .collapse-cont {
   width: 100vw;
   background-color: var(--button-hover);
+  /* transform: rotate(30deg); */
 }
 
 .nav-link {
