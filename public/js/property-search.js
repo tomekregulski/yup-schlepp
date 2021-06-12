@@ -10,6 +10,7 @@ filterBtns.forEach((btn) => {
         break;
       case 'Building':
         showBuildingForm(category);
+        renderBuildingForm();
         break;
       case 'Unit':
         showUnitForm(category);
@@ -95,13 +96,21 @@ const renderMgmtResults = (management) => {
   }
 };
 
-const showBuildingForm = (category) => {
-  let buildings = document.getElementById('building_hide');
+const renderBuildingForm = () => {
+  let target = document.getElementById('property-search');
+  target.innerHTML = `    
+  <div class="row d-flex justify-content-between mt-5" id="building_hide">
+    {{> building-search-form}}
+  </div>`;
+};
 
-  if (buildings.classList.contains('hide')) {
-    buildings.classList.remove('hide');
-    document.querySelector('.title-container').textContent = 'Buildings';
-  }
+const showBuildingForm = (category) => {
+  // let buildings = document.getElementById('building_hide');
+
+  // if (buildings.classList.contains('hide')) {
+  //   buildings.classList.remove('hide');
+  //   document.querySelector('.title-container').textContent = 'Buildings';
+  // }
   const search = document.getElementById('search-main');
   search.classList.remove('hide');
   search.addEventListener('click', () => buildQuery(category));
