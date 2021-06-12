@@ -33,15 +33,25 @@ const renderUnitResults = (newData) => {
         <div class="card-img-overlay rent-bar d-flex justify-content-center align-items-center">
           <span class="rent">$${newData[i].net_rent}</span>
         </div>
-        <div class="status p-2">
-          <span>${newData[i].status}</span>
+        <div class="status d-flex justify-content-between p-2">
+          <p><b>${newData[i].status.toUpperCase()}</b></p>
+          <div class="d-flex">
+            <p class="mr-2"><b>MOVE IN:</b></p>
+            <p>
+              <b>
+          ${new Date(newData[i].move_in).getMonth() + 1}/${new Date(newData[i].move_in).getDate()}/${new Date(
+        newData[i].move_in
+      ).getFullYear()}
+              </b>
+            </p>
+          </div>
         </div>
         <div class="card-body text-center">
           <div class="row d-flex justify-content-between align-items-baseline px-2">
-            <div class="col-4">
-              <h3 class="card-title unit-num">#${newData[i].unit_num}</h3>
+            <div class="col-12 text-left">
+              <h3 class="card-title unit-num">${newData[i].building.street_address} ${newData[i].unit_num}</h3>
             </div>
-            <div class="col-8 specs">
+            <div class="col-12 text-left specs">
               <span>${newData[i].legal_beds}</span>
               <span>Beds</span>
               <span>|</span>

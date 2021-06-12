@@ -8,4 +8,5 @@ sequelize = process.env.JAWSDB_URL
       port: 3306,
       logging: false,
     });
+
 module.exports = sequelize;

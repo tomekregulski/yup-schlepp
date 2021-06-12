@@ -9,6 +9,7 @@
   --button-hover: #bd71a3;
   --trans-pink: rgba(208, 123, 179, 0.778);
   --primary-dark: #1b1017;
+  --lightbox: #1b1017c0;
   --primary-light: #fffdfe;
   --collapse: #f5f4f483;
   --shadow: rgba(27, 16, 23, 0.09) 5.25px 3.25px 12.6px;
@@ -17,7 +18,7 @@
 }
 
 html {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 body {
@@ -96,14 +97,6 @@ button:focus {
   display: none !important;
 }
 
-.px-6 {
-  padding: 0 5rem;
-}
-
-.px-7 {
-  padding: 0 6rem;
-}
-
 .train-icon {
   width: 1.5rem;
 }
@@ -145,22 +138,23 @@ button:focus {
   margin-top: 10px;
 }
 
-@media screen and (min-width: 650px) {
-  html {
-    font-size: 14px;
-  }
-}
+/* ************ 
+-- UNIT VIEW --
+************ */
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 650px) {
   html {
     font-size: 16px;
   }
 }
 
 @media screen and (min-width: 990px) {
+  html {
+    font-size: 14px;
+  }
+
   .month-span {
     white-space: nowrap;
-    /* width: 7.8rem; */
   }
 
   .btn {
