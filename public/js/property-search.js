@@ -9,7 +9,7 @@ filterBtns.forEach((btn) => {
         fetchMgmt(url);
         break;
       case 'Building':
-        showBuildingForm(category);
+        document.location.replace('/building-filter');
         break;
       case 'Unit':
         showUnitForm(category);
@@ -19,58 +19,6 @@ filterBtns.forEach((btn) => {
     document.querySelector('.filter-select').classList.toggle('hide');
   });
 });
-
-// Retrieve Management Companies based on search query
-const fetchMgmt = async (url) => {
-  let management = [];
-
-  let response = await fetch(url);
-
-  if (response.ok) {
-    let json = await response.json();
-    for (var i = 0; i < json.length; i++) {
-      management.push(json[i]);
-    }
-    renderMgmtResults(management);
-  } else {
-    alert(response.statusText);
-  }
-};
-
-const fetchBuildings = async (apiUrl, redirectUrl) => {
-  let buildings = [];
-
-  let response = await fetch(apiUrl);
-
-  if (response.ok) {
-    let json = await response.json();
-    for (var i = 0; i < json.length; i++) {
-      buildings.push(json[i]);
-    }
-    window.sessionStorage.setItem('buildings', JSON.stringify(buildings));
-    document.location.assign(redirectUrl);
-  } else {
-    alert(response.statusText);
-  }
-};
-
-// Fetch units with constructed query
-const fetchUnits = async (apiUrl, redirectUrl) => {
-  let units = [];
-
-  let response = await fetch(apiUrl);
-
-  if (response.ok) {
-    let json = await response.json();
-    for (var i = 0; i < json.length; i++) {
-      units.push(json[i]);
-    }
-    window.sessionStorage.setItem('units', JSON.stringify(units));
-    document.location.assign(redirectUrl);
-  } else {
-    alert(response.statusText);
-  }
-};
 
 const renderMgmtResults = (management) => {
   document.querySelector('.title-container').textContent = 'Management Companies';
@@ -93,18 +41,6 @@ const renderMgmtResults = (management) => {
     </div>`;
     target.appendChild(row);
   }
-};
-
-const showBuildingForm = (category) => {
-  let buildings = document.getElementById('building_hide');
-
-  if (buildings.classList.contains('hide')) {
-    buildings.classList.remove('hide');
-    document.querySelector('.title-container').textContent = 'Buildings';
-  }
-  const search = document.getElementById('search-main');
-  search.classList.remove('hide');
-  search.addEventListener('click', () => buildQuery(category));
 };
 
 const showUnitForm = (category) => {
@@ -178,32 +114,6 @@ const toggleSearchBtn = () => {
 
 const uncheckAll = () => document.getElementsByName('searchElement').forEach((el) => (el.checked = false));
 
-// expand neighborhoods in accordian filter
-document.querySelectorAll('.brooklyn').forEach((neighborhood) => {
-  neighborhood.addEventListener('click', () => {
-    document.querySelectorAll('.brooklyn-neighborhoods').forEach((neighborhood) => {
-      neighborhood.classList.toggle('hide');
-    });
-  });
-});
-document.querySelectorAll('.bronx').forEach((neighborhood) => {
-  neighborhood.addEventListener('click', () => {
-    document.querySelectorAll('.bronx-neighborhoods').forEach((neighborhood) => {
-      neighborhood.classList.toggle('hide');
-    });
-  });
-});
-document.querySelectorAll('.manhattan').forEach((neighborhood) => {
-  neighborhood.addEventListener('click', () => {
-    document.querySelectorAll('.manhattan-neighborhoods').forEach((neighborhood) => {
-      neighborhood.classList.toggle('hide');
-    });
-  });
-});
-document.querySelectorAll('.queens').forEach((neighborhood) => {
-  neighborhood.addEventListener('click', () => {
-    document.querySelectorAll('.queens-neighborhoods').forEach((neighborhood) => {
-      neighborhood.classList.toggle('hide');
-    });
-  });
-});
+if (document.location.pathname.includes('building-filter')) {
+  document.getElementById('search-buildings').addEventListener('click', () => buildQuery('Building'));
+}
