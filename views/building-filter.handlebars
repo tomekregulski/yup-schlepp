@@ -1,0 +1,45 @@
+{{> nav}}
+<div class="container main-card d-flex justify-content-center mt-5">
+    <div class="row d-flex justify-content-center card-width">
+        <div class="card col-md address-input m-2 p-0 inner-card">
+            <div class="card-body container">
+                <div class="row dflex justify-content-center">
+                    <div class="col">
+                        <h2 class="title-container">Search Buildings</h2>
+                        <hr>
+                    </div>
+                  <section class="container mt-5" id="property-section">
+                    <form id="property-search">
+                      <div class="row d-flex justify-content-between mt-5" id="building_hide">
+                        {{> building-search-form}}
+                      </div>
+                      <div class="row d-flex justify-content-between mt-5 hide" id="unit_hide">
+                        {{> unit-search-form}}
+                      </div>
+                      <div class='row d-flex justify-content-center mt-5 w-100'>
+                        <div class="col">
+                          <div class='card-footer d-flex justify-content-end unit-submit'>
+                            <button type="button" class="btn btn-outline-dark m-2 next-btn" style="width: 120" id="search-buildings">Search</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </section>
+                </div>
+                {{!-- <hr> --}}
+                <div class="row results-container hide">
+                    
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="text-center" id="mgmt-list">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/property-search.js"></script>
+<script src="/js/searchForms.js"></script>

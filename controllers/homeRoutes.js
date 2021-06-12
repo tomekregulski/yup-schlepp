@@ -55,7 +55,48 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.get('/managements/:id', async (req, res) => {
+router.get('/building-filter', withAuth, async (req, res) => {
+  try {
+    const buildingData = await Building.findAll({
+      include: [
+        { model: BuildingAmenities, as: 'building_amenities' },
+        // { model: Management, as: 'management' },
+        // {
+        //   model: Unit,
+        //   as: 'units',
+        //   include: [{ model: UnitAmenities, as: 'unit_amenities' }],
+        // },
+      ],
+    });
+
+    const buildings = buildingData.map((building) => building.get({ plain: true }));
+
+    const brooklynData = await Brooklyn.findAll();
+    const queensData = await Queens.findAll();
+    const bronxData = await Bronx.findAll();
+    const manhattanData = await Manhattan.findAll();
+
+    const brooklyn = brooklynData.map((neighborhoods) => neighborhoods.get({ plain: true }));
+    const queens = queensData.map((neighborhoods) => neighborhoods.get({ plain: true }));
+    const bronx = bronxData.map((neighborhoods) => neighborhoods.get({ plain: true }));
+    const manhattan = manhattanData.map((neighborhoods) => neighborhoods.get({ plain: true }));
+
+    res.render('building-filter', {
+      buildings,
+      brooklyn,
+      queens,
+      bronx,
+      manhattan,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      email: req.session.email,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/managements/:id', withAuth, async (req, res) => {
   try {
     const managementData = await Management.findByPk(req.params.id, {
       include: [{ model: Building, as: 'buildings' }],
