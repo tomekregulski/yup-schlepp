@@ -159,16 +159,6 @@
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div class="card-body">
-                {{!-- <div class="row">
-                  <div class="col-6">
-                    <h4>Furnished</h4>
-                    <hr>
-                  </div>
-                  <div class="col-6">
-                    <h4>Outdoor</h4>
-                    <hr>
-                  </div>
-                </div> --}}
                 <div class="row">
                   <div class="col-12 col-sm-6 mb-4">
                     <h4>Furnished</h4>
@@ -389,20 +379,106 @@
               <div class="card-body">
                 <div class="accordion" id="accordionExample">
                   <div class="row">
+                    <div class="col-12 mb-2 brooklyn">
+                      <h4 class="neighborhood-heading">
+                        Brooklyn
+                      </h4>
+                      <hr>
+                    </div>
                     {{#each brooklyn as |brooklyn|}}
-                    <div class="col-12 col-md-6 mb-2 p3">
+                    <div class="col-12 mb-2 px-0 brooklyn-neighborhoods hide">
                       <div class="custom-control custom-checkbox mb-1">
                         <input name='searchElement' class="custom-control-input" type="checkbox" value="building[neighborhood]={{brooklyn.neighborhood}}" id="{{brooklyn.neighborhood}}"/>
-                        <label class="custom-control-label" for="{{brooklyn.neighborhood}}">{{brooklyn.neighborhood}}</label>
+                        <label class="custom-control-label w-100" for="{{brooklyn.neighborhood}}">{{brooklyn.neighborhood}}</label>
                       </div>
                       {{#if brooklyn.sub_neighborhood}}
                       {{#each brooklyn.sub_neighborhood as |sub|}}
                       <div class="custom-control custom-checkbox ml-4">
                         <input name='searchElement' class="custom-control-input" type="checkbox" value="building[neighborhood]={{sub.name}}" id="{{sub.name}}"/>
-                        <label class="custom-control-label" for="{{sub.name}}">{{sub.name}}</label>
+                        <label class="custom-control-label w-100" for="{{sub.name}}">{{sub.name}}</label>
                       </div>
                       {{/each}}
                       {{/if}}
+                      <hr>
+                    </div>
+                    {{/each}}
+                  </div>
+                  <div class="row">
+                    <div class="col-12 mb-2 bronx">
+                      <h4 class="neighborhood-heading">
+                        Bronx
+                      </h4>
+                      <hr>
+                    </div>
+                    {{#each bronx as |bronx|}}
+                    <div class="col-12 mb-2 px-0 bronx-neighborhoods hide">
+                      <div class="custom-control custom-checkbox mb-1">
+                        <input name='searchElement' class="custom-control-input" type="checkbox" value="building[neighborhood]={{bronx.neighborhood}}" id="{{bronx.neighborhood}}"/>
+                        <label class="custom-control-label w-100" for="{{bronx.neighborhood}}">{{bronx.neighborhood}}</label>
+                      </div>
+                      {{#if bronx.sub_neighborhood}}
+                      {{#each bronx.sub_neighborhood as |sub|}}
+                      <div class="custom-control custom-checkbox ml-4">
+                        <input name='searchElement' class="custom-control-input" type="checkbox" value="building[neighborhood]={{sub.name}}" id="{{sub.name}}"/>
+                        <label class="custom-control-label w-100" for="{{sub.name}}">{{sub.name}}</label>
+                      </div>
+                      {{/each}}
+                      {{/if}}
+                      <hr>
+                    </div>
+                    {{/each}}
+                  </div>
+                  <div class="row">
+                    <div class="col-12 mb-2 manhattan">
+                      <h4 class="neighborhood-heading">
+                        Manhattan
+                      </h4>
+                      <hr>
+                    </div>
+                    {{#each manhattan as |manhattan|}}
+                    <div class="col-12 mb-2 px-0 manhattan-neighborhoods hide">
+                      <h5 class="ml-4">{{manhattan.area}}</h5>
+                      <hr>
+                      {{#if manhattan.neighborhood}}
+                      {{#each manhattan.neighborhood as |neighborhood|}}
+                      <div class="custom-control custom-checkbox ml-4">
+                        <input name='searchElement' class="custom-control-input" type="checkbox" value="building[neighborhood]={{neighborhood.name}}" id="{{neighborhood.name}}"/>
+                        <label class="custom-control-label w-100" for="{{neighborhood.name}}">{{neighborhood.name}}</label>
+                      </div>
+                      {{#each neighborhood.sub_neighborhood as |sub|}}
+                      <div class="custom-control custom-checkbox ml-5">
+                        <input name='searchElement' class="custom-control-input" type="checkbox" value="building[neighborhood]={{sub.name}}" id="{{sub.name}}"/>
+                        <label class="custom-control-label w-100" for="{{sub.name}}">{{sub.name}}</label>
+                      </div>
+                      {{/each}}
+                      <hr>
+                      {{/each}}
+                      {{/if}}
+                    </div>
+                    {{/each}}
+                  </div>
+                  <div class="row">
+                    <div class="col-12 mb-2 queens">
+                      <h4 class="neighborhood-heading">
+                        Queens
+                      </h4>
+                      <hr>
+                    </div>
+                    {{#each queens as |queens|}}
+                    <div class="col-12 mb-2 px-0 py-2 queens-neighborhoods hide">
+                      <div class="custom-control custom-checkbox mb-1">
+                        <input name='searchElement' class="custom-control-input" type="checkbox" value="building[neighborhood]={{queens.neighborhood}}" id="{{queens.neighborhood}}"/>
+                        <label class="custom-control-label w-100" for="{{queens.neighborhood}}">{{queens.neighborhood}}</label>
+                      </div>
+                      {{#if queens.sub_neighborhood}}
+                      {{#each queens.sub_neighborhood as |sub|}}
+                      <div class="custom-control custom-checkbox ml-4">
+                        <input name='searchElement' class="custom-control-input" type="checkbox" value="building[neighborhood]={{sub.name}}" id="{{sub.name}}"/>
+                        <label class="custom-control-label w-100" for="{{sub.name}}">{{sub.name}}</label>
+                      </div>
+                      {{/each}}
+                      {{/if}}
+                      <hr>
                     </div>
                     {{/each}}
                   </div>
