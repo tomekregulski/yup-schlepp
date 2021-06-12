@@ -8,43 +8,33 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable('building', {
+    await queryInterface.createTable('user', {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
       },
-      street_address: {
+      email: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      neighborhood: {
+      password: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      city: {
+      first_name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      zip_code: {
+      last_name: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          len: 5,
-        },
       },
-      trains: {
-        type: DataTypes.JSON,
+      phone_number: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
-      // management_id: {
-      //   type: DataTypes.INTEGER,
-      //   allowNull: false,
-      //   references: {
-      //     model: 'management',
-      //     key: 'id',
-      //   },
-      // },
     });
   },
 
@@ -55,6 +45,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('building');
+    await queryInterface.dropTable('user');
   },
 };

@@ -2,6 +2,9 @@
   width: 100vw;
 }
 
+.height {
+}
+
 .neighborhood {
   font-size: 1.4em;
   color: var(--primary-light);
@@ -9,8 +12,12 @@
   border-radius: 20px;
 }
 
+.image-wrap {
+  width: 100%;
+}
+
 .display-card {
-  height: 22rem;
+  /* height: 25rem; */
   border: 1px solid var(--yup-pink);
   border-radius: 20px;
   overflow: hidden;
@@ -37,14 +44,6 @@
 .rent {
   font-size: 1.6em;
   font-weight: 700;
-}
-
-.image-wrap {
-  height: 13rem;
-  overflow: hidden;
-}
-
-.card-img {
 }
 
 .unit-num {
@@ -91,6 +90,12 @@
 }
 
 @media screen and (min-width: 990px) {
+  .card-img {
+    height: 15rem;
+    object-fit: cover;
+    object-position: bottom right;
+  }
+
   .unit-num {
     font-size: 1em;
   }

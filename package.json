@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "watch": "nodemon server.js",
-    "seed": "node seeds/index.js"
+    "seed": "node seeds/index.js",
+    "heroku-postbuild": "npx sequelize-cli db:migrate --env production"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.3.1",
     "express-session": "^1.17.1",
+    "lightbox2": "^2.11.3",
     "multer": "^1.4.2",
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.2",

@@ -159,7 +159,7 @@
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div class="card-body">
-                <div class="row">
+                {{!-- <div class="row">
                   <div class="col-6">
                     <h4>Furnished</h4>
                     <hr>
@@ -168,15 +168,19 @@
                     <h4>Outdoor</h4>
                     <hr>
                   </div>
-                </div>
+                </div> --}}
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-12 col-sm-6 mb-4">
+                    <h4>Furnished</h4>
+                    <hr>
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[furnished]=true" id="furnished">
                       <label class="custom-control-label" for="furnished">Furnished</label>
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-12 col-sm-6 mb-4">
+                    <h4>Outdoor</h4>
+                    <hr>
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[balcony]=true" id="balcony">
                       <label class="custom-control-label" for="balcony">Balcony</label>
@@ -199,18 +203,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="row mt-4">
-                  <div class="col-6">
+                <div class="row">
+                  <div class="col-12 col-sm-6 mb-4">
                     <h4>Features</h4>
                     <hr>
-                  </div>
-                  <div class="col-6">
-                    <h4>Views</h4>
-                    <hr>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-6">
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[central_air]=true" id="central_air">
                       <label class="custom-control-label" for="central_air">Central Air</label>
@@ -232,7 +228,9 @@
                       <label class="custom-control-label" for="washer_dryer">Washer/Dryer</label>
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-12 col-sm-6 mb-4">
+                    <h4>Views</h4>
+                    <hr>
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input" type="checkbox" name='searchElement' value="unitAmenities[city_view]=true" id="city_view">
                       <label class="custom-control-label" for="city_view">City View</label>
@@ -270,23 +268,17 @@
             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
               <div class="card-body">
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-12 col-sm-6 mb-4">
                     <h4>Pets</h4>
                     <hr>
-                  </div>
-                  <div class="col-6">
-                    <h4>Outdoor</h4>
-                    <hr>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-6">
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[pets_allowed]=true" id="pets_allowed">
                       <label class="custom-control-label" for="pets_allowed">Pets Allowed</label>
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-12 col-sm-6 mb-4">
+                    <h4>Outdoor</h4>
+                    <hr>
                     <div class="custom-control custom-checkbox">
                       <input class="custom-control-input" type="checkbox" name='searchElement' value="buildingAmenities[roof]=true" id="roof">
                       <label class="custom-control-label" for="roof">Roof Access</label>
@@ -398,7 +390,7 @@
                 <div class="accordion" id="accordionExample">
                   <div class="row">
                     {{#each brooklyn as |brooklyn|}}
-                    <div class="col-6 mb-2 p3">
+                    <div class="col-12 col-md-6 mb-2 p3">
                       <div class="custom-control custom-checkbox mb-1">
                         <input name='searchElement' class="custom-control-input" type="checkbox" value="building[neighborhood]={{brooklyn.neighborhood}}" id="{{brooklyn.neighborhood}}"/>
                         <label class="custom-control-label" for="{{brooklyn.neighborhood}}">{{brooklyn.neighborhood}}</label>

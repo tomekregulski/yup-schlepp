@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
-class Management extends Model {}
+class Manhattan extends Model {}
 
-Management.init(
+Manhattan.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,9 +11,12 @@ Management.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    management_name: {
+    area: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    neighborhood: {
+      type: DataTypes.JSON,
     },
   },
   {
@@ -23,8 +26,8 @@ Management.init(
     updatedAt: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'management',
+    modelName: 'manhattan',
   }
 );
 
-module.exports = Management;
+module.exports = Manhattan;

@@ -11,6 +11,7 @@
   font-style: normal;
   font-weight: 300;
   font-size: 0.5em;
+  white-space: nowrap;
   line-height: 140%;
   color: var(--yup-pink);
   transition: 0.3s ease-in-out;
@@ -21,6 +22,18 @@
 .collapse-link:active {
   text-decoration: none;
   color: var(--button-hover);
+}
+
+.neighborhood-heading {
+  text-align: right;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.neighborhood-heading:hover,
+.neighborhood-heading:focus,
+.neighborhood-heading:active {
+  color: var(--yup-pink);
 }
 
 @media screen and (min-width: 450px) {

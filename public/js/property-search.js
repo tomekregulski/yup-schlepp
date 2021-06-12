@@ -82,10 +82,10 @@ const renderMgmtResults = (management) => {
 
   for (var i = 0; i < management.length; i++) {
     const row = document.createElement('div');
-    row.setAttribute('class', 'row p-4 mx-5 mgmt-row');
+    row.setAttribute('class', 'row p-4 d-flex justify-content-center');
     row.innerHTML = `
-    <div class="col-12 d-flex justify-content-between">
-      <h3 class="card-title unit-num mgmt-link m-0" onClick="window.location='/managements/${management[i].id}'">${management[i].management_name}</h3>
+    <div class="col-12 col-md-10 col-lg-6 d-flex justify-content-between mgmt-row">
+      <span class="card-title unit-num mgmt-link m-0" onClick="window.location='/managements/${management[i].id}'">${management[i].management_name}</span>
       <div class="specs">
           <span>${management[i].buildings.length}</span>
           <span>Buildings</span>
@@ -177,3 +177,25 @@ const toggleSearchBtn = () => {
 };
 
 const uncheckAll = () => document.getElementsByName('searchElement').forEach((el) => (el.checked = false));
+
+// expand neighborhoods in accordian filter
+document.querySelector('.brooklyn').addEventListener('click', () => {
+  document.querySelectorAll('.brooklyn-neighborhoods').forEach((neighborhood) => {
+    neighborhood.classList.toggle('hide');
+  });
+});
+document.querySelector('.bronx').addEventListener('click', () => {
+  document.querySelectorAll('.bronx-neighborhoods').forEach((neighborhood) => {
+    neighborhood.classList.toggle('hide');
+  });
+});
+document.querySelector('.manhattan').addEventListener('click', () => {
+  document.querySelectorAll('.manhattan-neighborhoods').forEach((neighborhood) => {
+    neighborhood.classList.toggle('hide');
+  });
+});
+document.querySelector('.queens').addEventListener('click', () => {
+  document.querySelectorAll('.queens-neighborhoods').forEach((neighborhood) => {
+    neighborhood.classList.toggle('hide');
+  });
+});

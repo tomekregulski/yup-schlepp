@@ -1,5 +1,15 @@
 const router = require('express').Router();
-const { Building, Management, Unit, BuildingAmenities, UnitAmenities, Brooklyn } = require('../models');
+const {
+  Building,
+  Management,
+  Unit,
+  BuildingAmenities,
+  UnitAmenities,
+  Brooklyn,
+  Queens,
+  Bronx,
+  Manhattan,
+} = require('../models');
 const unitSorter = require('../utils/unitSorter');
 const withAuth = require('../utils/auth');
 const { Op } = require('sequelize');
@@ -21,12 +31,21 @@ router.get('/', withAuth, async (req, res) => {
     const buildings = buildingData.map((building) => building.get({ plain: true }));
 
     const brooklynData = await Brooklyn.findAll();
+    const queensData = await Queens.findAll();
+    const bronxData = await Bronx.findAll();
+    const manhattanData = await Manhattan.findAll();
 
     const brooklyn = brooklynData.map((neighborhoods) => neighborhoods.get({ plain: true }));
+    const queens = queensData.map((neighborhoods) => neighborhoods.get({ plain: true }));
+    const bronx = bronxData.map((neighborhoods) => neighborhoods.get({ plain: true }));
+    const manhattan = manhattanData.map((neighborhoods) => neighborhoods.get({ plain: true }));
 
     res.render('homepage', {
       buildings,
       brooklyn,
+      queens,
+      bronx,
+      manhattan,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
       email: req.session.email,

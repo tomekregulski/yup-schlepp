@@ -22,15 +22,13 @@ const renderBuildingResults = (newData) => {
   } else {
     for (var i = 0; i < newData.length; i++) {
       container = document.createElement('div');
-      container.setAttribute('class', 'row p-4 mx-5 mgmt-row');
+      container.setAttribute('class', 'row p-4 mx-5');
       container.innerHTML = `
-      <div class="col-12 d-flex justify-content-between">
-      <div class="d-flex flex-column mgmt-link">
+      <div class="col-12  col-md-10 col-lg-8 mgmt-row">
         <a href="/buildings/${newData[i].id}">
           <h3 class="card-title unit-num m-0">${newData[i].street_address}</h3>
           <h3 class="card-title unit-num m-0">${newData[i].neighborhood}, ${newData[i].city}</h3>
         </a>
-      </div>
       <div class="specs">
           <span>Available Units:</span>
           <span>${newData[i].units.length}</span>
