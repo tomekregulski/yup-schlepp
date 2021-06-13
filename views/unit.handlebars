@@ -2,7 +2,7 @@
 
 <div class="main-card light-box d-flex justify-content-center align-items-center hide">
     <div class="inner-lightbox">
-        <div id="carouselExampleControls" class="carousel slide" data-interval="false">
+        <div id="lighBoxControls" class="carousel slide" data-interval="false">
             <div class="carousel-inner">
             {{#each unit.image as |image|}}
                 {{#if @first}}
@@ -12,11 +12,11 @@
                 {{/if}}
             {{/each}}
             </div>
-            <a class="carousel-control-prev lb-controls" href="#carouselExampleControls" role="button" data-slide="prev">
+            <a class="carousel-control-prev lb-controls" href="#lighBoxControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon lb-controls" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next lb-controls" href="#carouselExampleControls" role="button" data-slide="next">
+            <a class="carousel-control-next lb-controls" href="#lighBoxControls" role="button" data-slide="next">
                 <span class="carousel-control-next-icon lb-controls" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
