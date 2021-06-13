@@ -1,9 +1,14 @@
-.slider,
-.slider-inner {
-  width: 100%;
-  /* height: 25.8rem; */
+.slider {
+  width: 45rem;
+  height: 33rem;
   border-radius: 20px;
   border: 1px solid var(--yup-pink);
+  overflow: hidden;
+}
+
+.slider-item {
+  object-fit: cover;
+  object-position: center center;
 }
 
 .status-banner {
